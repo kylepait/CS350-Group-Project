@@ -9,7 +9,7 @@ java {
 }
 
 application {
-    mainClass = 'packages.edu.odu.cs.cs350.pne.Main'
+    mainClass = 'edu.odu.cs.cs350.pne.Main'
 }
 
 repositories {
