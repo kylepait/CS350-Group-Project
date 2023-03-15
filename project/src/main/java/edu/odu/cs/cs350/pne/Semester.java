@@ -3,7 +3,7 @@ import java.util.List;
 
 public class Semester 
 {
-    private List<Offerings> offeringList;
+    private List<Offering> offeringList;
     private List<String> CRSEList;
     private String semesterCode;
 
@@ -16,7 +16,7 @@ public class Semester
 
     public List<Offering> getOfferingList()
     {
-        return offeringList
+        return offeringList;
     }
 
     public void setOfferingList(List<Offering> offeringList)
