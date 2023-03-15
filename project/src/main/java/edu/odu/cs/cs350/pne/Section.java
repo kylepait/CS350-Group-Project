@@ -15,7 +15,7 @@ public class Section {
         crossListCap = 0;
         enrollments = 0;
         instructor = "";
-        line = "";
+        link = "";
     }
     
 }

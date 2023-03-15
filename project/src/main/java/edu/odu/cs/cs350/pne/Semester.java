@@ -15,6 +15,7 @@ public class Semester {
 
     public List<Offering> getOfferingList() {
         return offeringList;
+        ;
     }
 
     public void setOfferingList(List<Offering> offeringList) {
