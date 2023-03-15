@@ -9,8 +9,12 @@ import java.beans.Transient;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 
-
-
 public class TestOffering {
-    
+    @Test
+    public void testConstructor() {
+        Offering offering = new Offering();
+        Section section = new Section();
+
+        assertThat(offering.section, is(null));
+    }
 }
