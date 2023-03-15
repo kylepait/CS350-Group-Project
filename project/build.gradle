@@ -23,8 +23,6 @@ dependencies {
 
 }
 
-
-
 test {
     ignoreFailures = true
     useJUnitPlatform()
