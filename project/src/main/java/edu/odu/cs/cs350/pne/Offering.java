@@ -20,8 +20,14 @@ public class Offering {
         this.currentEnrollment = 0;
     }
 
-    public void setSection(List<Section> section) {
-        this.section = section;
+    public Offering(Section section, String CRSE, String SUBJ) {
+        this.section = new ArrayList<Section>();
+        this.CRSE = CRSE;
+        this.SUBJ = SUBJ;
+    }
+
+    public void setSection(Section sections) {
+        section.add(sections);
     }
 
     public List<Section> getSection() {
