@@ -14,4 +14,9 @@ import static org.hamcrest.Matchers.*;
 
 public class TestSection {
     
+        //test1
+        @Test
+        public void testEmptyConstructor(){
+            Section section = new Section();
+        }
 }
