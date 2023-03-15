@@ -2,5 +2,5 @@
 **/.gradle/
 .vscode
 bin
-*.jar
+
 build/
