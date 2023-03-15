@@ -13,6 +13,83 @@ import static org.hamcrest.Matchers.*;
 
 
 
-public class TestSemester {
-    
+public class TestSemester 
+{
+    @Test
+    public void testGetOfferingList()
+    {
+        List<Offering> offeringList = new ArrayList<>();
+        offeringList.add(new Offering("CS101"));
+
+        Semester semester = new Semester(offeringList, new ArrayList<>(), "SP21");
+
+        assertEquals(offeringList, semester.testGetOfferingList());
+    }
+
+    @Test
+    public void testSetOfferingList()
+    {
+        List<Offering> offeringList1 = new ArrayList<>();
+        offeringList1.add(new Offering("CS101"));
+
+        Semester semester = new Semester(offeringList1, new ArrayList<>(), "SP21");
+
+        List<Offering> offeringList2 = new ArrayList<>();
+        offeringList2.add(new Offering("CS102"));
+
+        semester.setOfferingList(offeringList2);
+
+        assertEquals(offeringList2, semester.getOfferingList());
+    }
+
+    @Test
+    public void testGetCRSEList()
+    {
+        List<String> CRSEList = new ArrayList<>();
+        CRSEList.add("CS101");
+
+        Semester semester = new Semester(new ArrayList<>(), CRSEList1, "SP21");
+
+        assertEquals(CRSEList, semester.getCRSEList());
+    }
+
+    @Test
+    public void testSetCRSEList()
+    {
+        List<String> CRSEList1 = new ArrayList<>();
+        CRSEList1.add("CS101");
+
+        Semester semester = new Semester(new ArrayList<>(), CRSEList1, "SP21");
+
+        List<String> CRSEList2 = new ArrayList<>();
+        CRSEList2.add("CS102");
+
+        semester.setCrseList(CRSEList2);
+
+        assertEquals(CRSEList2, semester.getCRSEList());
+    }
+
+    @Test
+    public void testGetSemesterCode()
+    {
+        String semesterCode = "SP21";
+
+        Semester semester = new Semester(new ArrayList<>(), new ArrayList<>(), semesterCode);
+
+        assertEquals(semesterCode, semester.GetSemesterCode());
+    }
+
+    @Test
+    public void testSetSemesterCode()
+    {
+        String semesterCode1 = "SP21";
+
+        Semester semester = new Semester(new ArrayList<>(), new ArrayList<>(), semseterCode1);
+
+        String semesterCode2 = "FA21";
+
+        semester.SetSemesterCode(semesterCode2);
+
+        assertEquals(semesterCode2, semester.getSemesterCode()0);
+    }
 }
