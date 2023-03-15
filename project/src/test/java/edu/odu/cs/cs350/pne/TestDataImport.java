@@ -2,7 +2,7 @@ package edu.odu.cs.cs350.pne;
 
 import org.junit.jupiter.api.Test;
 
-import edu.odu.cs.Interval;
+import edu.odu.cs.cs350.pne.DataImport;
 
 import static org.junit.jupiter.api.Assertions.*;
 
