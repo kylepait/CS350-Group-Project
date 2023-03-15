@@ -1,46 +1,39 @@
 package edu.odu.cs.cs350.pne;
+
 import java.util.List;
 
-public class Semester 
-{
-    private List<Offering> offeringList;
+public class Semester {
+    private List<Offerings> offeringList;
     private List<String> CRSEList;
     private String semesterCode;
 
-    public Semester(List<Offering> offeringList, List<String> CRSEList, String semesterCode)
-    {
+    public Semester(List<Offering> offeringList, List<String> CRSEList, String semesterCode) {
         this.offeringList = offeringList;
         this.CRSEList = CRSEList;
         this.semesterCode = semesterCode;
     }
 
-    public List<Offering> getOfferingList()
-    {
+    public List<Offering> getOfferingList() {
         return offeringList;
     }
 
-    public void setOfferingList(List<Offering> offeringList)
-    {
+    public void setOfferingList(List<Offering> offeringList) {
         this.offeringList = offeringList;
     }
 
-    public List<String> getCRSEList()
-    {
+    public List<String> getCRSEList() {
         return CRSEList;
     }
 
-    public void setCRSEList(List<String> CRSEList)
-    {
+    public void setCRSEList(List<String> CRSEList) {
         this.CRSEList = CRSEList;
     }
 
-    public String getSemesterCode()
-    {
+    public String getSemesterCode() {
         return semesterCode;
     }
 
-    public void SetSemesterCode(String semesterCode)
-    {
+    public void SetSemesterCode(String semesterCode) {
         this.semesterCode = semesterCode;
     }
 }
