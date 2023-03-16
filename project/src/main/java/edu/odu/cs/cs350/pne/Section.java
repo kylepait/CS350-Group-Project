@@ -55,4 +55,8 @@ public class Section {
     public int getEnrollments(){
         return this.enrollments;
     }
+
+    public void setEnrollments(int enrollmentsSet){
+        this.enrollments = enrollmentsSet;
+    }
 }
