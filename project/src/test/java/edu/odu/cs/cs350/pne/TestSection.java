@@ -101,6 +101,6 @@ public class TestSection {
             Section section = new Section();
             section.enrollments = 10;
 
-            assertEquals(10, section.getEnrollments);
+            assertEquals(10, section.getEnrollments());
         }
 }
