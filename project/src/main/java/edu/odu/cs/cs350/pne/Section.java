@@ -51,4 +51,8 @@ public class Section {
     public void setCrossListCap(int crossListCapSet){
         this.crossListCap = crossListCapSet;
     }
+
+    public int getEnrollments(){
+        return this.enrollments;
+    }
 }
