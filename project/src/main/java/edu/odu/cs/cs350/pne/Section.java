@@ -59,4 +59,8 @@ public class Section {
     public void setEnrollments(int enrollmentsSet){
         this.enrollments = enrollmentsSet;
     }
+
+    public String getInstructor(){
+        return this.instructor;
+    }
 }
