@@ -3,7 +3,6 @@ package edu.odu.cs.cs350.pne;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-//import java.util.
 /*
 * A history containing a list of semesters and snapshot dates
 *
