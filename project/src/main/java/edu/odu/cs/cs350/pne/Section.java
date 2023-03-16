@@ -39,4 +39,8 @@ public class Section {
     public int getSeatsRemaining(){
         return this.seatsRemaining;
     }
+
+    public void testSetSeatsRemaining(int seatsRemainingSet){
+        this.seatsRemaining = seatsRemainingSet;
+    }
 }
