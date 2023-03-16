@@ -139,4 +139,13 @@ public class TestSection {
 
             assertEquals("a", section.getLink());
         }
+
+        //test14
+        @Test
+        public void testSetLink(){
+            Section section = new Section();
+            section.setLink("b");
+
+            assertEquals("b", section.getLink());
+        }
 }
