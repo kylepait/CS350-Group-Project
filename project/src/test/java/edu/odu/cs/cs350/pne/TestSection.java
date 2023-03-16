@@ -67,4 +67,13 @@ public class TestSection {
 
             assertEquals(12, section.getSeatsRemaining());
         }
+
+        //test6
+        @Test
+        public void testSetSeatsRemaining(){
+            Section section = new Section();
+            section.testSetSeatsRemaining(15);
+
+            assertEquals(15, section.getSeatsRemaining());
+        }
 }
