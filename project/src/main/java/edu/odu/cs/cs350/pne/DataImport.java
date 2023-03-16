@@ -27,6 +27,7 @@ public class DataImport {
         File directoryPath = new File(FilePath);
         LocalDate Date = LocalDate.now();
         History history = new History();
+        Section section = new Section();
         SnapshotDates = new ArrayList<LocalDate>();
         // List of all files and directories
         filesList = directoryPath.listFiles();
@@ -47,18 +48,28 @@ public class DataImport {
                 List<CSVRecord> csvRecords = parser.getRecords();
                 // Offering class needs columns C, D, W, X: 2, 3, 22, 23
                 // Section class needs columns A, B, G, H, I, U: 0, 1, 6, 7, 8, 20
-                for (int i = 0; i < csvRecords.size(); i++) {
+                for (int i = 1; i < csvRecords.size(); i++) {
                     CSVRecord csvRecord = csvRecords.get(i);
-                    System.out.print(csvRecord.get(0) + " "); // Seats
-                    System.out.print(csvRecord.get(1) + " "); // CRN
-                    System.out.print(csvRecord.get(2) + " "); // SUBJ
-                    System.out.print(csvRecord.get(3) + " "); // CRSE
-                    System.out.print(csvRecord.get(6) + " "); // XLIST CAP
-                    System.out.print(csvRecord.get(7) + " "); // ENR
-                    System.out.print(csvRecord.get(8) + " "); // LINK
-                    System.out.print(csvRecord.get(20) + " "); // INSTRUCTOR
-                    System.out.print(csvRecord.get(22) + " "); // OVERALL CAP
-                    System.out.print(csvRecord.get(23) + " "); // OVERALL ENR
+                    int Seats = Integer.parseInt(csvRecord.get(0));
+                    int CRN = Integer.parseInt(csvRecord.get(1));
+                    String SUBJ = csvRecord.get(2);
+                    String CRSE = csvRecord.get(3);
+                    int XListCap = Integer.parseInt(csvRecord.get(6));
+                    int ENR = Integer.parseInt(csvRecord.get(7));
+                    String Link = csvRecord.get(8);
+                    String Instructor = csvRecord.get(20);
+                    int OverallCap = Integer.parseInt(csvRecord.get(6));
+                    int OverallEnr = Integer.parseInt(csvRecord.get(23));
+                    System.out.print(Seats + " "); // Seats
+                    System.out.print(CRN + " "); // CRN
+                    System.out.print(SUBJ + " "); // SUBJ
+                    System.out.print(CRSE + " "); // CRSE
+                    System.out.print(XListCap + " "); // XLIST CAP
+                    System.out.print(ENR + " "); // ENR
+                    System.out.print(Link + " "); // LINK
+                    System.out.print(Instructor + " "); // INSTRUCTOR
+                    System.out.print(OverallCap + " "); // OVERALL CAP
+                    System.out.print(OverallEnr + " "); // OVERALL ENR
                     System.out.println();
                 }
             }
