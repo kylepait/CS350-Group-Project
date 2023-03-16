@@ -112,4 +112,13 @@ public class TestSection {
 
             assertEquals(20, section.getEnrollments());
         }
+
+        //test11
+        @Test
+        public void testGetInstructor(){
+            Section section = new Section();
+            section.instructor = "Betty";
+
+            assertEquals("Betty", section.getInstructor());
+        }
 }
