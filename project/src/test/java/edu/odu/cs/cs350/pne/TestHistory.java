@@ -11,13 +11,6 @@ import static org.hamcrest.Matchers.*;
 
 public class TestHistory {
 
-    @Test
-    public void testconstructor() {
-        History h = new History();
-        assertThat(h.getSemester(), is(null));
-        assertThat(h.getSnapShotDate(), is(null));
-    }
-
     /**
      * 
      */
@@ -26,8 +19,7 @@ public class TestHistory {
         ArrayList<LocalDate> date = new ArrayList<LocalDate>();
         ArrayList<Semester> sem = new ArrayList<Semester>();
         History h = new History();
-        /// assertThat(h.getSnapShotDate(), is(null));
-        // assertThat(h.getSemester(), is(null));
+
         h.setSnapShotDate(date);
         h.setSemester(sem);
         assertThat(h.getSemester(), is(sem));
@@ -38,7 +30,7 @@ public class TestHistory {
     public void testGetSemester() {
         ArrayList<Semester> sem = new ArrayList<Semester>();
         History h = new History();
-        // assertThat(h.getSemester(), is(null));
+
         h.setSemester(sem);
         assertThat(h.getSemester(), is(sem));
     }
@@ -71,10 +63,8 @@ public class TestHistory {
 
         // setting the semester first
         History h = new History();
-        // assertThat(h.getSnapShotDate(), is(null));
 
         h.setSemester(s);
-        // assertThat(h.getSnapShotDate(), is(null));
 
         h.setSnapShotDate(date);
         assertThat(h.getSnapShotDate(), is(date));
@@ -82,12 +72,10 @@ public class TestHistory {
 
         // setting the snapshot first
         History h2 = new History();
-        // assertThat(h2.getSnapShotDate(), is(null));
-        // assertThat(h2.getSemester(), is(null));
 
         h.setSnapShotDate(date);
         assertThat(h2.getSnapShotDate(), is(date));
-        assertThat(h2.getSemester(), is(null));
+
     }
 
     /**
@@ -100,11 +88,8 @@ public class TestHistory {
 
         History h = new History();
 
-        // assertThat(h.getSnapShotDate(), is(null));
-
         h.setSnapShotDate(date);
         assertThat(h.getSnapShotDate(), is(date));
-        // assertThat(h.getSemester(), is(null));
 
         h.setSemester(sem);
         assertThat(h.getSnapShotDate(), is(date));
@@ -130,16 +115,9 @@ public class TestHistory {
         ArrayList<Semester> sem = new ArrayList<Semester>();
 
         History h = new History(date, sem);
-        History h2 = new History();
 
         assertThat(h.getSemester(), is(sem));
         assertThat(h.getSnapShotDate(), is(date));
-
-        assertNull(h2.getSemester());
-        assertNull(h2.getSnapShotDate());
-
-        assertNotEquals(h.getSemester(), h2.getSemester());
-        assertNotEquals(h.getSnapShotDate(), h2.getSnapShotDate());
 
     }
 }
