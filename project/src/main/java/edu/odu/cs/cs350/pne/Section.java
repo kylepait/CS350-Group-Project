@@ -17,5 +17,15 @@ public class Section {
         instructor = "";
         link = "";
     }
+
+    public Section(int crnAdd, int seatsRemainingAdd, int crossListCapAdd, int enrollmentAdd, String instructorAdd, String linkAdd){
+        this.crn = crnAdd;
+        this.seatsRemaining = seatsRemainingAdd;
+        this.crossListCap = crossListCapAdd;
+        this.enrollments = enrollmentAdd;
+        this.instructor = instructorAdd;
+        this.link = linkAdd;
+
+    }
     
 }
