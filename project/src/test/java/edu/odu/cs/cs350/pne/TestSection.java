@@ -130,4 +130,13 @@ public class TestSection {
 
             assertEquals("Ricky", section.getInstructor());
         }
+
+        //test13
+        @Test
+        public void testGetLink(){
+            Section section = new Section();
+            section.link = "a";
+
+            assertEquals("a", section.getLink());
+        }
 }
