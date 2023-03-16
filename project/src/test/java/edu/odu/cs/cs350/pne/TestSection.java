@@ -76,4 +76,13 @@ public class TestSection {
 
             assertEquals(15, section.getSeatsRemaining());
         }
+
+        //test7
+        @Test
+        public void testGetCrossListCap(){
+            Section section = new Section();
+            section.crossListCap = 5;
+
+            assertEquals(5, section.getCrossListCap());
+        }
 }
