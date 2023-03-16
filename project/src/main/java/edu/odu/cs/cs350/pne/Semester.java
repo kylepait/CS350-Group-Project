@@ -3,7 +3,7 @@ package edu.odu.cs.cs350.pne;
 import java.util.List;
 
 public class Semester {
-    private List<Offerings> offeringList;
+    private List<Offering> offeringList;
     private List<String> CRSEList;
     private String semesterCode;
 
