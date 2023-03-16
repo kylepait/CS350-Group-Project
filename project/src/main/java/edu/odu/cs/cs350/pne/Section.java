@@ -47,4 +47,8 @@ public class Section {
     public int getCrossListCap(){
         return this.crossListCap;
     }
+
+    public void setCrossListCap(int crossListCapSet){
+        this.crossListCap = crossListCapSet;
+    }
 }
