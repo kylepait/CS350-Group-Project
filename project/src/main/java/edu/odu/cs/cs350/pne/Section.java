@@ -40,7 +40,7 @@ public class Section {
         return this.seatsRemaining;
     }
 
-    public void testSetSeatsRemaining(int seatsRemainingSet){
+    public void setSeatsRemaining(int seatsRemainingSet){
         this.seatsRemaining = seatsRemainingSet;
     }
 }
