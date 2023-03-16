@@ -71,4 +71,8 @@ public class Section {
     public String getLink(){
         return this.link;
     }
+
+    public void setLink(String linkSet){
+        this.link = linkSet;
+    }
 }
