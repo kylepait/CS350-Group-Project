@@ -58,4 +58,13 @@ public class TestSection {
             section.setCRN(123456);
             assertEquals(123456, section.getCRN());
         }
+
+        //test5
+        @Test
+        public void testGetSeatsRemaining(){
+            Section section = new Section();
+            section.seatsRemaining = 12;
+
+            assertEquals(12, section.getSeatsRemaining());
+        }
 }
