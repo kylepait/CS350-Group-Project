@@ -10,7 +10,8 @@ public class Main {
             System.out.println("You need to specify a path!");
             return;
         } else {
-            instance.GetFileNames(args[0]);
+            for (String Directory : args)
+                instance.GetFileNames(Directory);
         }
     }
 }

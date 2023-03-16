@@ -22,12 +22,9 @@ public class DataImport {
         System.out.println("List of files and directories in the specified directory:");
         Scanner ScannerContents = null;
         for (File file : filesList) {
-            System.out.println("File name: " + file.getName());
+            // System.out.println("File name: " + file.getName());
             String Filename = FilenameUtils.removeExtension(file.getName());
             String[] FilenameParts = Filename.split("-");
-            for (String Date : FilenameParts) {
-                System.out.println("Date Parts: " + Date);
-            }
             if (FilenameParts.length == 3) {
                 LocalDate Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
                         Integer.parseInt(FilenameParts[2]));
