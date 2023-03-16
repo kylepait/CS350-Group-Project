@@ -40,4 +40,13 @@ public class TestSection {
             assertEquals("Kyle", section.instructor);
             assertEquals("maybe", section.link);
         }
+
+        //test3
+        @Test
+        public void testGetCRN(){
+            Section section = new Section();
+            section.crn = 202020;
+
+            assertEquals(202020, section.getCRN());
+        }
 }
