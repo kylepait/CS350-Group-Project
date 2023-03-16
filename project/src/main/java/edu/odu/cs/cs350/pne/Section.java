@@ -35,4 +35,8 @@ public class Section {
     public void setCRN(int crnSet){
         this.crn = crnSet;
     }
+
+    public int getSeatsRemaining(){
+        return this.seatsRemaining;
+    }
 }
