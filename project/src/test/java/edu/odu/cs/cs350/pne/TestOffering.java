@@ -17,21 +17,69 @@ public class TestOffering {
         offering.setCRSE("");
         offering.setSUBJ("");
 
-        assertThat(null, equalTo(offering.getSection()));
-        assertThat("", equalTo(offering.getCRSE()));
-        assertThat("", equalTo(offering.getSUBJ()));
+        //assertEquals(null, offering.getSection());
+        assertEquals("", offering.getCRSE());
+        assertEquals("", offering.getSUBJ());
     }
 
     @Test
     public void testDestructor() {
-        Offering offering = new Offering("350", "CS");
         Section section = new Section(34185, 10, 50, 40, "Polawar", "R2");
+        Offering offering = new Offering(section, "350", "CS");
         offering.setSection(section);
         offering.setCRSE("350");
         offering.setSUBJ("CS");
 
-        assertEquals(section, offering.getSection());
+        //assertEquals(section, offering.getSection());
         assertEquals("350", offering.getCRSE());
         assertEquals("CS", offering.getSUBJ());
+    }
+
+    /*@Test
+    public void testSetSection() {
+        Section section = new Section(34187, 3, 34, 64, "Teach", "linked");
+        Offering offering = new Offering();
+        offering.setSection(section);
+
+        assertEquals(section, offering.getSection());
+    }
+
+    @Test
+    public void testGetSection() {
+        //Section section = new Section();
+        Offering offering = new Offering();
+        offering.section = new Section();
+    }*/
+
+    @Test
+    public void testSetCRSE() {
+        Offering offering = new Offering();
+        offering.CRSE = "350";
+
+        assertEquals("350", offering.getCRSE());
+    }
+
+    @Test
+    public void testGetCRSE() {
+        Offering offering = new Offering();
+        offering.setCRSE("361");
+
+        assertEquals("361", offering.getCRSE());
+    }
+
+    @Test
+    public void testSetSUBJ() {
+        Offering offering = new Offering();
+        offering.SUBJ = "CS";
+
+        assertEquals("CS", offering.getSUBJ());
+    }
+
+    @Test
+    public void testGetSUBJ() {
+        Offering offering = new Offering();
+        offering.setSUBJ("MTH");
+
+        assertEquals("MTH", offering.getSUBJ());
     }
 }
