@@ -49,4 +49,12 @@ public class Offering {
     public String getSUBJ() {
         return SUBJ;
     }
+
+    public void setEnrollment(int enrollment) {
+        this.enrollment = enrollment;
+    }
+
+    public int getEnrollment() {
+        return enrollment;
+    }
 }
