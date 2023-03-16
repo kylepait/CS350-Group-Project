@@ -103,4 +103,13 @@ public class TestSection {
 
             assertEquals(10, section.getEnrollments());
         }
+
+        //test10
+        @Test
+        public void testSetEnrollments(){
+            Section section = new Section();
+            section.setEnrollments(20);
+
+            assertEquals(20, section.getEnrollments());
+        }
 }
