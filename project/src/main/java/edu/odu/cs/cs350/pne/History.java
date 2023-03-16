@@ -6,33 +6,42 @@ import java.util.Arrays;
 import java.util.Map;
 import java.util.Set;
 import java.util.TreeMap;
-import java.util.List;
+import java.util.ArrayList;
 
+//import java.util.
 /*
 * A history containing a list of semesters and snapshot dates
 *
 * @author aaron 
 */
 public class History {
-    private List<LocalDate> snapShotDate;
-    private List<Semester> semester;
+    private ArrayList<LocalDate> snapShotDate;
+    private ArrayList<Semester> semester;
 
-    // constructor
     public History() {
-        snapShotDate = new List<LocalDate>();
-        semester = new List<Semester>();
+        snapShotDate = new ArrayList<LocalDate>();
+        semester = new ArrayList<Semester>();
     }
 
-    /*
-     * Create a new History
-     * 
-     * @param snapShotDate: the date to be created for
-     * 
-     * @param semester: the semester to be created for
-     */
-    public History(List<LocalDate> snapShotDate, List<Semester> semester) {
+    public History(ArrayList<LocalDate> snapShotDate, ArrayList<Semester> semester) {
         this.snapShotDate = snapShotDate;
         this.semester = semester;
+    }
+
+    public void setSnapShotDate(ArrayList<LocalDate> date) {
+        this.snapShotDate = date;
+    }
+
+    public ArrayList<LocalDate> getSnapShotDate() {
+        return snapShotDate;
+    }
+
+    public void setSemester(ArrayList<Semester> sem) {
+        this.semester = sem;
+    }
+
+    public ArrayList<Semester> getSemester() {
+        return semester;
     }
 
 }
