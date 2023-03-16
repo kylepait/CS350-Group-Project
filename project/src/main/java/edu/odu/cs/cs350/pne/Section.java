@@ -31,4 +31,8 @@ public class Section {
     public int getCRN(){
         return this.crn;
     }
+
+    public void setCRN(int crnSet){
+        this.crn = crnSet;
+    }
 }
