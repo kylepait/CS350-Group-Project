@@ -94,4 +94,13 @@ public class TestSection {
 
             assertEquals(18, section.getCrossListCap());
         }
+
+        //test9
+        @Test
+        public void testGetEnrollments(){
+            Section section = new Section();
+            section.enrollments = 10;
+
+            assertEquals(10, section.getEnrollments);
+        }
 }
