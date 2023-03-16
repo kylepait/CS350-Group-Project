@@ -85,4 +85,13 @@ public class TestSection {
 
             assertEquals(5, section.getCrossListCap());
         }
+
+        //test8
+        @Test
+        public void testSetCrossListCap(){
+            Section section = new Section();
+            section.setCrossListCap(18);
+
+            assertEquals(18, section.getCrossListCap());
+        }
 }
