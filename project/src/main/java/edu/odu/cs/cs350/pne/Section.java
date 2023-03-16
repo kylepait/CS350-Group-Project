@@ -28,4 +28,7 @@ public class Section {
 
     }
     
+    public int getCRN(){
+        return this.crn;
+    }
 }
