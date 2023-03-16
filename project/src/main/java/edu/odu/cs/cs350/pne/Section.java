@@ -67,4 +67,8 @@ public class Section {
     public void setInstructor(String instructorSet){
         this.instructor = instructorSet;
     }
+
+    public String getLink(){
+        return this.link;
+    }
 }
