@@ -18,8 +18,17 @@ public class TestSection {
         @Test
         public void testEmptyConstructor(){
             Section section = new Section();
+            assertEquals(0, section.crn);
+            assertEquals(0, section.seatsRemaining);
+            assertEquals(0, section.crossListCap);
+            assertEquals(0, section.enrollments);
+            
+            assertEquals("", section.instructor);
+            assertEquals("", section.link);
+
         }
 
+        //test2
         @Test
         public void testNonEmptyConstructor(){
             Section section = new Section(22222, 2, 2, 3, "Kyle", "maybe");
