@@ -43,4 +43,8 @@ public class Section {
     public void setSeatsRemaining(int seatsRemainingSet){
         this.seatsRemaining = seatsRemainingSet;
     }
+
+    public int getCrossListCap(){
+        return this.crossListCap;
+    }
 }
