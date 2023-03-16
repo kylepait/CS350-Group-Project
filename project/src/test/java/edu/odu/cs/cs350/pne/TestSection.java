@@ -72,7 +72,7 @@ public class TestSection {
         @Test
         public void testSetSeatsRemaining(){
             Section section = new Section();
-            section.testSetSeatsRemaining(15);
+            section.setSeatsRemaining(15);
 
             assertEquals(15, section.getSeatsRemaining());
         }
