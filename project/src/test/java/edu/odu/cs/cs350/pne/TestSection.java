@@ -49,4 +49,13 @@ public class TestSection {
 
             assertEquals(202020, section.getCRN());
         }
+
+        //test4
+        @Test
+        public void testSetCRN(){
+            Section section = new Section();
+
+            section.setCRN(123456);
+            assertEquals(123456, section.getCRN());
+        }
 }
