@@ -38,4 +38,8 @@ public class History {
         return semester;
     }
 
+    public void addSnapShotDate(LocalDate date) {
+        snapShotDate.add(date);
+    }
+
 }
