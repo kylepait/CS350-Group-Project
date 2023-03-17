@@ -40,7 +40,13 @@ public class TestOffering {
     @Test
     public void testGetSetSection() {
         List<Section> section = new ArrayList<Section>();
+        section.add(new Section(25143, 2, 40, 38, "Kennedy", "R2"));
         Offering offering = new Offering();
+        offering.setSection(section);
+
+        assertEquals(section, offering.getSection());
+
+        section.add(new Section(31974, 9, 50, 41, "Polawar", "R1"));
         offering.setSection(section);
 
         assertEquals(section, offering.getSection());
