@@ -12,25 +12,20 @@ public class TestOffering {
     @Test
     public void testConstructor() {
         Offering offering = new Offering();
-        offering.setSection(null);
-        offering.setCRSE("");
-        offering.setSUBJ("");
+        offering.section = null;
 
         assertEquals(null, offering.getSection());
         assertEquals("", offering.getCRSE());
         assertEquals("", offering.getSUBJ());
+        assertEquals(0, offering.getEnrollment());
+        assertEquals(0, offering.getMaxEnrollment());
+        assertEquals(0, offering.getCurrentEnrollment());
     }
 
     @Test
     public void testDestructor() {
         List<Section> section = new ArrayList<Section>();
         Offering offering = new Offering(section, "350", "CS", 5, 20, 15);
-        offering.setSection(section);
-        offering.setCRSE("350");
-        offering.setSUBJ("CS");
-        offering.setEnrollment(5);
-        offering.setMaxEnrollment(20);
-        offering.setCurrentEnrollment(15);
 
         assertEquals(section, offering.getSection());
         assertEquals("350", offering.getCRSE());
