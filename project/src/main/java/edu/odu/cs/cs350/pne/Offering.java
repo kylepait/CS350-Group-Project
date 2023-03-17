@@ -4,15 +4,15 @@ import java.util.List;
 import java.util.ArrayList;
 
 public class Offering {
-    List<Section> section;
-    String CRSE;
-    String SUBJ;
-    int enrollment;
-    int maxEnrollment;
-    int currentEnrollment;
+    private List<Section> section;
+    private String CRSE;
+    private String SUBJ;
+    private int enrollment;
+    private int maxEnrollment;
+    private int currentEnrollment;
 
     public Offering() {
-        this.section = new ArrayList<>();
+        this.section = new ArrayList<Section>();
         this.CRSE = "";
         this.SUBJ = "";
         this.enrollment = 0;
@@ -21,7 +21,7 @@ public class Offering {
     }
 
     public Offering(List<Section> section, String CRSE, String SUBJ, int enrollment, int maxEnrollment, int currentEnrollment) {
-        this.section = new ArrayList<Section>();
+        this.section = section;
         this.CRSE = CRSE;
         this.SUBJ = SUBJ;
         this.enrollment = enrollment;
