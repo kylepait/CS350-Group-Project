@@ -2,12 +2,12 @@ package edu.odu.cs.cs350.pne;
 
 public class Section {
 
-    int crn;
-    int seatsRemaining;
-    int crossListCap;
-    int enrollments;
-    String instructor;
-    String link;
+    private int crn;
+    private int seatsRemaining;
+    private int crossListCap;
+    private int enrollments;
+    private String instructor;
+    private String link;
 
     public Section(){
         crn = 0;

@@ -18,13 +18,13 @@ public class TestSection {
         @Test
         public void testEmptyConstructor(){
             Section section = new Section();
-            assertEquals(0, section.crn);
-            assertEquals(0, section.seatsRemaining);
-            assertEquals(0, section.crossListCap);
-            assertEquals(0, section.enrollments);
+            assertEquals(0, section.getCRN());
+            assertEquals(0, section.getSeatsRemaining());
+            assertEquals(0, section.getCrossListCap());
+            assertEquals(0, section.getEnrollments());
             
-            assertEquals("", section.instructor);
-            assertEquals("", section.link);
+            assertEquals("", section.getInstructor());
+            assertEquals("", section.getLink());
 
         }
 
@@ -32,20 +32,20 @@ public class TestSection {
         @Test
         public void testNonEmptyConstructor(){
             Section section = new Section(22222, 2, 2, 3, "Kyle", "maybe");
-            assertEquals(22222, section.crn);
-            assertEquals(2, section.seatsRemaining);
-            assertEquals(2, section.crossListCap);
-            assertEquals(3, section.enrollments);
+            assertEquals(22222, section.getCRN());
+            assertEquals(2, section.getSeatsRemaining());
+            assertEquals(2, section.getCrossListCap());
+            assertEquals(3, section.getEnrollments());
             
-            assertEquals("Kyle", section.instructor);
-            assertEquals("maybe", section.link);
+            assertEquals("Kyle", section.getInstructor());
+            assertEquals("maybe", section.getLink());
         }
 
         //test3
         @Test
         public void testGetCRN(){
             Section section = new Section();
-            section.crn = 202020;
+            section.setCRN(202020);
 
             assertEquals(202020, section.getCRN());
         }
@@ -63,7 +63,7 @@ public class TestSection {
         @Test
         public void testGetSeatsRemaining(){
             Section section = new Section();
-            section.seatsRemaining = 12;
+            section.setSeatsRemaining(12);
 
             assertEquals(12, section.getSeatsRemaining());
         }
@@ -81,7 +81,7 @@ public class TestSection {
         @Test
         public void testGetCrossListCap(){
             Section section = new Section();
-            section.crossListCap = 5;
+            section.setCrossListCap(5);
 
             assertEquals(5, section.getCrossListCap());
         }
@@ -99,7 +99,7 @@ public class TestSection {
         @Test
         public void testGetEnrollments(){
             Section section = new Section();
-            section.enrollments = 10;
+            section.setEnrollments(10);
 
             assertEquals(10, section.getEnrollments());
         }
@@ -117,7 +117,7 @@ public class TestSection {
         @Test
         public void testGetInstructor(){
             Section section = new Section();
-            section.instructor = "Betty";
+            section.setInstructor("Betty");
 
             assertEquals("Betty", section.getInstructor());
         }
@@ -135,7 +135,7 @@ public class TestSection {
         @Test
         public void testGetLink(){
             Section section = new Section();
-            section.link = "a";
+            section.setLink("a");
 
             assertEquals("a", section.getLink());
         }
