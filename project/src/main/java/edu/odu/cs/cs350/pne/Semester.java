@@ -1,5 +1,6 @@
 package edu.odu.cs.cs350.pne;
 import java.util.List;
+import java.util.ArrayList;
 
 public class Semester 
 {
