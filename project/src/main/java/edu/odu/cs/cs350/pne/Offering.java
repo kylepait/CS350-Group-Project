@@ -20,10 +20,13 @@ public class Offering {
         this.currentEnrollment = 0;
     }
 
-    public Offering(List<Section> section, String CRSE, String SUBJ) {
+    public Offering(List<Section> section, String CRSE, String SUBJ, int enrollment, int maxEnrollment, int currentEnrollment) {
         this.section = new ArrayList<Section>();
         this.CRSE = CRSE;
         this.SUBJ = SUBJ;
+        this.enrollment = enrollment;
+        this.maxEnrollment = maxEnrollment;
+        this.currentEnrollment = currentEnrollment;
     }
 
     public void setSection(List<Section> section) {
@@ -56,5 +59,21 @@ public class Offering {
 
     public int getEnrollment() {
         return enrollment;
+    }
+
+    public void setMaxEnrollment(int maxEnrollment) {
+        this.maxEnrollment = maxEnrollment;
+    }
+
+    public int getMaxEnrollment() {
+        return maxEnrollment;
+    }
+
+    public void setCurrentEnrollment(int currentEnrollment) {
+        this.currentEnrollment = currentEnrollment;
+    }
+
+    public int getCurrentEnrollment() {
+        return currentEnrollment;
     }
 }
