@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 //import java.beans.Transient;
 
@@ -129,5 +131,17 @@ public class TestOffering {
         offering.addSection(section1);
 
         assertTrue(offering.getSection().contains(section1));
+    }
+
+    @Test
+    public void testAccessSection() {
+        Offering offering = new Offering();
+        Section section = new Section(34119, 1, 30, 29, "Kennedy", "R2");
+        Section section1 = new Section(23465, 8, 50, 42, "Polawar", "R1");
+        offering.addSection(section);
+        offering.addSection(section1);
+
+        assertThat(offering.accessSection(0), is(section));
+        assertThat(offering.accessSection(1), is(section1));
     }
 }
