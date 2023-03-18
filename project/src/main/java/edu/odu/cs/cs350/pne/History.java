@@ -8,8 +8,8 @@ public class History {
     private ArrayList<Semester> semester;
 
     public History() {
-        snapShotDate = new ArrayList<LocalDate>();
-        semester = new ArrayList<Semester>();
+        this.snapShotDate = new ArrayList<LocalDate>();
+        this.semester = new ArrayList<Semester>();
     }
 
     public History(ArrayList<LocalDate> snapShotDate, ArrayList<Semester> semester) {
@@ -34,7 +34,7 @@ public class History {
     }
 
     public void addSnapShotDate(LocalDate date) {
-        snapShotDate.add(date);
+        this.snapShotDate.add(date);
     }
 
     /**
@@ -49,6 +49,8 @@ public class History {
         Integer j = snapshot.size();
         for (Integer i = 0; i < j; i++) {
             buf.append(snapshot.get(i).toString());
+            if (i != j - 1)
+                buf.append(", ");
         }
         buf.append("]");
         return buf.toString();
@@ -66,6 +68,8 @@ public class History {
         Integer j = sem.size();
         for (Integer i = 0; i < j; i++) {
             buf.append(sem.get(i).toString());
+            if (i != j - 1)
+                buf.append(", ");
         }
         buf.append("]");
         return buf.toString();
