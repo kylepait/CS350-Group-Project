@@ -39,50 +39,30 @@ public class Main {
                     e.printStackTrace();
                 }
         }
-        /*
-         * for (History hist : PreviousSemestersData) {
-         * // System.out.println(hist.getSemester());
-         * for (int i = 0; i < hist.getSemester().size(); i++) {
-         * Semester semes = hist.getSemesterByIndex(i);
-         * System.out.println(semes.getSemesterCode());
-         * System.out.println(hist.getSnapShotByIndex(i));
-         * // System.out.println(semes);
-         * List<Offering> Off = semes.getOfferingList();
-         * List<String> CRSELst = semes.getCRSEList();
-         * for (int j = 0; j < Off.size(); j++) {
-         * // System.out.println(CRSELst.get(j));
-         * System.out.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
-         * Off.get(j).getSUBJ()
-         * + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " +
-         * Off.get(j).getMaxEnrollment()
-         * + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
-         * for (Section sect : Off.get(j).getSection()) {
-         * System.out.println(
-         * "        CRN: " + sect.getCRN() + " Seats Remaining: " +
-         * sect.getSeatsRemaining()
-         * + " XList Cap: " + sect.getCrossListCap() + " ENRL:" + sect.getEnrollments()
-         * + " XList Group: " + sect.getCrossListGroup() + " Instr: "
-         * + sect.getInstructor() + " Link: " + sect.getLink());
-         * }
-         * }
-         * }
-         * }
-         */
-        History histry = PreviousSemestersData.get(0);
-        List<Semester> semes = histry.getSemester();
-        for (int i = 0; i < semes.size(); i++) {
-            int Sections = 0;
-            System.out.println(histry.getSnapShotByIndex(i));
-            List<Offering> Off = semes.get(i).getOfferingList();
-            for (int j = 0; j < Off.size(); j++) {
-                // System.out.println(CRSELst.get(j));
-                for (Section sect : Off.get(j).getSection()) {
-                    Sections++;
-                    System.out.println(sect.getCRN() + " " + sect.getLink());
+        for (History hist : PreviousSemestersData) {
+            // System.out.println(hist.getSemester());
+            for (int i = 0; i < hist.getSemester().size(); i++) {
+                Semester semes = hist.getSemesterByIndex(i);
+                System.out.println(semes.getSemesterCode());
+                System.out.println(hist.getSnapShotByIndex(i));
+                // System.out.println(semes);
+                List<Offering> Off = semes.getOfferingList();
+                List<String> CRSELst = semes.getCRSEList();
+                for (int j = 0; j < Off.size(); j++) {
+                    // System.out.println(CRSELst.get(j));
+                    System.out.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " + Off.get(j).getSUBJ()
+                            + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " + Off.get(j).getMaxEnrollment()
+                            + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
+                    for (Section sect : Off.get(j).getSection()) {
+                        System.out.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
+                                + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() + " ENRL:"
+                                + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() + " Instr: "
+                                + sect.getInstructor() + " Link: " + sect.getLink());
+                    }
                 }
             }
-            System.out.println(Sections);
         }
+
     }
 
     public History GetFileContents(String FilePath) throws IOException {
@@ -231,9 +211,6 @@ public class Main {
                                             OfferingMatch = true;
                                             OfferingInSemester = true;
                                             offering = Off;
-                                            System.out.println(
-                                                    Off.accessSection(0).getCrossListGroup() + " " + XListGroup);
-                                            System.out.println("XListGroup");
                                         }
                                     }
                                 }
@@ -245,35 +222,9 @@ public class Main {
                                     offering.addSection(section);
                                 }
                             } else {
-                                /*
-                                 * offering = new Offering();
-                                 * offering.setCRSE(CRSE);
-                                 * offering.setSUBJ(SUBJ);
-                                 * offering.setEnrollment(OverallEnr);
-                                 * offering.setMaxEnrollment(OverallCap);
-                                 * offering.setCurrentEnrollment(OverallEnr);
-                                 */
                                 section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);
                                 offering.addSection(section);
-                                if (Date.equals(LocalDate.of(2020, 4, 1))) {
-                                    System.out.println(XListGroup);
-                                }
                             }
-                            // Add newly created section to the offering
-                            // Not working currently, needs method to add single section.
-                            /*
-                             * System.out.print(Seats + " "); // Seats
-                             * System.out.print(CRN + " "); // CRN
-                             * System.out.print(SUBJ + " "); // SUBJ
-                             * System.out.print(CRSE + " "); // CRSE
-                             * System.out.print(XListCap + " "); // XLIST CAP
-                             * System.out.print(ENR + " "); // ENR
-                             * System.out.print(Link + " "); // LINK
-                             * System.out.print(Instructor + " "); // INSTRUCTOR
-                             * System.out.print(OverallCap + " "); // OVERALL CAP
-                             * System.out.print(OverallEnr + " "); // OVERALL ENR
-                             * System.out.println();
-                             */
                             // Set the last course so that sections can be properly added to the offering
                             LastCRSE = CRSE;
                             // Sets the last cross list group so that the linked courses are put in the same
@@ -290,16 +241,6 @@ public class Main {
                     }
 
                     System.out.println("File path: " + file.getAbsolutePath());
-                    /*
-                     * ScannerContents = new Scanner(file);
-                     * String input;
-                     * StringBuffer FileContents = new StringBuffer();
-                     * while (ScannerContents.hasNextLine()) {
-                     * input = ScannerContents.nextLine();
-                     * FileContents.append(input + " ");
-                     * }
-                     * // System.out.println("Contents of the file: " + FileContents.toString());
-                     */
                     System.out.println(" ");
                     // history.setSnapShotDate(SnapshotDates);
                 }
