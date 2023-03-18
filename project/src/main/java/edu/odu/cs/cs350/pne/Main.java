@@ -61,8 +61,7 @@ public class Main {
             // changed, but it works.
             if (FilenameParts.length == 3) {
                 // Create semester for the snapshot file.
-                // Currently not working, needs default constructor for Semester.
-                // Semester semester = new Semester();
+                Semester semester = new Semester();
                 Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
                         Integer.parseInt(FilenameParts[2]));
                 System.out.println("Date : " + Date);
@@ -98,9 +97,7 @@ public class Main {
                         // Add the offering to the semester when creating the new offering if it's not
                         // the first offering created.
                         if (i > 1) {
-                            // Currently not working, need a way to add the previously created offering into
-                            // the semester before a new offering is created but only then.
-                            // semester.AddOffering(offering);
+                            semester.addOffering(offering);
                         }
                         // Create a new offering if the Last course is not the same as the current one.
                         offering = new Offering();
@@ -110,6 +107,8 @@ public class Main {
                         if (Link.charAt(1) == '1') {
                             section = new Section(CRN, Seats, XListCap, ENR, Instructor, Link);
                         }
+                    } else {
+                        section = new Section(CRN, Seats, XListCap, ENR, Instructor, Link);
                     }
                     // Add newly created section to the offering
                     // Not working currently, needs method to add single section.
