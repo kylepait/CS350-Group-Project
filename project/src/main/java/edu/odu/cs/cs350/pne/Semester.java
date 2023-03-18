@@ -43,4 +43,13 @@ public class Semester {
     public void SetSemesterCode(String semesterCode) {
         this.semesterCode = semesterCode;
     }
+
+    public void addOffering(Offering offering) {
+        this.offeringList.add(offering);
+    }
+
+    public void addCRSE(String CRSE) {
+        this.CRSEList.add(CRSE);
+    }
+
 }
