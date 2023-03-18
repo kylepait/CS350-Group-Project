@@ -11,7 +11,7 @@ public class Semester {
     public Semester(List<Offering> offeringList, List<String> CRSEList, String semesterCode) {
         this.offeringList = offeringList;
         this.CRSEList = CRSEList;
-        this.semesterCode = semesterCode;
+        this.semesterCode = semesterCode; 
     }
 
     public Semester() {
