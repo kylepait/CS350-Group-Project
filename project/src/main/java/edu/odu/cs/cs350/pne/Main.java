@@ -28,7 +28,7 @@ public class Main {
             return;
         } else {
             for (String Directory : args)
-                PreviousSemestersData.add(new Main().GetFileNames(Directory));
+                PreviousSemestersData.add(new Main().GetFileContents(Directory));
         }
         /*
          * for (History Snapshot : Snapshots) {
@@ -67,7 +67,7 @@ public class Main {
 
     }
 
-    private History GetFileNames(String FilePath) throws IOException {
+    public History GetFileContents(String FilePath) throws IOException {
         File filesList[];
         ArrayList<LocalDate> SnapshotDates;
         // Creating a File object for directory.
