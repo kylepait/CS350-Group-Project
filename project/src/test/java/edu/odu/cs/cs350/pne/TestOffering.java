@@ -116,4 +116,18 @@ public class TestOffering {
 
         assertEquals(51, offering1.getCurrentEnrollment());
     }
+
+    @Test
+    public void testAddSection() {
+        Offering offering = new Offering();
+        Section section = new Section(25143, 2, 40, 38, "Kennedy", "R2");
+        offering.addSection(section);
+
+        assertTrue(offering.getSection().contains(section));
+
+        Section section1 = new Section(23465, 8, 50, 42, "Polawar", "R1");
+        offering.addSection(section1);
+
+        assertTrue(offering.getSection().contains(section1));
+    }
 }
