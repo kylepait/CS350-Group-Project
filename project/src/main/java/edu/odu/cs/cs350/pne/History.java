@@ -3,11 +3,6 @@ package edu.odu.cs.cs350.pne;
 import java.time.LocalDate;
 import java.util.ArrayList;
 
-/*
-* A history containing a list of semesters and snapshot dates
-*
-* @author aaron 
-*/
 public class History {
     private ArrayList<LocalDate> snapShotDate;
     private ArrayList<Semester> semester;
@@ -40,6 +35,36 @@ public class History {
 
     public void addSnapShotDate(LocalDate date) {
         snapShotDate.add(date);
+    }
+
+    /**
+     * @param snapshot
+     * @return string of snapshot
+     *         converts a snapshot array list into one string
+     *         mostly for unit testing
+     */
+    public String snapShotToString(ArrayList<LocalDate> snapshot) {
+        StringBuffer buf = new StringBuffer();
+        Integer j = snapshot.size();
+        for (Integer i = 0; i < j; i++) {
+            buf.append(snapshot.get(i).toString());
+        }
+        return buf.toString();
+    }
+
+    /**
+     * @param sem
+     * @return string of snapshot
+     *         converts a semester array list into one string
+     *         mostly for unit testing
+     */
+    public String SemesterToString(ArrayList<Semester> sem) {
+        StringBuffer buf = new StringBuffer();
+        Integer j = sem.size();
+        for (Integer i = 0; i < j; i++) {
+            buf.append(sem.get(i).toString());
+        }
+        return buf.toString();
     }
 
 }
