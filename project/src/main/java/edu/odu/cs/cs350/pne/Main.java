@@ -104,7 +104,7 @@ public class Main {
                 CSVParser parser = CSVParser.parse(CSVFile, CSVFormat.RFC4180);
                 List<CSVRecord> csvRecords = parser.getRecords();
                 // Offering class needs columns C, D, W, X: 2, 3, 22, 23
-                // Section class needs columns A, B, G, H, I, U: 0, 1, 6, 7, 8, 20
+                // Section class needs columns A, B, G, H, I, J, U: 0, 1, 6, 7, 8, 9, 20
                 // Needs to sort all of the items into sections, offerings and semesters.
                 String LastCRSE = "";
                 String LastLink = "";
@@ -115,6 +115,7 @@ public class Main {
                 for (int i = 1; i < csvRecords.size(); i++) {
                     CSVRecord csvRecord = csvRecords.get(i);
                     boolean OfferingMatch = false;
+                    boolean OfferingInSemester = false;
                     // Grab relavent items from the CSV.
                     int Seats = Integer.parseInt(csvRecord.get(0));
                     int CRN = Integer.parseInt(csvRecord.get(1));
@@ -123,22 +124,34 @@ public class Main {
                     int XListCap = Integer.parseInt(csvRecord.get(6));
                     int ENR = Integer.parseInt(csvRecord.get(7));
                     String Link = csvRecord.get(8);
+                    String XListGroup = csvRecord.get(9);
                     String Instructor = csvRecord.get(20);
-                    int OverallCap = Integer.parseInt(csvRecord.get(6));
+                    String OverallCapStr = csvRecord.get(22);
+                    int OverallCap;
+                    if (!OverallCapStr.equals("")) {
+                        OverallCap = Integer.parseInt(OverallCapStr);
+                    } else {
+                        OverallCap = XListCap;
+                    }
                     int OverallEnr = Integer.parseInt(csvRecord.get(23));
                     // Create new offering if the course is not equal to the previous course.
-                    if (!CRSE.equals(LastCRSE) || !Link.equals(LastLink)) {
+                    if (!CRSE.equals(LastCRSE)) {
                         // Check to see if the course and link are in the previously created offerings.
-                        // for (Offering Off : semester.getOfferingList()) {
-                        // if ((Off.getCRSE().equals(CRSE) && Off.getLink())) {
-                        // OfferingMatch = true;
-                        // offering = Off;
-                        // }
-                        // }
+                        if (!XListGroup.equals("")) {
+                            for (Offering Off : semester.getOfferingList()) {
+                                if ((Off.getCRSE().equals(CRSE) && Off.accessSection(0).getLink().equals(Link))
+                                        && Off.getSUBJ().equals(SUBJ)) {
+                                    OfferingMatch = true;
+                                    OfferingInSemester = true;
+                                    offering = Off;
+                                }
+                            }
+                        }
+
                         if (OfferingMatch == false) {
-                            // Add the offering to the semester when creating the new offering if it's not
-                            // the first offering created.
-                            if (i > 1) {
+                            // Add the offering to the semester when creating the new offering if the
+                            // section is not empty
+                            if (offering.getSection().size() > 0 && !OfferingInSemester) {
                                 semester.addOffering(offering);
                                 semester.addCRSE(CRSE);
                             }
@@ -156,6 +169,7 @@ public class Main {
                     if (Link.length() == 2) {
                         if (Link.charAt(1) == '1') {
                             section = new Section(CRN, Seats, XListCap, ENR, Instructor, Link);
+                            offering.addSection(section);
                         }
                     } else {
                         offering = new Offering();
@@ -165,10 +179,10 @@ public class Main {
                         offering.setMaxEnrollment(OverallCap);
                         offering.setCurrentEnrollment(OverallEnr);
                         section = new Section(CRN, Seats, XListCap, ENR, Instructor, Link);
+                        offering.addSection(section);
                     }
                     // Add newly created section to the offering
                     // Not working currently, needs method to add single section.
-                    offering.addSection(section);
                     /*
                      * System.out.print(Seats + " "); // Seats
                      * System.out.print(CRN + " "); // CRN
