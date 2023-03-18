@@ -54,9 +54,7 @@ public class TestMain {
     @Test
     public void TestGetFileNumSections() {
         String path = "src/test/data/History/202010";
-        String path2 = "src/test/data/History/202010/2020-04-01.csv";
         File dataDirectory = new File(path);
-        File dataFile = new File(path2);
         File filesList[];
         filesList = dataDirectory.listFiles();
         int Sections = 0, SectionsFromFile = 0;
@@ -103,4 +101,30 @@ public class TestMain {
 
     }
 
+    @Test
+    public void TestGetFileSnapshotDates() {
+        String path = "src/test/data/History/202010";
+        File dataDirectory = new File(path);
+        ArrayList<History> PreviousSemestersData;
+        File filesList[];
+        filesList = dataDirectory.listFiles();
+        LocalDate Date = LocalDate.now();
+        PreviousSemestersData = new ArrayList<History>();
+        try {
+            PreviousSemestersData.add(new Main().GetFileContents(dataDirectory.getAbsolutePath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        History hist = PreviousSemestersData.get(0);
+        for (int i = 0; i < hist.getSnapShotDate().size(); i++) {
+            String Filename = FilenameUtils.removeExtension(filesList[i].getName());
+            String[] FilenameParts = Filename.split("-");
+            if (FilenameParts.length == 3) {
+                Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
+                        Integer.parseInt(FilenameParts[2]));
+            }
+            assertThat(hist.getSnapShotByIndex(i), equalTo(Date));
+        }
+
+    }
 }
