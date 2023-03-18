@@ -31,7 +31,7 @@ public class TestSection {
         //test2
         @Test
         public void testNonEmptyConstructor(){
-            Section section = new Section(22222, 2, 2, 3, "Kyle", "maybe");
+            Section section = new Section(22222, 2, 2, 3, "XB", "Kyle", "maybe");
             assertEquals(22222, section.getCRN());
             assertEquals(2, section.getSeatsRemaining());
             assertEquals(2, section.getCrossListCap());
@@ -95,6 +95,8 @@ public class TestSection {
             assertEquals(18, section.getCrossListCap());
         }
 
+        
+
         //test9
         @Test
         public void testGetEnrollments(){
@@ -147,5 +149,21 @@ public class TestSection {
             section.setLink("b");
 
             assertEquals("b", section.getLink());
+        }
+
+        @Test
+        public void testGetCrossListGroup(){
+            Section section = new Section();
+            section.setCrossListGroup("BA");
+            
+            assertEquals("BA", section.getCrossListGroup());
+        }
+
+        @Test
+        public void testSetCrossLinkGroup(){
+            Section section = new Section();
+            section.setCrossListGroup("AB");
+
+            assertEquals("AB", section.getCrossListGroup());
         }
 }

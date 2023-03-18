@@ -6,6 +6,7 @@ public class Section {
     private int seatsRemaining;
     private int crossListCap;
     private int enrollments;
+    private String crossListGroup;
     private String instructor;
     private String link;
 
@@ -14,14 +15,16 @@ public class Section {
         seatsRemaining = 0;
         crossListCap = 0;
         enrollments = 0;
+        crossListGroup = "";
         instructor = "";
         link = "";
     }
 
-    public Section(int crnAdd, int seatsRemainingAdd, int crossListCapAdd, int enrollmentAdd, String instructorAdd, String linkAdd){
+    public Section(int crnAdd, int seatsRemainingAdd, int crossListCapAdd, int enrollmentAdd, String crossListGroupAdd, String instructorAdd, String linkAdd){
         this.crn = crnAdd;
         this.seatsRemaining = seatsRemainingAdd;
         this.crossListCap = crossListCapAdd;
+        this.crossListGroup = crossListGroupAdd;
         this.enrollments = enrollmentAdd;
         this.instructor = instructorAdd;
         this.link = linkAdd;
@@ -50,6 +53,14 @@ public class Section {
 
     public void setCrossListCap(int crossListCapSet){
         this.crossListCap = crossListCapSet;
+    }
+
+    public String getCrossListGroup(){
+        return this.crossListGroup;
+    }
+
+    public void setCrossListGroup(String crossListGroupSet){
+        this.crossListGroup = crossListGroupSet;
     }
 
     public int getEnrollments(){
