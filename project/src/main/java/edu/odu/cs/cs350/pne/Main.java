@@ -114,6 +114,7 @@ public class Main {
                 Section section = new Section();
                 for (int i = 1; i < csvRecords.size(); i++) {
                     CSVRecord csvRecord = csvRecords.get(i);
+                    boolean OfferingMatch = false;
                     // Grab relavent items from the CSV.
                     int Seats = Integer.parseInt(csvRecord.get(0));
                     int CRN = Integer.parseInt(csvRecord.get(1));
@@ -128,22 +129,28 @@ public class Main {
                     // Create new offering if the course is not equal to the previous course.
                     if (!CRSE.equals(LastCRSE) || !Link.equals(LastLink)) {
                         // Check to see if the course and link are in the previously created offerings.
-                        // System.out.println("CRSE: " + CRSE + " Last CRSE: " + LastCRSE);
-                        // System.out.println("Creating new
-                        // offering!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
-                        // Add the offering to the semester when creating the new offering if it's not
-                        // the first offering created.
-                        if (i > 1) {
-                            semester.addOffering(offering);
-                            semester.addCRSE(CRSE);
+                        // for (Offering Off : semester.getOfferingList()) {
+                        // if ((Off.getCRSE().equals(CRSE) && Off.getLink())) {
+                        // OfferingMatch = true;
+                        // offering = Off;
+                        // }
+                        // }
+                        if (OfferingMatch == false) {
+                            // Add the offering to the semester when creating the new offering if it's not
+                            // the first offering created.
+                            if (i > 1) {
+                                semester.addOffering(offering);
+                                semester.addCRSE(CRSE);
+                            }
+                            // Create a new offering if the Last course is not the same as the current one.
+                            offering = new Offering();
+                            offering.setCRSE(CRSE);
+                            offering.setSUBJ(SUBJ);
+                            offering.setEnrollment(OverallEnr);
+                            offering.setMaxEnrollment(OverallCap);
+                            offering.setCurrentEnrollment(OverallEnr);
                         }
-                        // Create a new offering if the Last course is not the same as the current one.
-                        offering = new Offering();
-                        offering.setCRSE(CRSE);
-                        offering.setSUBJ(SUBJ);
-                        offering.setEnrollment(OverallEnr);
-                        offering.setMaxEnrollment(OverallCap);
-                        offering.setCurrentEnrollment(OverallEnr);
+
                     }
                     // Add relavent items to the section
                     if (Link.length() == 2) {
