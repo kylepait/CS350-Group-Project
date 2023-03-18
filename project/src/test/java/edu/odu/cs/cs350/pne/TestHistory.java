@@ -4,6 +4,7 @@ import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -118,6 +119,16 @@ public class TestHistory {
 
         assertThat(h.getSemester(), is(sem));
         assertThat(h.getSnapShotDate(), is(date));
+
+    }
+
+    @Test
+    public void testaddSnapShotDate() {
+        LocalDate l = LocalDate.of(2023, 3, 17);
+        History h = new History();
+
+        h.addSnapShotDate(l);
+        assertThat(h.getSnapShotDate(), is([[2023-3-17]]));
 
     }
 }
