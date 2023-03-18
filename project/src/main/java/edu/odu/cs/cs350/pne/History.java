@@ -37,6 +37,10 @@ public class History {
         this.snapShotDate.add(date);
     }
 
+    public void addSemester(Semester sem) {
+        this.semester.add(sem);
+    }
+
     /**
      * @param snapshot
      * @return string of snapshot
