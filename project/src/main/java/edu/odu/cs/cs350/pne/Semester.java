@@ -14,6 +14,12 @@ public class Semester {
         this.semesterCode = semesterCode;
     }
 
+    public Semester() {
+        this.offeringList = new ArrayList<>();
+        this.CRSEList = new ArrayList<>();
+        this.semesterCode = "";
+    }
+
     public List<Offering> getOfferingList() {
         return offeringList;
     }
