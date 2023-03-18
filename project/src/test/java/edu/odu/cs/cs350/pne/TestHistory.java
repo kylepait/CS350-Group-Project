@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.*;
 import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
@@ -125,10 +126,37 @@ public class TestHistory {
     @Test
     public void testaddSnapShotDate() {
         LocalDate l = LocalDate.of(2023, 3, 17);
+        LocalDate l2 = LocalDate.of(2021, 2, 15);
         History h = new History();
 
         h.addSnapShotDate(l);
-        assertThat(h.getSnapShotDate(), is([[2023-3-17]]));
+        assertThat(h.getSnapShotDate().toString(), is(h.snapShotToString(h.getSnapShotDate())));
+
+        h.addSnapShotDate(l2);
+        assertThat(h.getSnapShotDate().toString(), is(h.snapShotToString(h.getSnapShotDate())));
+
+        assertThat(h.getSnapShotDate().get(0), is(l));
+        assertThat(h.getSnapShotDate().get(1), is(l2));
+
+    }
+
+    /**
+     * 
+     */
+    @Test
+    public void testAddSemester() {
+        History h = new History();
+        Semester s = new Semester();
+        h.addSemester(s);
+        assertThat(h.getSemester().toString(), is(h.SemesterToString(h.getSemester())));
+
+        Semester s2 = new Semester();
+        h.addSemester(s2);
+
+        // assertThat(h.getSemester().toString(),
+        // is(h.SemesterToString(h.getSemester())));
+        assertThat(h.getSemester().get(0), is(s));
+        assertThat(h.getSemester().get(1), is(s2));
 
     }
 }
