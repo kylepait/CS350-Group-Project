@@ -39,34 +39,50 @@ public class Main {
                     e.printStackTrace();
                 }
         }
-        for (History hist : PreviousSemestersData) {
-            // System.out.println(hist.getSemester());
-            for (int i = 0; i < hist.getSemester().size(); i++) {
-                Semester semes = hist.getSemesterByIndex(i);
-                System.out.println(semes.getSemesterCode());
-                System.out.println(hist.getSnapShotByIndex(i));
-                // System.out.println(semes);
-                List<Offering> Off = semes.getOfferingList();
-                List<String> CRSELst = semes.getCRSEList();
-                for (int j = 0; j < Off.size(); j++) {
-                    // System.out.println(CRSELst.get(j));
-                    System.out.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
-                            Off.get(j).getSUBJ()
-                            + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " +
-                            Off.get(j).getMaxEnrollment()
-                            + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
-                    for (Section sect : Off.get(j).getSection()) {
-                        System.out.println(
-                                "        CRN: " + sect.getCRN() + " Seats Remaining: " +
-                                        sect.getSeatsRemaining()
-                                        + " XList Cap: " + sect.getCrossListCap() + " ENRL:" + sect.getEnrollments()
-                                        + " XList Group: " + sect.getCrossListGroup() + " Instr: "
-                                        + sect.getInstructor() + " Link: " + sect.getLink());
-                    }
+        /*
+         * for (History hist : PreviousSemestersData) {
+         * // System.out.println(hist.getSemester());
+         * for (int i = 0; i < hist.getSemester().size(); i++) {
+         * Semester semes = hist.getSemesterByIndex(i);
+         * System.out.println(semes.getSemesterCode());
+         * System.out.println(hist.getSnapShotByIndex(i));
+         * // System.out.println(semes);
+         * List<Offering> Off = semes.getOfferingList();
+         * List<String> CRSELst = semes.getCRSEList();
+         * for (int j = 0; j < Off.size(); j++) {
+         * // System.out.println(CRSELst.get(j));
+         * System.out.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
+         * Off.get(j).getSUBJ()
+         * + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " +
+         * Off.get(j).getMaxEnrollment()
+         * + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
+         * for (Section sect : Off.get(j).getSection()) {
+         * System.out.println(
+         * "        CRN: " + sect.getCRN() + " Seats Remaining: " +
+         * sect.getSeatsRemaining()
+         * + " XList Cap: " + sect.getCrossListCap() + " ENRL:" + sect.getEnrollments()
+         * + " XList Group: " + sect.getCrossListGroup() + " Instr: "
+         * + sect.getInstructor() + " Link: " + sect.getLink());
+         * }
+         * }
+         * }
+         * }
+         */
+        History histry = PreviousSemestersData.get(0);
+        List<Semester> semes = histry.getSemester();
+        for (int i = 0; i < semes.size(); i++) {
+            int Sections = 0;
+            System.out.println(histry.getSnapShotByIndex(i));
+            List<Offering> Off = semes.get(i).getOfferingList();
+            for (int j = 0; j < Off.size(); j++) {
+                // System.out.println(CRSELst.get(j));
+                for (Section sect : Off.get(j).getSection()) {
+                    Sections++;
+                    System.out.println(sect.getCRN() + " " + sect.getLink());
                 }
             }
+            System.out.println(Sections);
         }
-
     }
 
     public History GetFileContents(String FilePath) throws IOException {
@@ -160,6 +176,7 @@ public class Main {
                         // Needs to sort all of the items into sections, offerings and semesters.
                         String LastCRSE = "";
                         String LastXListGroup = "";
+                        String LastSUBJ = "";
                         // Create blank offering.
                         Offering offering = new Offering();
                         // Create blank section.
@@ -188,19 +205,6 @@ public class Main {
                             int OverallEnr = Integer.parseInt(csvRecord.get(23));
                             // Create new offering if the course is not equal to the previous course.
                             if (!CRSE.equals(LastCRSE) || !XListGroup.equals(LastXListGroup) || XListGroup.equals("")) {
-                                // Check to see if the course and link are in the previously created offerings.
-                                if (!XListGroup.equals("")) {
-                                    for (Offering Off : semester.getOfferingList()) {
-                                        if ((Off.getCRSE().equals(CRSE)
-                                                && Off.accessSection(0).getCrossListGroup().equals(XListGroup))
-                                                && Off.getSUBJ().equals(SUBJ)) {
-                                            OfferingMatch = true;
-                                            OfferingInSemester = true;
-                                            offering = Off;
-                                        }
-                                    }
-                                }
-
                                 if (OfferingMatch == false) {
                                     // Add the offering to the semester when creating the new offering if the
                                     // section is not empty
@@ -217,7 +221,22 @@ public class Main {
                                     offering.setCurrentEnrollment(OverallEnr);
                                     OfferingInSemester = false;
                                 }
+                                // Check to see if the course and link are in the previously created offerings.
+                                if (!XListGroup.equals("")) {
+                                    for (Offering Off : semester.getOfferingList()) {
 
+                                        if ((Off.getCRSE().equals(CRSE)
+                                                && Off.accessSection(0).getCrossListGroup().equals(XListGroup))
+                                                && Off.getSUBJ().equals(SUBJ)) {
+                                            OfferingMatch = true;
+                                            OfferingInSemester = true;
+                                            offering = Off;
+                                            System.out.println(
+                                                    Off.accessSection(0).getCrossListGroup() + " " + XListGroup);
+                                            System.out.println("XListGroup");
+                                        }
+                                    }
+                                }
                             }
                             // Add relavent items to the section
                             if (Link.length() == 2) {
@@ -236,6 +255,9 @@ public class Main {
                                  */
                                 section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);
                                 offering.addSection(section);
+                                if (Date.equals(LocalDate.of(2020, 4, 1))) {
+                                    System.out.println(XListGroup);
+                                }
                             }
                             // Add newly created section to the offering
                             // Not working currently, needs method to add single section.
@@ -257,6 +279,11 @@ public class Main {
                             // Sets the last cross list group so that the linked courses are put in the same
                             // offering
                             LastXListGroup = XListGroup;
+                            LastSUBJ = SUBJ;
+                        }
+                        if (offering.getSection().size() > 0 && !OfferingInSemester) {
+                            semester.addOffering(offering);
+                            semester.addCRSE(offering.getCRSE());
                         }
                         history.addSemester(semester);
                         history.addSnapShotDate(Date);
