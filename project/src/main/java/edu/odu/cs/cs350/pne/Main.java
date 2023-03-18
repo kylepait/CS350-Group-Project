@@ -58,11 +58,11 @@ public class Main {
                                 "        CRN: " + sect.getCRN() + " Seats Remaining: " +
                                         sect.getSeatsRemaining()
                                         + " XList Cap: " + sect.getCrossListCap() + " ENRL:" + sect.getEnrollments()
-                                        + " Instr: " + sect.getInstructor() + " Link: " + sect.getLink());
+                                        + " XList Group: " + sect.getCrossListGroup() + " Instr: "
+                                        + sect.getInstructor() + " Link: " + sect.getLink());
                     }
                 }
             }
-
         }
 
     }
@@ -107,15 +107,15 @@ public class Main {
                 // Section class needs columns A, B, G, H, I, J, U: 0, 1, 6, 7, 8, 9, 20
                 // Needs to sort all of the items into sections, offerings and semesters.
                 String LastCRSE = "";
-                String LastLink = "";
+                String LastXListGroup = "";
                 // Create blank offering.
                 Offering offering = new Offering();
                 // Create blank section.
                 Section section = new Section();
+                boolean OfferingInSemester = false;
                 for (int i = 1; i < csvRecords.size(); i++) {
                     CSVRecord csvRecord = csvRecords.get(i);
                     boolean OfferingMatch = false;
-                    boolean OfferingInSemester = false;
                     // Grab relavent items from the CSV.
                     int Seats = Integer.parseInt(csvRecord.get(0));
                     int CRN = Integer.parseInt(csvRecord.get(1));
@@ -135,11 +135,12 @@ public class Main {
                     }
                     int OverallEnr = Integer.parseInt(csvRecord.get(23));
                     // Create new offering if the course is not equal to the previous course.
-                    if (!CRSE.equals(LastCRSE)) {
+                    if (!CRSE.equals(LastCRSE) || !XListGroup.equals(LastXListGroup) || XListGroup.equals("")) {
                         // Check to see if the course and link are in the previously created offerings.
                         if (!XListGroup.equals("")) {
                             for (Offering Off : semester.getOfferingList()) {
-                                if ((Off.getCRSE().equals(CRSE) && Off.accessSection(0).getLink().equals(Link))
+                                if ((Off.getCRSE().equals(CRSE)
+                                        && Off.accessSection(0).getCrossListGroup().equals(XListGroup))
                                         && Off.getSUBJ().equals(SUBJ)) {
                                     OfferingMatch = true;
                                     OfferingInSemester = true;
@@ -162,23 +163,26 @@ public class Main {
                             offering.setEnrollment(OverallEnr);
                             offering.setMaxEnrollment(OverallCap);
                             offering.setCurrentEnrollment(OverallEnr);
+                            OfferingInSemester = false;
                         }
 
                     }
                     // Add relavent items to the section
                     if (Link.length() == 2) {
                         if (Link.charAt(1) == '1') {
-                            section = new Section(CRN, Seats, XListCap, ENR, Instructor, Link);
+                            section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);
                             offering.addSection(section);
                         }
                     } else {
-                        offering = new Offering();
-                        offering.setCRSE(CRSE);
-                        offering.setSUBJ(SUBJ);
-                        offering.setEnrollment(OverallEnr);
-                        offering.setMaxEnrollment(OverallCap);
-                        offering.setCurrentEnrollment(OverallEnr);
-                        section = new Section(CRN, Seats, XListCap, ENR, Instructor, Link);
+                        /*
+                         * offering = new Offering();
+                         * offering.setCRSE(CRSE);
+                         * offering.setSUBJ(SUBJ);
+                         * offering.setEnrollment(OverallEnr);
+                         * offering.setMaxEnrollment(OverallCap);
+                         * offering.setCurrentEnrollment(OverallEnr);
+                         */
+                        section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);
                         offering.addSection(section);
                     }
                     // Add newly created section to the offering
@@ -198,13 +202,9 @@ public class Main {
                      */
                     // Set the last course so that sections can be properly added to the offering
                     LastCRSE = CRSE;
-                    // Sets the last link so that the linked courses are put in the same offering
-                    if (Link.length() == 2) {
-                        if (Link.charAt(1) == '1') {
-                            LastLink = Link;
-                        }
-                    }
-
+                    // Sets the last cross list group so that the linked courses are put in the same
+                    // offering
+                    LastXListGroup = XListGroup;
                 }
                 history.addSemester(semester);
                 history.addSnapShotDate(Date);
