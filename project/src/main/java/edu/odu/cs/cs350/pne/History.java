@@ -91,16 +91,16 @@ public class History {
      * @param i
      * @returns the snapShotDate at Index i in ArrayList snapShotDate
      */
-    public LocalDate getSnapShotByIndex(Integer i) {
-        return this.getSnapShotDate().get(i);
+    public LocalDate getSnapShotByIndex(Integer index) {
+        return this.getSnapShotDate().get(index);
     }
 
     /**
-     * @param i
+     * @param index
      * @returns the Semester at Index i in ArrayList semester
      */
-    public Semester getSemesterByIndex(Integer i) {
-        return this.getSemester().get(i);
+    public Semester getSemesterByIndex(Integer index) {
+        return this.getSemester().get(index);
     }
 
 }
