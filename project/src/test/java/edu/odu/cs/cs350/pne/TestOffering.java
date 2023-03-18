@@ -27,10 +27,10 @@ public class TestOffering {
     @Test
     public void testDestructor() {
         List<Section> section = new ArrayList<>();
-        section.add(new Section(34615, 4, 50, 46, "Kennedy", "R1"));
-        section.add(new Section(38216, 6, 32, 26, "Polawar", "R2"));
+        section.add(new Section(34615, 4, 50, 46, "C1", "Kennedy", "R1"));
+        section.add(new Section(38216, 6, 32, 26, "C1", "Polawar", "R2"));
         Offering offering = new Offering(section, "350", "CS", 5, 20, 15);
-        
+
         assertEquals(section, offering.getSection());
         assertEquals("350", offering.getCRSE());
         assertEquals("CS", offering.getSUBJ());
@@ -42,13 +42,13 @@ public class TestOffering {
     @Test
     public void testGetSetSection() {
         List<Section> section = new ArrayList<Section>();
-        section.add(new Section(25143, 2, 40, 38, "Kennedy", "R2"));
+        section.add(new Section(25143, 2, 40, 38, "C1", "Kennedy", "R2"));
         Offering offering = new Offering();
         offering.setSection(section);
 
         assertEquals(section, offering.getSection());
 
-        section.add(new Section(31974, 9, 50, 41, "Polawar", "R1"));
+        section.add(new Section(31974, 9, 50, 41, "C1", "Polawar", "R1"));
         offering.setSection(section);
 
         assertEquals(section, offering.getSection());
@@ -122,12 +122,12 @@ public class TestOffering {
     @Test
     public void testAddSection() {
         Offering offering = new Offering();
-        Section section = new Section(25143, 2, 40, 38, "Kennedy", "R2");
+        Section section = new Section(25143, 2, 40, 38, "C1", "Kennedy", "R2");
         offering.addSection(section);
 
         assertTrue(offering.getSection().contains(section));
 
-        Section section1 = new Section(23465, 8, 50, 42, "Polawar", "R1");
+        Section section1 = new Section(23465, 8, 50, 42, "C1", "Polawar", "R1");
         offering.addSection(section1);
 
         assertTrue(offering.getSection().contains(section1));
@@ -136,8 +136,8 @@ public class TestOffering {
     @Test
     public void testAccessSection() {
         Offering offering = new Offering();
-        Section section = new Section(34119, 1, 30, 29, "Kennedy", "R2");
-        Section section1 = new Section(23465, 8, 50, 42, "Polawar", "R1");
+        Section section = new Section(34119, 1, 30, 29, "C1", "Kennedy", "R2");
+        Section section1 = new Section(23465, 8, 50, 42, "C1", "Polawar", "R1");
         offering.addSection(section);
         offering.addSection(section1);
 
