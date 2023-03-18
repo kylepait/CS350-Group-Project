@@ -89,4 +89,22 @@ public class TestSemester
 
         assertEquals(semesterCode2, semester.getSemesterCode());
     }
+
+    @Test
+    public void testAddOffering()
+    {
+        Offering offering = new Offering();
+        Semester semester = new Semester();
+        semester.addOffering(offering);
+        assertTrue(semester.getOfferingList().contains(offering));
+    }
+
+    @Test
+    public void testAddCRSE()
+    {
+        String CRSE = "CS101";
+        Semester semester = new Semester();
+        semester.addCRSE(CRSE);
+        assertTrue(semester.getCRSEList().contains(CRSE));
+    }
 }
