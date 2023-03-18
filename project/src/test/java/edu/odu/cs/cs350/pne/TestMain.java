@@ -53,11 +53,12 @@ public class TestMain {
 
     @Test
     public void TestGetFileNumSections() {
-        String path = "src/test/data/History/199020";
-        String path2 = "src/test/data/History/199020/2020-04-01.csv";
+        String path = "src/test/data/History/202010";
+        String path2 = "src/test/data/History/202010/2020-04-01.csv";
         File dataDirectory = new File(path);
         File dataFile = new File(path2);
         File filesList[];
+        filesList = dataDirectory.listFiles();
         int Sections = 0, SectionsFromFile = 0;
         ArrayList<History> PreviousSemestersData;
         PreviousSemestersData = new ArrayList<History>();
@@ -67,37 +68,39 @@ public class TestMain {
             e.printStackTrace();
         }
         History hist = PreviousSemestersData.get(0);
-        Semester semes = hist.getSemesterByIndex(0);
-        // System.out.println(semes);
-        List<Offering> Off = semes.getOfferingList();
-        for (int j = 0; j < Off.size(); j++) {
-            // System.out.println(CRSELst.get(j));
-            for (Section sect : Off.get(j).getSection()) {
-                Sections++;
-            }
-        }
-        try {
-            File file = dataFile;
-            // Get date of snapshot from filename.
-            Reader CSVFile = Files.newBufferedReader(Paths.get(file.getPath()));
-            CSVParser parser = CSVParser.parse(CSVFile, CSVFormat.RFC4180);
-            List<CSVRecord> csvRecords = parser.getRecords();
-            for (int i = 1; i < csvRecords.size(); i++) {
-                CSVRecord csvRecord = csvRecords.get(i);
-                String Link = csvRecord.get(8);
-                if (Link.length() == 2) {
-                    if (Link.charAt(1) == '1') {
-                        SectionsFromFile++;
-                    }
-                } else {
-                    SectionsFromFile++;
+        for (int i = 0; i < hist.getSemester().size(); i++) {
+            Semester semes = hist.getSemesterByIndex(i);
+            // System.out.println(semes);
+            List<Offering> Off = semes.getOfferingList();
+            for (int j = 0; j < Off.size(); j++) {
+                // System.out.println(CRSELst.get(j));
+                for (Section sect : Off.get(j).getSection()) {
+                    Sections++;
                 }
             }
-        } catch (Exception e) {
-            e.printStackTrace();
+            try {
+                File file = filesList[i];
+                // Get date of snapshot from filename.
+                Reader CSVFile = Files.newBufferedReader(Paths.get(file.getPath()));
+                CSVParser parser = CSVParser.parse(CSVFile, CSVFormat.RFC4180);
+                List<CSVRecord> csvRecords = parser.getRecords();
+                for (int j = 1; j < csvRecords.size(); j++) {
+                    CSVRecord csvRecord = csvRecords.get(j);
+                    String Link = csvRecord.get(8);
+                    if (Link.length() == 2) {
+                        if (Link.charAt(1) == '1') {
+                            SectionsFromFile++;
+                        }
+                    } else {
+                        SectionsFromFile++;
+                    }
+                }
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+            assertThat(Sections, equalTo(SectionsFromFile));
         }
 
-        assertThat(Sections, equalTo(SectionsFromFile));
     }
 
 }
