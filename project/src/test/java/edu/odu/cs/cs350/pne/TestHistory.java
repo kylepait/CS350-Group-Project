@@ -159,4 +159,32 @@ public class TestHistory {
         assertThat(h.getSemester().get(1), is(s2));
 
     }
+
+    @Test
+    public void testGetSemesterByIndex() {
+        History h = new History();
+        Semester s = new Semester();
+        Semester s2 = new Semester();
+
+        h.addSemester(s);
+        h.addSemester(s2);
+
+        assertThat(h.getSemesterByIndex(0), is(s));
+        assertThat(h.getSemesterByIndex(1), is(s2));
+
+    }
+
+    @Test
+    public void testGetSnapShotDateByIndex() {
+        History h = new History();
+        LocalDate date = LocalDate.of(2023, 3, 17);
+        LocalDate d2 = LocalDate.of(2020, 12, 27);
+
+        h.addSnapShotDate(date);
+        h.addSnapShotDate(d2);
+
+        assertThat(h.getSnapShotByIndex(0), is(date));
+        assertThat(h.getSnapShotByIndex(1), is(d2));
+
+    }
 }
