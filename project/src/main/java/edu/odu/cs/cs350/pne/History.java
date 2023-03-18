@@ -45,10 +45,12 @@ public class History {
      */
     public String snapShotToString(ArrayList<LocalDate> snapshot) {
         StringBuffer buf = new StringBuffer();
+        buf.append("[");
         Integer j = snapshot.size();
         for (Integer i = 0; i < j; i++) {
             buf.append(snapshot.get(i).toString());
         }
+        buf.append("]");
         return buf.toString();
     }
 
@@ -60,10 +62,12 @@ public class History {
      */
     public String SemesterToString(ArrayList<Semester> sem) {
         StringBuffer buf = new StringBuffer();
+        buf.append("[");
         Integer j = sem.size();
         for (Integer i = 0; i < j; i++) {
             buf.append(sem.get(i).toString());
         }
+        buf.append("]");
         return buf.toString();
     }
 
