@@ -3,6 +3,8 @@ package edu.odu.cs.cs350.pne;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.MatcherAssert.assertThat;
+import static org.hamcrest.Matchers.*;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -106,5 +108,21 @@ public class TestSemester
         Semester semester = new Semester();
         semester.addCRSE(CRSE);
         assertTrue(semester.getCRSEList().contains(CRSE));
+    }
+
+    @Test
+    public void testAccessOffering() {
+        Semester semester = new Semester();
+        List<Section> section = new ArrayList<Section>();
+        List<Section> section1 = new ArrayList<Section>();
+        section.add(new Section(34119, 1, 30, 29, "AB", "Kennedy", "R2"));
+        section1.add(new Section(23465, 8, 50, 42, "AB", "Polawar", "R1"));
+        Offering offering = new Offering(section, "CS", "350", 4, 40, 36);
+        Offering offering1 = new Offering(section1, "CS", "350", 7, 40, 33);
+        semester.addOffering(offering);
+        semester.addOffering(offering1);
+
+        assertThat(semester.accessOffering(0), is(offering));
+        assertThat(semester.accessOffering(1), is(offering1));
     }
 }
