@@ -5,6 +5,8 @@ import java.util.ArrayList;
 
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
+import static org.hamcrest.Matchers.*;
+import static org.hamcrest.MatcherAssert.assertThat;
 
 //import java.beans.Transient;
 
@@ -25,8 +27,8 @@ public class TestOffering {
     @Test
     public void testDestructor() {
         List<Section> section = new ArrayList<>();
-        section.add(new Section(34615, 4, 50, 46, "Kennedy", "R1"));
-        section.add(new Section(38216, 6, 32, 26, "Polawar", "R2"));
+        section.add(new Section(34615, 4, 50, 46, "AB", "Kennedy", "R1"));
+        section.add(new Section(38216, 6, 32, 26, "BA", "Polawar", "R2"));
         Offering offering = new Offering(section, "350", "CS", 5, 20, 15);
         
         assertEquals(section, offering.getSection());
@@ -40,13 +42,13 @@ public class TestOffering {
     @Test
     public void testGetSetSection() {
         List<Section> section = new ArrayList<Section>();
-        section.add(new Section(25143, 2, 40, 38, "Kennedy", "R2"));
+        section.add(new Section(25143, 2, 40, 38, "AB", "Kennedy", "R2"));
         Offering offering = new Offering();
         offering.setSection(section);
 
         assertEquals(section, offering.getSection());
 
-        section.add(new Section(31974, 9, 50, 41, "Polawar", "R1"));
+        section.add(new Section(31974, 9, 50, 41, "AB", "Polawar", "R1"));
         offering.setSection(section);
 
         assertEquals(section, offering.getSection());
@@ -115,5 +117,31 @@ public class TestOffering {
         offering1.setCurrentEnrollment(51);
 
         assertEquals(51, offering1.getCurrentEnrollment());
+    }
+
+    @Test
+    public void testAddSection() {
+        Offering offering = new Offering();
+        Section section = new Section(25143, 2, 40, 38, "AB", "Kennedy", "R2");
+        offering.addSection(section);
+
+        assertTrue(offering.getSection().contains(section));
+
+        Section section1 = new Section(23465, 8, 50, 42, "AB", "Polawar", "R1");
+        offering.addSection(section1);
+
+        assertTrue(offering.getSection().contains(section1));
+    }
+
+    @Test
+    public void testAccessSection() {
+        Offering offering = new Offering();
+        Section section = new Section(34119, 1, 30, 29, "AB", "Kennedy", "R2");
+        Section section1 = new Section(23465, 8, 50, 42, "AB", "Polawar", "R1");
+        offering.addSection(section);
+        offering.addSection(section1);
+
+        assertThat(offering.accessSection(0), is(section));
+        assertThat(offering.accessSection(1), is(section1));
     }
 }

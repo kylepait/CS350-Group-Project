@@ -76,4 +76,12 @@ public class Offering {
     public int getCurrentEnrollment() {
         return currentEnrollment;
     }
+
+    public void addSection(Section section2) {
+        this.section.add(section2);
+    }
+
+    public Section accessSection(Integer i) {
+        return this.section.get(i);
+    }
 }
