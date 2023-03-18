@@ -39,13 +39,6 @@ public class Main {
                     e.printStackTrace();
                 }
         }
-        /*
-         * for (History Snapshot : Snapshots) {
-         * Date = Snapshot.getSnapShotDate();
-         * for (LocalDate SnapDate : Date)
-         * System.out.println("Snapshot Date: " + SnapDate);
-         * }
-         */
         for (History hist : PreviousSemestersData) {
             // System.out.println(hist.getSemester());
             for (int i = 0; i < hist.getSemester().size(); i++) {
@@ -118,16 +111,18 @@ public class Main {
             int NumSnapshots = 0;
             for (File file : filesList) {
                 String[] FilenameParts = FilenameUtils.removeExtension(file.getName()).split("-");
-                Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
-                        Integer.parseInt(FilenameParts[2]));
-                if (Date.isAfter(RegistrationDates.get(0))) {
-                    NumSnapshots++;
-                }
-                if (HitLastRegistrationDate == true) {
-                    break;
-                }
-                if (Date.isEqual(RegistrationDates.get(1))) {
-                    HitLastRegistrationDate = true;
+                if (FilenameParts.length == 3) {
+                    Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
+                            Integer.parseInt(FilenameParts[2]));
+                    if (Date.isAfter(RegistrationDates.get(0))) {
+                        NumSnapshots++;
+                    }
+                    if (HitLastRegistrationDate == true) {
+                        break;
+                    }
+                    if (Date.isEqual(RegistrationDates.get(1))) {
+                        HitLastRegistrationDate = true;
+                    }
                 }
             }
             if (NumSnapshots < 2) {
