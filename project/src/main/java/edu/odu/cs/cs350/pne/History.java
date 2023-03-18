@@ -79,4 +79,12 @@ public class History {
         return buf.toString();
     }
 
+    public LocalDate getSnapShotByIndex(Integer i) {
+        return this.getSnapShotDate().get(i);
+    }
+
+    public Semester getSemesterByIndex(Integer i) {
+        return this.getSemester().get(i);
+    }
+
 }
