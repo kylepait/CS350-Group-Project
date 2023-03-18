@@ -33,10 +33,18 @@ public class History {
         return semester;
     }
 
+    /**
+     * @param date
+     *             date is the LocalDate to be added to the arrayList
+     */
     public void addSnapShotDate(LocalDate date) {
         this.snapShotDate.add(date);
     }
 
+    /**
+     * @param sem
+     *            sem is the semester to be added to the arraylist
+     */
     public void addSemester(Semester sem) {
         this.semester.add(sem);
     }
@@ -79,12 +87,20 @@ public class History {
         return buf.toString();
     }
 
-    public LocalDate getSnapShotByIndex(Integer i) {
-        return this.getSnapShotDate().get(i);
+    /**
+     * @param i
+     * @returns the snapShotDate at Index i in ArrayList snapShotDate
+     */
+    public LocalDate getSnapShotByIndex(Integer index) {
+        return this.getSnapShotDate().get(index);
     }
 
-    public Semester getSemesterByIndex(Integer i) {
-        return this.getSemester().get(i);
+    /**
+     * @param index
+     * @returns the Semester at Index i in ArrayList semester
+     */
+    public Semester getSemesterByIndex(Integer index) {
+        return this.getSemester().get(index);
     }
 
 }

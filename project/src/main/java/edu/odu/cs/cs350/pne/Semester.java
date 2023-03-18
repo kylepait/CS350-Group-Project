@@ -52,4 +52,8 @@ public class Semester {
         this.CRSEList.add(CRSE);
     }
 
+    public Offering accessOffering(Integer i) {
+        return this.offeringList.get(i);
+    }
+
 }
