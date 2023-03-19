@@ -47,7 +47,7 @@ public class Main {
                 System.out.println(hist.getSnapShotByIndex(i));
                 // System.out.println(semes);
                 List<Offering> Off = semes.getOfferingList();
-                List<String> CRSELst = semes.getCRSEList();
+                // List<String> CRSELst = semes.getCRSEList();
                 for (int j = 0; j < Off.size(); j++) {
                     // System.out.println(CRSELst.get(j));
                     System.out.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " + Off.get(j).getSUBJ()
