@@ -30,3 +30,9 @@ test {
     ignoreFailures = true
     useJUnitPlatform()
 }
+
+task copyDocs(type: Copy){
+    dependsOn 'javadoc'
+    into 'build/reports'
+    from 'build/docs'
+}
