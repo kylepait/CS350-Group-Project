@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestSection" tests="16" skipped="0" failures="0" errors="0" timestamp="2023-04-03T14:32:16" hostname="callisto" time="0.057">
+<testsuite name="edu.odu.cs.cs350.pne.TestSection" tests="16" skipped="0" failures="0" errors="0" timestamp="2023-04-03T14:35:52" hostname="callisto" time="0.084">
   <properties/>
   <testcase name="testSetSeatsRemaining()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
-  <testcase name="testEmptyConstructor()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
-  <testcase name="testGetInstructor()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
-  <testcase name="testGetSeatsRemaining()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
-  <testcase name="testSetCrossLinkGroup()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
+  <testcase name="testEmptyConstructor()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
+  <testcase name="testGetInstructor()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.069"/>
+  <testcase name="testGetSeatsRemaining()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
+  <testcase name="testSetCrossLinkGroup()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
   <testcase name="testSetInstructor()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
-  <testcase name="testGetLink()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
-  <testcase name="testSetEnrollments()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
+  <testcase name="testGetLink()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
+  <testcase name="testSetEnrollments()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
   <testcase name="testGetCrossListGroup()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
   <testcase name="testGetCrossListCap()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
-  <testcase name="testGetCRN()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
+  <testcase name="testGetCRN()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.001"/>
   <testcase name="testSetLink()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
   <testcase name="testGetEnrollments()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
-  <testcase name="testSetCRN()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.047"/>
+  <testcase name="testSetCRN()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
   <testcase name="testSetCrossListCap()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
   <testcase name="testNonEmptyConstructor()" classname="edu.odu.cs.cs350.pne.TestSection" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
