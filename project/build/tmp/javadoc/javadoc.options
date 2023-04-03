@@ -1,0 +1,11 @@
+-classpath '/home/cs_kpait002/cs350/CS350-Group-Project/project/build/classes/java/main:/home/cs_kpait002/cs350/CS350-Group-Project/project/build/resources/main:/home/cs_kpait002/.gradle/caches/modules-2/files-2.1/commons-io/commons-io/2.4/b1b6ea3b7e4aa4f492509a4952029cd8e48019ad/commons-io-2.4.jar:/home/cs_kpait002/.gradle/caches/modules-2/files-2.1/org.apache.commons/commons-csv/1.10.0/8669bee353424c3223c93723291b5c3753260c1c/commons-csv-1.10.0.jar'
+-d '/home/cs_kpait002/cs350/CS350-Group-Project/project/build/docs/javadoc'
+-doctitle 'project API'
+-notimestamp 
+-quiet 
+-windowtitle 'project API'
+'/home/cs_kpait002/cs350/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/History.java'
+'/home/cs_kpait002/cs350/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Main.java'
+'/home/cs_kpait002/cs350/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Offering.java'
+'/home/cs_kpait002/cs350/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Section.java'
+'/home/cs_kpait002/cs350/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Semester.java'
