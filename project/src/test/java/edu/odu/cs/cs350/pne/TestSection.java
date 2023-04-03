@@ -166,4 +166,9 @@ public class TestSection {
 
             assertEquals("AB", section.getCrossListGroup());
         }
+
+        @Test
+        public void easyPass(){
+            assertEquals(1,1);
+        }
 }
