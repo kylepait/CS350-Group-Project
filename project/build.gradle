@@ -39,8 +39,8 @@ task copyDocs(type: Copy){
 
 task reports(type: Copy){
     dependsOn copyDocs
-    from 'src/main/html/'
-    into 'build/reports/'
+    from 'src/main/html'
+    into 'build/reports'
     
 }
 
