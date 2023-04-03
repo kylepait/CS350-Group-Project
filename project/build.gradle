@@ -36,3 +36,76 @@ task copyDocs(type: Copy){
     into 'build/reports'
     from 'build/docs'
 }
+
+task reports(type: Copy){
+    dependsOn copyDocs
+    from 'src/main/html/'
+    into 'build/reports/'
+    
+}
+
+task gstatus (type: Exec) {
+    workingDir = ','
+    commandLine = ['git', 'status']
+}
+
+
+def pagesDir = file("${project.rootDir}/../website-temp/").absolutePath
+
+task clearPages(type: Delete) {
+    delete pagesDir
+}
+
+task workTree(dependsOn: ['clearPages']) { 
+    doLast {
+        exec {
+            workingDir = '.'
+            commandLine = ['git', 'worktree', 'add', '-f', pagesDir, 'gh-pages']
+        }
+        exec {
+            workingDir = pagesDir
+            commandLine = ['git', 'checkout', 'gh-pages']
+        }
+        exec {
+            workingDir = pagesDir
+            commandLine = ['git', 'pull']
+        }
+    }
+}
+
+task copyReports (type: Copy, dependsOn: ['reports', 'workTree']) {
+    from 'build/reports/'
+    into pagesDir
+}
+
+task copyWebsite (dependsOn: ['copyReports']) {
+}
+
+task commitWebsite (dependsOn: 'copyWebsite') {
+    doLast {
+        Date now = new Date()
+
+        exec {
+            workingDir = pagesDir
+            commandLine = ['git', 'add', pagesDir]
+            ignoreExitValue = true
+        }
+        exec {
+            workingDir = pagesDir
+            commandLine = ['git', 'commit', '-m', 'Updating webpages at ' + now.toString()]
+            ignoreExitValue = true
+        }
+    }
+}
+
+task pushWebsite (type: Exec, dependsOn: 'commitWebsite') {
+    workingDir = pagesDir
+    commandLine = ['git', 'push']
+    ignoreExitValue = true
+}
+
+task deployReports (type: Delete, dependsOn: 'pushWebsite') {
+    group = "Reporting"
+    description  'Commit and push website changes to GitHub'
+    delete pagesDir
+}
