@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
+import java.beans.Transient;
 import java.io.File;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -126,5 +127,10 @@ public class TestMain {
             assertThat(hist.getSnapShotByIndex(i), equalTo(Date));
         }
 
+    }
+
+    @Test
+    public void WillPass() {
+        assertEquals(0, 0);
     }
 }
