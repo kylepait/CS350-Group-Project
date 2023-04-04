@@ -131,6 +131,6 @@ public class TestMain {
 
     @Test
     public void WillPass() {
-        assertEquals(1, 1);
+        assertEquals(0, 0);
     }
 }
