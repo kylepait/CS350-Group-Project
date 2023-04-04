@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-04-04T13:32:33" hostname="ganymede" time="3.525">
+<testsuite name="edu.odu.cs.cs350.pne.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-04-04T13:38:49" hostname="ganymede" time="3.219">
   <properties/>
-  <testcase name="TestGetFileSnapshotDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="2.097"/>
+  <testcase name="TestGetFileSnapshotDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.702"/>
   <testcase name="TestGetFileContentsNoDataTxt()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.005"/>
-  <testcase name="WillPass()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.001"/>
+  <testcase name="WillPass()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.0"/>
   <testcase name="TestGetFileContentsNotEnoughSnapshots()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.003"/>
-  <testcase name="TestGetFileNumSections()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.416"/>
+  <testcase name="TestGetFileNumSections()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.506"/>
   <system-out><![CDATA[List of files and directories in the specified directory:
 2020-03-30
 2020-08-25
