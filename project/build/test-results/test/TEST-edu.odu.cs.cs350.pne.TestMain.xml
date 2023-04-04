@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-04-04T13:43:31" hostname="ganymede" time="2.777">
+<testsuite name="edu.odu.cs.cs350.pne.TestMain" tests="5" skipped="0" failures="0" errors="0" timestamp="2023-04-04T14:01:15" hostname="ganymede" time="3.265">
   <properties/>
-  <testcase name="TestGetFileSnapshotDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.237"/>
-  <testcase name="TestGetFileContentsNoDataTxt()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.037"/>
+  <testcase name="TestGetFileSnapshotDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.688"/>
+  <testcase name="TestGetFileContentsNoDataTxt()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.005"/>
   <testcase name="WillPass()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.001"/>
-  <testcase name="TestGetFileContentsNotEnoughSnapshots()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.004"/>
-  <testcase name="TestGetFileNumSections()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.495"/>
+  <testcase name="TestGetFileContentsNotEnoughSnapshots()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.063"/>
+  <testcase name="TestGetFileNumSections()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.504"/>
   <system-out><![CDATA[List of files and directories in the specified directory:
 2020-03-30
 2020-08-25
