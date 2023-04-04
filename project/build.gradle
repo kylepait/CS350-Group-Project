@@ -41,7 +41,7 @@ project.tasks.check.dependsOn(copyDocs)
 
 task reports(type: Copy){
     dependsOn 'check'
-    from 'src/main/html'
+    from 'src/main/html/'
     into 'build/reports'
     
 }
