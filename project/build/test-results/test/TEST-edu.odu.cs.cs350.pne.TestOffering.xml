@@ -1,13 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestOffering" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-04-04T13:43:34" hostname="ganymede" time="0.008">
+<testsuite name="edu.odu.cs.cs350.pne.TestOffering" tests="10" skipped="0" failures="0" errors="0" timestamp="2023-04-04T14:05:34" hostname="MAGPC" time="0.006">
   <properties/>
   <testcase name="testGetSetSection()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
-  <testcase name="testGetSetCRSE()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
-  <testcase name="testGetSetSUBJ()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
-  <testcase name="testGetSetEnrollment()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
+  <testcase name="testGetSetCRSE()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
+  <testcase name="testGetSetSUBJ()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
+  <testcase name="testGetSetEnrollment()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
   <testcase name="testAddSection()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
-  <testcase name="testAccessSection()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
-  <testcase name="testGetSetCurrentEnrollment()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
+  <testcase name="testAccessSection()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
+  <testcase name="testGetSetCurrentEnrollment()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.001"/>
   <testcase name="testDestructor()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
   <testcase name="testGetSetMaxEnrollment()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
   <testcase name="testConstructor()" classname="edu.odu.cs.cs350.pne.TestOffering" time="0.0"/>
