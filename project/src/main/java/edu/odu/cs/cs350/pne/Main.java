@@ -124,6 +124,7 @@ public class Main {
             if (NumSnapshots < 2) {
                 throw new IOException("Insufficient snapshots in " + directoryPath.getName());
             }
+            HitLastRegistrationDate = false;
             for (File file : filesList) {
                 // System.out.println("File name: " + file.getName());
                 // Get date of snapshot from filename.
@@ -132,6 +133,9 @@ public class Main {
                 // Only perform the filtering action if the file is a snapshot file.
                 // Kinda fragile way to do it as it will break if the file naming convention is
                 // changed, but it works.
+                if (Date.isEqual(RegistrationDates.get(1))) {
+                    HitLastRegistrationDate = true;
+                }
                 if (FilenameParts.length == 3) {
                     // Create semester for the snapshot file.
                     Semester semester = new Semester();
@@ -141,9 +145,6 @@ public class Main {
                     Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
                             Integer.parseInt(FilenameParts[2]));
                     System.out.println("Date : " + Date);
-                    if (Date.isEqual(RegistrationDates.get(1))) {
-                        HitLastRegistrationDate = true;
-                    }
                     if (Date.isAfter(RegistrationDates.get(0))) {
                         // SnapshotDates.add(Date);
                         // Reads the CSV file.
@@ -239,10 +240,12 @@ public class Main {
                         history.addSemester(semester);
                         history.addSnapShotDate(Date);
                     }
-
                     System.out.println("File path: " + file.getAbsolutePath());
                     System.out.println(" ");
                     // history.setSnapShotDate(SnapshotDates);
+                    if (HitLastRegistrationDate == true) {
+                        break;
+                    }
                 }
             }
         } else if (DatesTxtExists == false) {
