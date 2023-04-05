@@ -133,4 +133,13 @@ public class TestMain {
     public void WillPass() {
         assertEquals(0, 0);
     }
+
+    @Test
+    public void TestDateSeparation() {
+        LocalDate Start, End;
+        Start = LocalDate.of(2000, 10, 1);
+        End = LocalDate.of(2000, 10, 15);
+        assertThat(new Main().DaysBetween(Start, End), equalTo(14));
+    }
+
 }
