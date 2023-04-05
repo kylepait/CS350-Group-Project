@@ -1,6 +1,10 @@
 package edu.odu.cs.cs350.pne;
 
+import java.io.BufferedReader;
+import java.io.FileReader;
+import java.io.IOException;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 
 public class History {
@@ -106,4 +110,32 @@ public class History {
         return this.getSemester().get(index);
     }
 
+    /**
+     * @return start date of a provided semester
+     */
+    public LocalDate getStartDateOfSemester(Integer semester) {
+        StringBuffer temp = new StringBuffer();
+        temp.append("/test/data/");
+        temp.append(semester.toString());
+        temp.append("/dates.txt");
+
+        String filename = temp.toString();
+
+        LocalDate date1;
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(filename));
+            DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd");
+
+            String line1 = br.readLine();
+            date1 = LocalDate.parse(line1, formatter);
+
+            br.close();
+        } catch (IOException e) {
+            System.out.println("Error reading file: " + e.getMessage());
+        } catch (Exception e) {
+            System.out.println("Error parsing date: " + e.getMessage());
+        }
+
+        return date1;
+    }
 }
