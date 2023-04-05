@@ -8,6 +8,7 @@ import static org.hamcrest.Matchers.*;
 import java.util.ArrayList;
 import java.util.List;
 import java.io.IOException;
+import java.beans.Transient;
 import java.io.File;
 import java.io.Reader;
 import java.nio.file.Files;
@@ -127,4 +128,18 @@ public class TestMain {
         }
 
     }
+
+    @Test
+    public void WillPass() {
+        assertEquals(0, 0);
+    }
+
+    @Test
+    public void TestDateSeparation() {
+        LocalDate Start, End;
+        Start = LocalDate.of(2000, 10, 1);
+        End = LocalDate.of(2000, 10, 15);
+        assertThat(new Main().DaysBetween(Start, End), equalTo(14));
+    }
+
 }

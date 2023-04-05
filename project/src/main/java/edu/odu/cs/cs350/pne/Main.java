@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.time.temporal.ChronoUnit;
 
 public class Main {
 
@@ -252,5 +253,10 @@ public class Main {
             throw new IOException("Missing dates.txt in " + directoryPath.getName());
         }
         return history;
+    }
+
+    public int DaysBetween(LocalDate StartDate, LocalDate EndDate) {
+        int DaysBetween = (int) ChronoUnit.DAYS.between(StartDate, EndDate);
+        return DaysBetween;
     }
 }

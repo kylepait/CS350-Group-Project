@@ -20,6 +20,8 @@ jobs:
       run: chmod +x gradlew              
     - name: Build and test
       run: ./gradlew build
+    - name: reports
+      run: ./gradlew reports
     - name: show folders
       run: ls
 

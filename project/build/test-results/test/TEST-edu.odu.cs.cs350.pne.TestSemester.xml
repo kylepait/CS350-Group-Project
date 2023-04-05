@@ -1,15 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestSemester" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-04-03T14:57:29" hostname="callisto" time="0.076">
+<<<<<<< HEAD
+<testsuite name="edu.odu.cs.cs350.pne.TestSemester" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-04-04T14:01:18" hostname="ganymede" time="0.005">
+=======
+<testsuite name="edu.odu.cs.cs350.pne.TestSemester" tests="9" skipped="0" failures="0" errors="0" timestamp="2023-04-04T14:05:34" hostname="MAGPC" time="0.005">
+>>>>>>> 47435c835e01a5b2511388131c6a8e2355c65448
   <properties/>
   <testcase name="testGetOfferingList()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
   <testcase name="testSetSemesterCode()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
   <testcase name="testAddCRSE()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
-  <testcase name="testSetOfferingList()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
+  <testcase name="testSetOfferingList()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.001"/>
   <testcase name="testSetCRSEList()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
   <testcase name="testGetCRSEList()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
-  <testcase name="testGetSemesterCode()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.001"/>
+  <testcase name="testGetSemesterCode()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
   <testcase name="testAccessOffering()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
-  <testcase name="testAddOffering()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.001"/>
+  <testcase name="testAddOffering()" classname="edu.odu.cs.cs350.pne.TestSemester" time="0.0"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>
 </testsuite>
