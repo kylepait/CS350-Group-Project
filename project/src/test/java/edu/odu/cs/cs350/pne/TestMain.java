@@ -145,7 +145,7 @@ public class TestMain {
     @Test
     public void TestGetPercentagePassed() {
         int Total = 100, Passed = 27;
-        assertThat(new Main().GetPercentagePassed(Total, Passed), equalTo(27 / 100));
+        assertThat(new Main().GetPercentagePassed(Total, Passed), equalTo((float) 0.27));
     }
 
 }
