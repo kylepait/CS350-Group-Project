@@ -1,14 +1,16 @@
 package edu.odu.cs.cs350.pne;
 
-import org.junit.Test;
+import org.junit.jupiter.api.Test;
 import java.io.File;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import static org.junit.Assert.*;
+import java.util.Scanner;
 
-public class OutputTest
+import static org.junit.jupiter.api.Assertions.*;
+
+public class TestOutput
 {
     @Test
     public void testTxtOutput() throws IOException
