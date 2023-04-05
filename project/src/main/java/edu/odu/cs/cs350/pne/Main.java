@@ -261,6 +261,8 @@ public class Main {
     }
 
     public float GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
-        return DaysRegistrationOpen / RegistrationPeriodLength;
+        float Passed;
+        Passed = (float) DaysRegistrationOpen / (float) RegistrationPeriodLength;
+        return Passed;
     }
 }
