@@ -10,6 +10,12 @@ import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import java.time.format.DateTimeFormatter;
 
 public class TestHistory {
 
@@ -187,4 +193,18 @@ public class TestHistory {
         assertThat(h.getSnapShotByIndex(1), is(d2));
 
     }
+
+    /**
+     * test that the function to fet
+     */
+    @Test
+    public void testGetStartDate() {
+        String fileName = "/test/data/202010/dates.txt";
+        LocalDate startDate;
+
+        startDate = fileName.getStartDate();
+        assertThat(startDate, is(LocalDate.of(2020, 10, 19)));
+
+    }
+
 }
