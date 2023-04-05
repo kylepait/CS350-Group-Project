@@ -259,4 +259,10 @@ public class Main {
         int DaysBetween = (int) ChronoUnit.DAYS.between(StartDate, EndDate);
         return DaysBetween;
     }
+
+    public float GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
+        float Passed;
+        Passed = (float) DaysRegistrationOpen / (float) RegistrationPeriodLength;
+        return Passed;
+    }
 }

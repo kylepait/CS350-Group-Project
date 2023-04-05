@@ -142,4 +142,10 @@ public class TestMain {
         assertThat(new Main().DaysBetween(Start, End), equalTo(14));
     }
 
+    @Test
+    public void TestGetPercentagePassed() {
+        int Total = 100, Passed = 27;
+        assertThat(new Main().GetPercentagePassed(Total, Passed), equalTo((float) 0.27));
+    }
+
 }
