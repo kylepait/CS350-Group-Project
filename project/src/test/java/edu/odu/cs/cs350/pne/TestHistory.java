@@ -199,11 +199,14 @@ public class TestHistory {
      */
     @Test
     public void testGetStartDate() {
-        String fileName = "/test/data/202010/dates.txt";
-        LocalDate startDate;
+        ArrayList<LocalDate> date = new ArrayList<LocalDate>();
+        ArrayList<Semester> sem = new ArrayList<Semester>();
 
-        startDate = fileName.getStartDate();
-        assertThat(startDate, is(LocalDate.of(2020, 10, 19)));
+        History h = new History(date, sem);
+
+        LocalDate StartDate = LocalDate.of(2022, 1, 15);
+        h.setStartDate(StartDate);
+        assertThat(h.getStartDate(), is(StartDate));
 
     }
 
