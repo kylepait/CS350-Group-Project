@@ -15,6 +15,7 @@ import static org.junit.Assert.*;
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 
@@ -65,9 +66,9 @@ public class TestOutput {
                 {
                     rowValues.add(cell.toString());
                 }
-            }
 
-            actualOutput.add(rowValues);
+                actualOutput.add(rowValues);
+            }
         }
     
 
