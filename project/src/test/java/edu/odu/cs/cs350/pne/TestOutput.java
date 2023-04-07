@@ -12,6 +12,12 @@ import java.util.List;
 import java.util.Scanner;
 import static org.junit.Assert.*;
 
+import org.apache.poi.ss.usermodel.Cell;
+import org.apache.poi.ss.usermodel.Row;
+import org.apache.poi.ss.usermodel.Sheet;
+import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+
 public class TestOutput {
     @Test
     public void testTxtOutput() throws IOException {
@@ -19,7 +25,7 @@ public class TestOutput {
         List<String> expectedOutput = Arrays.asList("Output to txt test");
 
         // output to txt file
-        Output.outputToTxt(expectedOutput, "test-output.txt");
+        Output.outputToTxt(expectedOutput);
 
         // read from txt file
         List<String> actualOutput = new ArrayList<>();
