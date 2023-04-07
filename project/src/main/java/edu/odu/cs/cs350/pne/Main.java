@@ -29,6 +29,8 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<History> PreviousSemestersData;
         ArrayList<LocalDate> Date;
+        List<List<String>> TextOutput = new ArrayList<>();
+        String Header1, Header2;
         Float ProjectionSemesterPassed;
         PreviousSemestersData = new ArrayList<History>();
         Date = new ArrayList<LocalDate>();
@@ -45,59 +47,56 @@ public class Main {
                 }
         }
         /// output contents to .txt file
+        History ProjectionSemester = PreviousSemestersData.get(PreviousSemestersData.size() - 1);
+        int SemesterLength = new Main().DaysBetween(ProjectionSemester.getStartDate(),
+                ProjectionSemester.getEndDate());
+        int SemesterPassed = new Main().DaysBetween(ProjectionSemester.getStartDate(),
+                ProjectionSemester.getSnapShotByIndex(ProjectionSemester.getSnapShotDate().size() - 1));
+        ProjectionSemesterPassed = (new Main().GetPercentagePassed(SemesterLength, SemesterPassed)) * 100;
+        Header1 = ProjectionSemesterPassed + "% of enrollment period has elapsed.";
+        Header2 = "Course Enrollemnt Projected Cap";
+        // System.out.println(hist.getSemester());
+        int FinalSnapshot = ProjectionSemester.getSemester().size() - 1;
+        Semester semes = ProjectionSemester.getSemesterByIndex(FinalSnapshot);
+        // printWriter.println(semes.getSemesterCode());
+        // printWriter.println(ProjectionSemester.getSnapShotByIndex(FinalSnapshot));
+        // System.out.println(semes);
+        List<Offering> Off = semes.getOfferingList();
+        // List<String> CRSELst = semes.getCRSEList();
+        for (int j = 0; j < Off.size(); j++) {
+            // System.out.println(CRSELst.get(j));
+            String CRSE = Off.get(j).getSUBJ() + Off.get(j).getCRSE();
+            String Enrollment = String.valueOf(Off.get(j).getEnrollment());
+            String Projection = "0";
+            String MaxEnrollment = String.valueOf(Off.get(j).getMaxEnrollment());
+            TextOutput.add(Arrays.asList(CRSE, Enrollment, Projection, MaxEnrollment));
+            /*
+             * printWriter.println(Off.get(j).getSUBJ() + Off.get(j).getCRSE() + "  " +
+             * Off.get(j).getEnrollment()
+             * + "                     " + Off.get(j).getMaxEnrollment());
+             */
+            /*
+             * printWriter.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
+             * Off.get(j).getSUBJ()
+             * + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " +
+             * Off.get(j).getMaxEnrollment()
+             * + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
+             */
+            /*
+             * for (Section sect : Off.get(j).getSection()) {
+             * printWriter.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
+             * + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() +
+             * " ENRL:"
+             * + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() +
+             * " Instr: "
+             * + sect.getInstructor() + " Link: " + sect.getLink());
+             * }
+             */
+        }
         try {
-            File outputFile = new File("output.txt");
-            PrintWriter printWriter = new PrintWriter(outputFile);
-            History ProjectionSemester = PreviousSemestersData.get(PreviousSemestersData.size() - 1);
-            int SemesterLength = new Main().DaysBetween(ProjectionSemester.getStartDate(),
-                    ProjectionSemester.getEndDate());
-            int SemesterPassed = new Main().DaysBetween(ProjectionSemester.getStartDate(),
-                    ProjectionSemester.getSnapShotByIndex(ProjectionSemester.getSnapShotDate().size() - 1));
-            ProjectionSemesterPassed = (new Main().GetPercentagePassed(SemesterLength, SemesterPassed)) * 100;
-            printWriter.println(ProjectionSemesterPassed + "% of enrollment period has elapsed.");
-            printWriter.println("Course Enrollemnt Projected Cap");
-            // System.out.println(hist.getSemester());
-            int FinalSnapshot = ProjectionSemester.getSemester().size() - 1;
-            Semester semes = ProjectionSemester.getSemesterByIndex(FinalSnapshot);
-            // printWriter.println(semes.getSemesterCode());
-            // printWriter.println(ProjectionSemester.getSnapShotByIndex(FinalSnapshot));
-            // System.out.println(semes);
-            List<Offering> Off = semes.getOfferingList();
-            // List<String> CRSELst = semes.getCRSEList();
-            for (int j = 0; j < Off.size(); j++) {
-                // System.out.println(CRSELst.get(j));
-                String CRSE = Off.get(j).getSUBJ() + Off.get(j).getCRSE();
-                printWriter.printf("%-7s%-11d%-10d%-3d\n", CRSE, Off.get(j).getEnrollment(), 0,
-                        Off.get(j).getMaxEnrollment());
-                /*
-                 * printWriter.println(Off.get(j).getSUBJ() + Off.get(j).getCRSE() + "  " +
-                 * Off.get(j).getEnrollment()
-                 * + "                     " + Off.get(j).getMaxEnrollment());
-                 */
-                /*
-                 * printWriter.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
-                 * Off.get(j).getSUBJ()
-                 * + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " +
-                 * Off.get(j).getMaxEnrollment()
-                 * + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
-                 */
-                /*
-                 * for (Section sect : Off.get(j).getSection()) {
-                 * printWriter.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
-                 * + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() +
-                 * " ENRL:"
-                 * + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() +
-                 * " Instr: "
-                 * + sect.getInstructor() + " Link: " + sect.getLink());
-                 * }
-                 */
-            }
-
-            printWriter.close();
-
-            System.out.println("Output written to file: " + outputFile.getAbsolutePath());
-        } catch (FileNotFoundException e) {
-            System.out.println("Error: " + e.getMessage());
+            Output.outputToTxt(Header1, Header2, TextOutput, "OutputTest");
+        } catch (IOException e) {
+            e.printStackTrace();
         }
     }
 
