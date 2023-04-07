@@ -29,6 +29,7 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<History> PreviousSemestersData;
         ArrayList<LocalDate> Date;
+        Float ProjectionSemesterPassed;
         PreviousSemestersData = new ArrayList<History>();
         Date = new ArrayList<LocalDate>();
         // DataImport instance = new DataImport();
@@ -43,11 +44,17 @@ public class Main {
                     e.printStackTrace();
                 }
         }
-        ///output contents to .txt file
+        /// output contents to .txt file
         try {
             File outputFile = new File("output.txt");
             PrintWriter printWriter = new PrintWriter(outputFile);
-
+            History ProjectionSemester = PreviousSemestersData.get(PreviousSemestersData.size() - 1);
+            int SemesterLength = new Main().DaysBetween(ProjectionSemester.getStartDate(),
+                    ProjectionSemester.getEndDate());
+            int SemesterPassed = new Main().DaysBetween(ProjectionSemester.getStartDate(),
+                    ProjectionSemester.getSnapShotByIndex(ProjectionSemester.getSnapShotDate().size() - 1));
+            ProjectionSemesterPassed = (new Main().GetPercentagePassed(SemesterLength, SemesterPassed)) * 100;
+            printWriter.println(ProjectionSemesterPassed + "% of enrollment period has elapsed.");
             for (History hist : PreviousSemestersData) {
                 // System.out.println(hist.getSemester());
                 for (int i = 0; i < hist.getSemester().size(); i++) {
@@ -279,6 +286,11 @@ public class Main {
     public float GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
         float Passed;
         Passed = (float) DaysRegistrationOpen / (float) RegistrationPeriodLength;
+        if (Passed < 0) {
+            Passed = 0;
+        } else if (Passed > 1) {
+            Passed = 1;
+        }
         return Passed;
     }
 }
