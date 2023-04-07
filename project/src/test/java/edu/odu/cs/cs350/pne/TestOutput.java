@@ -23,7 +23,8 @@ public class TestOutput {
     @Test
     public void testTxtOutput() throws IOException {
         // prep test data
-        List<String> expectedOutput = Arrays.asList("Output to txt test");
+        List<List<String>> expectedOutput = new ArrayList<>();
+        expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
 
         // output to txt file
         Output.outputToTxt(expectedOutput, "test-output");
@@ -37,7 +38,7 @@ public class TestOutput {
         }
 
         // compare expected vs actual
-        assertEquals(expectedOutput, actualOutput);
+        assertEquals(Arrays.asList("Output to         Excel     test"), actualOutput);
 
         // clean up test file
         File file = new File("test-output.txt");
