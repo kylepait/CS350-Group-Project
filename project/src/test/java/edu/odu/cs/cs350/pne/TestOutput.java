@@ -45,16 +45,20 @@ public class TestOutput {
         expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
 
         //output to excel
-        Output.outputToExcel(expectedOutput, "test-output.xlsx");
+        Output.outputToExcel(expectedOutput);
 
         //read from excel
         List<List<String>> actualOutput = new ArrayList<>();
-        try (Workbook workbook = WorkbookFactory.create(new File("test-output.xlsx")))
+        try (Workbook workbook = WorkbookFactory.create(new File("output.xlsx")))
         {
             Sheet sheet = workbook.getSheetAt(0);
             for (Row row : sheet)
             {
-                rowValues.add(cell.toString());
+                List<String> rowValues = new ArrayList<>();
+                for (Cell cell : row)
+                {
+                    rowValues.add(cell.toString());
+                }
             }
 
             actualOutput.add(rowValues);
@@ -65,7 +69,7 @@ public class TestOutput {
     assertEquals(expectedOutput, actualOutput);
 
         //clean up test file
-        File file = new File("test-output.xlsx");
+        File file = new File("output.xlsx");
         file.delete();
     }
 }
