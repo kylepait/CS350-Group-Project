@@ -19,8 +19,8 @@ public class Output {
     private static final String SHEETNAME = "output";
     private static final String[] HEADERS = { "Column 1", "Column 2", "Column 3" };
 
-    public static void outputToTxt(List<String> lines) throws IOException {
-        File file = new File(FILENAME);
+    public static void outputToTxt(List<String> lines, String Filename) throws IOException {
+        File file = new File(Filename + ".txt");
         try (PrintWriter writer = new PrintWriter(file)) {
             for (String line : lines) {
                 writer.println(line);
@@ -28,15 +28,15 @@ public class Output {
         }
     }
 
-    public static void outputToExcel(List<List<String>> data) throws IOException {
+    public static void outputToExcel(String[] Header, List<List<String>> data, String Filename) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(SHEETNAME);
 
         // write headers
         Row headerRow = sheet.createRow(0);
-        for (int i = 0; i < HEADERS.length; i++) {
+        for (int i = 0; i < Header.length; i++) {
             Cell cell = headerRow.createCell(i);
-            cell.setCellValue(HEADERS[i]);
+            cell.setCellValue(Header[i]);
         }
 
         // write data
@@ -50,7 +50,7 @@ public class Output {
         }
 
         // write workbook to file
-        try (FileOutputStream outputStream = new FileOutputStream(new File(SHEETNAME + ".xlsx"))) {
+        try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + ".xlsx"))) {
             workbook.write(outputStream);
         }
     }
