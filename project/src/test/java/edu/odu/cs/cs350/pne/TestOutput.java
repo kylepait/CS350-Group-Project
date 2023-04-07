@@ -23,11 +23,11 @@ public class TestOutput {
     @Test
     public void testTxtOutput() throws IOException {
         // prep test data
-        List<List<String>> expectedOutput = new ArrayList<>();
-        expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
+        List<List<String>> Data = new ArrayList<>();
+        Data.add(Arrays.asList("Output", "to", "Excel", "test"));
 
         // output to txt file
-        Output.outputToTxt(expectedOutput, "test-output");
+        Output.outputToTxt("Header1", "Header2", Data, "test-output");
 
         // read from txt file
         List<String> actualOutput = new ArrayList<>();
@@ -36,9 +36,12 @@ public class TestOutput {
                 actualOutput.add(scanner.nextLine());
             }
         }
-
+        List<String> expectedOutput = new ArrayList<>();
+        expectedOutput.add("Header1");
+        expectedOutput.add("Header2");
+        expectedOutput.add("Output to         Excel     test");
         // compare expected vs actual
-        assertEquals(Arrays.asList("Output to         Excel     test"), actualOutput);
+        assertEquals(expectedOutput, actualOutput);
 
         // clean up test file
         File file = new File("test-output.txt");
