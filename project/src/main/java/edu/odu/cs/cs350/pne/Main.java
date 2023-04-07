@@ -43,7 +43,7 @@ public class Main {
                     e.printStackTrace();
                 }
         }
-
+        ///output contents to .txt file
         try {
             File outputFile = new File("output.txt");
             PrintWriter printWriter = new PrintWriter(outputFile);
