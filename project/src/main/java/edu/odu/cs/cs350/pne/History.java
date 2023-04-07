@@ -120,4 +120,12 @@ public class History {
     public void setStartDate(LocalDate StartDate) {
         this.startDate = StartDate;
     }
+
+    public LocalDate getEndDate() {
+        return this.endDate;
+    }
+
+    public void setEndDate(LocalDate EndDate) {
+        this.endDate = EndDate;
+    }
 }
