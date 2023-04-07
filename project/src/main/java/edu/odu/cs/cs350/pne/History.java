@@ -19,9 +19,12 @@ public class History {
         this.semester = new ArrayList<Semester>();
     }
 
-    public History(ArrayList<LocalDate> snapShotDate, ArrayList<Semester> semester) {
+    public History(ArrayList<LocalDate> snapShotDate, ArrayList<Semester> semester,
+            LocalDate startDate, LocalDate endDate) {
         this.snapShotDate = snapShotDate;
         this.semester = semester;
+        this.startDate = startDate;
+        this.endDate = endDate;
     }
 
     public void setSnapShotDate(ArrayList<LocalDate> date) {
