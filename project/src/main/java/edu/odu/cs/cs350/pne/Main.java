@@ -21,6 +21,9 @@ import java.util.List;
 import java.util.Objects;
 import java.time.temporal.ChronoUnit;
 
+import java.io.PrintWriter;
+import java.io.FileNotFoundException;
+
 public class Main {
 
     public static void main(String[] args) {
@@ -40,31 +43,43 @@ public class Main {
                     e.printStackTrace();
                 }
         }
-        for (History hist : PreviousSemestersData) {
-            // System.out.println(hist.getSemester());
-            for (int i = 0; i < hist.getSemester().size(); i++) {
-                Semester semes = hist.getSemesterByIndex(i);
-                System.out.println(semes.getSemesterCode());
-                System.out.println(hist.getSnapShotByIndex(i));
-                // System.out.println(semes);
-                List<Offering> Off = semes.getOfferingList();
-                // List<String> CRSELst = semes.getCRSEList();
-                for (int j = 0; j < Off.size(); j++) {
-                    // System.out.println(CRSELst.get(j));
-                    System.out.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " + Off.get(j).getSUBJ()
-                            + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " + Off.get(j).getMaxEnrollment()
-                            + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
-                    for (Section sect : Off.get(j).getSection()) {
-                        System.out.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
-                                + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() + " ENRL:"
-                                + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() + " Instr: "
-                                + sect.getInstructor() + " Link: " + sect.getLink());
+
+        try {
+            File outputFile = new File("output.txt");
+            PrintWriter printWriter = new PrintWriter(outputFile);
+            
+            for (History hist : PreviousSemestersData) {
+                // System.out.println(hist.getSemester());
+                for (int i = 0; i < hist.getSemester().size(); i++) {
+                    Semester semes = hist.getSemesterByIndex(i);
+                    printWriter.println(semes.getSemesterCode());
+                    printWriter.println(hist.getSnapShotByIndex(i));
+                    // System.out.println(semes);
+                    List<Offering> Off = semes.getOfferingList();
+                    // List<String> CRSELst = semes.getCRSEList();
+                    for (int j = 0; j < Off.size(); j++) {
+                        // System.out.println(CRSELst.get(j));
+                        printWriter.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " + Off.get(j).getSUBJ()
+                                + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " + Off.get(j).getMaxEnrollment()
+                                + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
+                        for (Section sect : Off.get(j).getSection()) {
+                            printWriter.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
+                                    + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() + " ENRL:"
+                                    + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() + " Instr: "
+                                    + sect.getInstructor() + " Link: " + sect.getLink());
+                        }
                     }
                 }
             }
+            
+            printWriter.close();
+            
+            System.out.println("Output written to file: " + outputFile.getAbsolutePath());
+        } catch (FileNotFoundException e) {
+            System.out.println("Error: " + e.getMessage());
         }
-
     }
+
 
     public History GetFileContents(String FilePath) throws IOException {
         File filesList[];
