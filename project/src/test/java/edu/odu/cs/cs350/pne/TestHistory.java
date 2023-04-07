@@ -121,8 +121,9 @@ public class TestHistory {
 
         ArrayList<LocalDate> date = new ArrayList<LocalDate>();
         ArrayList<Semester> sem = new ArrayList<Semester>();
-
-        History h = new History(date, sem);
+        LocalDate s = LocalDate.of(2001, 2, 1);
+        LocalDate e = LocalDate.of(2020, 4, 1);
+        History h = new History(date, sem, s, e);
 
         assertThat(h.getSemester(), is(sem));
         assertThat(h.getSnapShotDate(), is(date));
@@ -201,8 +202,9 @@ public class TestHistory {
     public void testGetStartDate() {
         ArrayList<LocalDate> date = new ArrayList<LocalDate>();
         ArrayList<Semester> sem = new ArrayList<Semester>();
-
-        History h = new History(date, sem);
+        LocalDate s = LocalDate.of(2001, 2, 1);
+        LocalDate e = LocalDate.of(2020, 4, 1);
+        History h = new History(date, sem, s, e);
 
         LocalDate StartDate = LocalDate.of(2022, 1, 15);
         h.setStartDate(StartDate);
