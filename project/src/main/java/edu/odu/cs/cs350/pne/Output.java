@@ -19,11 +19,11 @@ public class Output {
     private static final String SHEETNAME = "output";
     private static final String[] HEADERS = { "Column 1", "Column 2", "Column 3" };
 
-    public static void outputToTxt(List<String> lines, String Filename) throws IOException {
+    public static void outputToTxt(List<List<String>> data, String Filename) throws IOException {
         File file = new File(Filename + ".txt");
         try (PrintWriter writer = new PrintWriter(file)) {
-            for (String line : lines) {
-                writer.println(line);
+            for (List<String> line : data) {
+                writer.printf("%-7s%-11s%-10s%-3s\n", line.get(0), line.get(1), line.get(2), line.get(3));
             }
         }
     }
