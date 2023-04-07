@@ -219,10 +219,18 @@ public class TestHistory {
     }
 
     @Test
-    public void testGetEndDate(){
+    public void testGetEndDate() {
         History h = new History();
-        LocalDate end = LocalDate.of(2020,2,2);
+        LocalDate end = LocalDate.of(2020, 2, 2);
         h.setEndDate(end);
-        assertThat(h.getEndDate(),is(LocalDate.of(2020,2,2)));
+        assertThat(h.getEndDate(), is(LocalDate.of(2020, 2, 2)));
+    }
+
+    @Test
+    public void testSetEndDate() {
+        History h = new History();
+        LocalDate end = LocalDate.of(2020, 2, 2);
+        h.setEndDate(end);
+        assertThat(h.getEndDate(), is(LocalDate.of(2020, 2, 2)));
     }
 }
