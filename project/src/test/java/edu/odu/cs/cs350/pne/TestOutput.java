@@ -26,7 +26,7 @@ public class TestOutput {
         List<String> expectedOutput = Arrays.asList("Output to txt test");
 
         // output to txt file
-        Output.outputToTxt(expectedOutput);
+        Output.outputToTxt(expectedOutput, "test-output");
 
         // read from txt file
         List<String> actualOutput = new ArrayList<>();
@@ -45,37 +45,36 @@ public class TestOutput {
     }
 
     @Test
-    public void testExcelOutput() throws IOException
-    {
-        //prep data
+    public void testExcelOutput() throws IOException {
+        // prep data
         List<List<String>> expectedOutput = new ArrayList<>();
+        List<List<String>> Data = new ArrayList<>();
+        String[] Header = { "Column 1", "Column 2", "Column 3", "Column 4" };
+        Data.add(Arrays.asList("Output", "to", "Excel", "test"));
+        expectedOutput.add(Arrays.asList(Header));
         expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
 
-        //output to excel
-        Output.outputToExcel(expectedOutput);
+        // output to excel
+        Output.outputToExcel(Header, Data, "TestOutputFile");
 
-        //read from excel
+        // read from excel
         List<List<String>> actualOutput = new ArrayList<>();
-        try (Workbook workbook = WorkbookFactory.create(new File("output.xlsx")))
-        {
+        try (Workbook workbook = WorkbookFactory.create(new File("TestOutputFile.xlsx"))) {
             Sheet sheet = workbook.getSheetAt(0);
-            for (Row row : sheet)
-            {
+            for (Row row : sheet) {
                 List<String> rowValues = new ArrayList<>();
-                for (Cell cell : row)
-                {
+                for (Cell cell : row) {
                     rowValues.add(cell.toString());
                 }
 
                 actualOutput.add(rowValues);
             }
         }
-    
 
-    // compare expected vs actual
-    assertEquals(expectedOutput, actualOutput);
+        // compare expected vs actual
+        assertEquals(expectedOutput, actualOutput);
 
-        //clean up test file
+        // clean up test file
         File file = new File("output.xlsx");
         file.delete();
     }
