@@ -131,6 +131,21 @@ public class TestMain {
 
     @Test
     public void WillPass() {
-        assertEquals(1, 1);
+        assertEquals(0, 0);
     }
+
+    @Test
+    public void TestDateSeparation() {
+        LocalDate Start, End;
+        Start = LocalDate.of(2000, 10, 1);
+        End = LocalDate.of(2000, 10, 15);
+        assertThat(new Main().DaysBetween(Start, End), equalTo(14));
+    }
+
+    @Test
+    public void TestGetPercentagePassed() {
+        int Total = 100, Passed = 27;
+        assertThat(new Main().GetPercentagePassed(Total, Passed), equalTo((float) 0.27));
+    }
+
 }

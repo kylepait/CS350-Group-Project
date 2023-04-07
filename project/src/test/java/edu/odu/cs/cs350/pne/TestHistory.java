@@ -10,6 +10,12 @@ import java.util.ArrayList;
 
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
+import java.io.IOException;
+
+import java.time.format.DateTimeFormatter;
 
 public class TestHistory {
 
@@ -115,8 +121,9 @@ public class TestHistory {
 
         ArrayList<LocalDate> date = new ArrayList<LocalDate>();
         ArrayList<Semester> sem = new ArrayList<Semester>();
-
-        History h = new History(date, sem);
+        LocalDate s = LocalDate.of(2001, 2, 1);
+        LocalDate e = LocalDate.of(2020, 4, 1);
+        History h = new History(date, sem, s, e);
 
         assertThat(h.getSemester(), is(sem));
         assertThat(h.getSnapShotDate(), is(date));
@@ -186,5 +193,46 @@ public class TestHistory {
         assertThat(h.getSnapShotByIndex(0), is(date));
         assertThat(h.getSnapShotByIndex(1), is(d2));
 
+    }
+
+    /**
+     * test that the function to fet
+     */
+    @Test
+    public void testGetStartDate() {
+        ArrayList<LocalDate> date = new ArrayList<LocalDate>();
+        ArrayList<Semester> sem = new ArrayList<Semester>();
+        LocalDate s = LocalDate.of(2001, 2, 1);
+        LocalDate e = LocalDate.of(2020, 4, 1);
+        History h = new History(date, sem, s, e);
+
+        LocalDate StartDate = LocalDate.of(2022, 1, 15);
+        h.setStartDate(StartDate);
+        assertThat(h.getStartDate(), is(StartDate));
+
+    }
+
+    @Test
+    public void testSetStartDate() {
+        History h = new History();
+        LocalDate start = LocalDate.of(2020, 2, 4);
+        h.setStartDate(start);
+        assertThat(h.getStartDate(), is(LocalDate.of(2020, 2, 4)));
+    }
+
+    @Test
+    public void testGetEndDate() {
+        History h = new History();
+        LocalDate end = LocalDate.of(2020, 2, 2);
+        h.setEndDate(end);
+        assertThat(h.getEndDate(), is(LocalDate.of(2020, 2, 2)));
+    }
+
+    @Test
+    public void testSetEndDate() {
+        History h = new History();
+        LocalDate end = LocalDate.of(2020, 2, 2);
+        h.setEndDate(end);
+        assertThat(h.getEndDate(), is(LocalDate.of(2020, 2, 2)));
     }
 }

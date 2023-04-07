@@ -19,6 +19,7 @@ import java.util.Arrays;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
+import java.time.temporal.ChronoUnit;
 
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
@@ -267,5 +268,16 @@ public class Main {
             throw new IOException("Missing dates.txt in " + directoryPath.getName());
         }
         return history;
+    }
+
+    public int DaysBetween(LocalDate StartDate, LocalDate EndDate) {
+        int DaysBetween = (int) ChronoUnit.DAYS.between(StartDate, EndDate);
+        return DaysBetween;
+    }
+
+    public float GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
+        float Passed;
+        Passed = (float) DaysRegistrationOpen / (float) RegistrationPeriodLength;
+        return Passed;
     }
 }
