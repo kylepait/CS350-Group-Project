@@ -47,7 +47,7 @@ public class Main {
         try {
             File outputFile = new File("output.txt");
             PrintWriter printWriter = new PrintWriter(outputFile);
-            
+
             for (History hist : PreviousSemestersData) {
                 // System.out.println(hist.getSemester());
                 for (int i = 0; i < hist.getSemester().size(); i++) {
@@ -71,15 +71,14 @@ public class Main {
                     }
                 }
             }
-            
+
             printWriter.close();
-            
+
             System.out.println("Output written to file: " + outputFile.getAbsolutePath());
         } catch (FileNotFoundException e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
-
 
     public History GetFileContents(String FilePath) throws IOException {
         File filesList[];
@@ -117,6 +116,8 @@ public class Main {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+                history.setStartDate(RegistrationDates.get(0));
+                history.setEndDate(RegistrationDates.get(1));
             }
         }
         if (DatesTxtExists == true) {
