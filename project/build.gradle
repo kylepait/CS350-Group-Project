@@ -23,6 +23,8 @@ dependencies {
     implementation('commons-io:commons-io:2.4')
     // https://mvnrepository.com/artifact/org.apache.commons/commons-csv
     implementation 'org.apache.commons:commons-csv:1.10.0'
+    implementation 'org.apache.poi:poi:5.1.0'
+    implementation 'org.apache.poi:poi-ooxml:5.1.0'
 
 }
 
