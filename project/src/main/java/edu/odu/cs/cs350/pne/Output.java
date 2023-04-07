@@ -19,7 +19,7 @@ public class Output {
     private static final String SHEETNAME = "output";
     private static final String[] HEADERS = { "Column 1", "Column 2", "Column 3" };
 
-    public static void writeToTextFile(List<String> lines) throws IOException {
+    public static void outputToTxt(List<String> lines) throws IOException {
         File file = new File(FILENAME);
         try (PrintWriter writer = new PrintWriter(file)) {
             for (String line : lines) {
@@ -28,7 +28,7 @@ public class Output {
         }
     }
 
-    public static void writeToExcel(List<List<String>> data) throws IOException {
+    public static void outputToExcel(List<List<String>> data) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(SHEETNAME);
 
