@@ -1,5 +1,4 @@
-package test.java.edu.odu.cs.cs350.pne;
-import edu.odu.cs.cs350.pne.Output;
+package edu.odu.cs.cs350.pne;
 
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.Assertions.*;

@@ -1,4 +1,4 @@
-package main.java.edu.odu.cs.cs350.pne;
+package edu.odu.cs.cs350.pne;
 
 import java.io.File;
 import java.io.FileOutputStream;
