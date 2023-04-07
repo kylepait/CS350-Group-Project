@@ -148,4 +148,25 @@ public class TestMain {
         assertThat(new Main().GetPercentagePassed(Total, Passed), equalTo((float) 0.27));
     }
 
+    @Test
+    public void TestSetSemesterDates() {
+        String path = "src/test/data/History/202010";
+        File dataDirectory = new File(path);
+        ArrayList<History> PreviousSemestersData;
+        File filesList[];
+        filesList = dataDirectory.listFiles();
+        LocalDate StartDate, EndDate;
+        StartDate = LocalDate.of(2020, 3, 30);
+        EndDate = LocalDate.of(2020, 8, 25);
+        PreviousSemestersData = new ArrayList<History>();
+        try {
+            PreviousSemestersData.add(new Main().GetFileContents(dataDirectory.getAbsolutePath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        History hist = PreviousSemestersData.get(0);
+        assertThat(hist.getStartDate(), equalTo(StartDate));
+        assertThat(hist.getEndDate(), equalTo(EndDate));
+    }
+
 }
