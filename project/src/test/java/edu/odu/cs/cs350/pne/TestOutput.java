@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.Scanner;
 import static org.junit.Assert.*;
 
-public class OutputTest {
+public class TestOutput {
     @Test
     public void testTxtOutput() throws IOException {
         // prep test data
