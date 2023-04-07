@@ -55,28 +55,42 @@ public class Main {
                     ProjectionSemester.getSnapShotByIndex(ProjectionSemester.getSnapShotDate().size() - 1));
             ProjectionSemesterPassed = (new Main().GetPercentagePassed(SemesterLength, SemesterPassed)) * 100;
             printWriter.println(ProjectionSemesterPassed + "% of enrollment period has elapsed.");
-            for (History hist : PreviousSemestersData) {
-                // System.out.println(hist.getSemester());
-                for (int i = 0; i < hist.getSemester().size(); i++) {
-                    Semester semes = hist.getSemesterByIndex(i);
-                    printWriter.println(semes.getSemesterCode());
-                    printWriter.println(hist.getSnapShotByIndex(i));
-                    // System.out.println(semes);
-                    List<Offering> Off = semes.getOfferingList();
-                    // List<String> CRSELst = semes.getCRSEList();
-                    for (int j = 0; j < Off.size(); j++) {
-                        // System.out.println(CRSELst.get(j));
-                        printWriter.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " + Off.get(j).getSUBJ()
-                                + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " + Off.get(j).getMaxEnrollment()
-                                + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
-                        for (Section sect : Off.get(j).getSection()) {
-                            printWriter.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
-                                    + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() + " ENRL:"
-                                    + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() + " Instr: "
-                                    + sect.getInstructor() + " Link: " + sect.getLink());
-                        }
-                    }
-                }
+            printWriter.println("Course Enrollemnt Projected Cap");
+            // System.out.println(hist.getSemester());
+            int FinalSnapshot = ProjectionSemester.getSemester().size() - 1;
+            Semester semes = ProjectionSemester.getSemesterByIndex(FinalSnapshot);
+            // printWriter.println(semes.getSemesterCode());
+            // printWriter.println(ProjectionSemester.getSnapShotByIndex(FinalSnapshot));
+            // System.out.println(semes);
+            List<Offering> Off = semes.getOfferingList();
+            // List<String> CRSELst = semes.getCRSEList();
+            for (int j = 0; j < Off.size(); j++) {
+                // System.out.println(CRSELst.get(j));
+                String CRSE = Off.get(j).getSUBJ() + Off.get(j).getCRSE();
+                printWriter.printf("%-7s%-11d%-10d%-3d\n", CRSE, Off.get(j).getEnrollment(), 0,
+                        Off.get(j).getMaxEnrollment());
+                /*
+                 * printWriter.println(Off.get(j).getSUBJ() + Off.get(j).getCRSE() + "  " +
+                 * Off.get(j).getEnrollment()
+                 * + "                     " + Off.get(j).getMaxEnrollment());
+                 */
+                /*
+                 * printWriter.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
+                 * Off.get(j).getSUBJ()
+                 * + " ENRL: " + Off.get(j).getEnrollment() + " MaxENRL: " +
+                 * Off.get(j).getMaxEnrollment()
+                 * + " CurrENRL: " + Off.get(j).getCurrentEnrollment());
+                 */
+                /*
+                 * for (Section sect : Off.get(j).getSection()) {
+                 * printWriter.println("        CRN: " + sect.getCRN() + " Seats Remaining: "
+                 * + sect.getSeatsRemaining() + " XList Cap: " + sect.getCrossListCap() +
+                 * " ENRL:"
+                 * + sect.getEnrollments() + " XList Group: " + sect.getCrossListGroup() +
+                 * " Instr: "
+                 * + sect.getInstructor() + " Link: " + sect.getLink());
+                 * }
+                 */
             }
 
             printWriter.close();
