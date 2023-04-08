@@ -75,6 +75,7 @@ public class Main {
              * Off.get(j).getEnrollment()
              * + "                     " + Off.get(j).getMaxEnrollment());
              */
+
             /*
              * printWriter.println("    CRSE: " + Off.get(j).getCRSE() + " SUBJ: " +
              * Off.get(j).getSUBJ()
