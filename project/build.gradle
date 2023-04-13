@@ -122,7 +122,7 @@ reportStats {
     reportsURL = 'https://kylepait.github.io/CS350-Group-Project/'
     htmlSourceDir = file('src/main/html')  // default value
     reportsDir = file('build/reports') // default value
-    buildID = "12345"                  // defaults to current date, but can be any run identifier
+    
 }
 
 task deployReports (type: Delete, dependsOn: 'pushWebsite') {
