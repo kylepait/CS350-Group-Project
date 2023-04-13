@@ -1,6 +1,8 @@
 plugins {
     id 'java'
     id 'application'
+    id 'junit' // and/or checkstyle, jacoco, spotbugs
+    id 'edu.odu.cs.report_accumulator' version '1.4'
 }
 
 java {
@@ -107,6 +109,13 @@ task pushWebsite (type: Exec, dependsOn: 'commitWebsite') {
     workingDir = pagesDir
     commandLine = ['git', 'push']
     ignoreExitValue = true
+}
+
+reportStats {
+    reportsURL = 'https://kylepait.github.io/CS350-Group-Project/'
+    htmlSourceDir = file('src/main/html')  // default value
+    reportsDir = file('build/reports') // default value
+    buildID = "12345"                  // defaults to current date, but can be any run identifier
 }
 
 task deployReports (type: Delete, dependsOn: 'pushWebsite') {

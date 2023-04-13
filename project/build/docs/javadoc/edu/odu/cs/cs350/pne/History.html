@@ -26,7 +26,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10,"i8":10,"i9":10,"i10":10,"i11":10,"i12":10,"i13":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -155,8 +155,10 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr class="rowColor">
-<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.ArrayList,java.util.ArrayList)">History</a></span>&#8203;(java.util.ArrayList&lt;java.time.LocalDate&gt;&nbsp;snapShotDate,
-       java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;&nbsp;semester)</code></th>
+<th class="colConstructorName" scope="row"><code><span class="memberNameLink"><a href="#%3Cinit%3E(java.util.ArrayList,java.util.ArrayList,java.time.LocalDate,java.time.LocalDate)">History</a></span>&#8203;(java.util.ArrayList&lt;java.time.LocalDate&gt;&nbsp;snapShotDate,
+       java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;&nbsp;semester,
+       java.time.LocalDate&nbsp;startDate,
+       java.time.LocalDate&nbsp;endDate)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
 </table>
@@ -188,41 +190,61 @@ extends java.lang.Object</pre>
 <td class="colLast">&nbsp;</td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>java.time.LocalDate</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEndDate()">getEndDate</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemester()">getSemester</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a></code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSemesterByIndex(java.lang.Integer)">getSemesterByIndex</a></span>&#8203;(java.lang.Integer&nbsp;index)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
 <td class="colFirst"><code>java.time.LocalDate</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSnapShotByIndex(java.lang.Integer)">getSnapShotByIndex</a></span>&#8203;(java.lang.Integer&nbsp;index)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i6" class="altColor">
 <td class="colFirst"><code>java.util.ArrayList&lt;java.time.LocalDate&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getSnapShotDate()">getSnapShotDate</a></span>()</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i7" class="rowColor">
+<td class="colFirst"><code>java.time.LocalDate</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getStartDate()">getStartDate</a></span>()</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i8" class="altColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#SemesterToString(java.util.ArrayList)">SemesterToString</a></span>&#8203;(java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;&nbsp;sem)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i7" class="rowColor">
+<tr id="i9" class="rowColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setEndDate(java.time.LocalDate)">setEndDate</a></span>&#8203;(java.time.LocalDate&nbsp;EndDate)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i10" class="altColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSemester(java.util.ArrayList)">setSemester</a></span>&#8203;(java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;&nbsp;sem)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i8" class="altColor">
+<tr id="i11" class="rowColor">
 <td class="colFirst"><code>void</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setSnapShotDate(java.util.ArrayList)">setSnapShotDate</a></span>&#8203;(java.util.ArrayList&lt;java.time.LocalDate&gt;&nbsp;date)</code></th>
 <td class="colLast">&nbsp;</td>
 </tr>
-<tr id="i9" class="rowColor">
+<tr id="i12" class="altColor">
+<td class="colFirst"><code>void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#setStartDate(java.time.LocalDate)">setStartDate</a></span>&#8203;(java.time.LocalDate&nbsp;StartDate)</code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr id="i13" class="rowColor">
 <td class="colFirst"><code>java.lang.String</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#snapShotToString(java.util.ArrayList)">snapShotToString</a></span>&#8203;(java.util.ArrayList&lt;java.time.LocalDate&gt;&nbsp;snapshot)</code></th>
 <td class="colLast">&nbsp;</td>
@@ -260,14 +282,16 @@ extends java.lang.Object</pre>
 <pre>public&nbsp;History()</pre>
 </li>
 </ul>
-<a id="&lt;init&gt;(java.util.ArrayList,java.util.ArrayList)">
+<a id="&lt;init&gt;(java.util.ArrayList,java.util.ArrayList,java.time.LocalDate,java.time.LocalDate)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
 <h4>History</h4>
 <pre>public&nbsp;History&#8203;(java.util.ArrayList&lt;java.time.LocalDate&gt;&nbsp;snapShotDate,
-               java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;&nbsp;semester)</pre>
+               java.util.ArrayList&lt;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&gt;&nbsp;semester,
+               java.time.LocalDate&nbsp;startDate,
+               java.time.LocalDate&nbsp;endDate)</pre>
 </li>
 </ul>
 </li>
@@ -394,7 +418,7 @@ extends java.lang.Object</pre>
 <a id="getSemesterByIndex(java.lang.Integer)">
 <!--   -->
 </a>
-<ul class="blockListLast">
+<ul class="blockList">
 <li class="blockList">
 <h4>getSemesterByIndex</h4>
 <pre class="methodSignature">public&nbsp;<a href="Semester.html" title="class in edu.odu.cs.cs350.pne">Semester</a>&nbsp;getSemesterByIndex&#8203;(java.lang.Integer&nbsp;index)</pre>
@@ -404,6 +428,46 @@ extends java.lang.Object</pre>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>the Semester at Index index in ArrayList semester</dd>
 </dl>
+</li>
+</ul>
+<a id="getStartDate()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getStartDate</h4>
+<pre class="methodSignature">public&nbsp;java.time.LocalDate&nbsp;getStartDate()</pre>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>start date of a provided semester</dd>
+</dl>
+</li>
+</ul>
+<a id="setStartDate(java.time.LocalDate)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>setStartDate</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setStartDate&#8203;(java.time.LocalDate&nbsp;StartDate)</pre>
+</li>
+</ul>
+<a id="getEndDate()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEndDate</h4>
+<pre class="methodSignature">public&nbsp;java.time.LocalDate&nbsp;getEndDate()</pre>
+</li>
+</ul>
+<a id="setEndDate(java.time.LocalDate)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>setEndDate</h4>
+<pre class="methodSignature">public&nbsp;void&nbsp;setEndDate&#8203;(java.time.LocalDate&nbsp;EndDate)</pre>
 </li>
 </ul>
 </li>

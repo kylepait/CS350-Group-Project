@@ -68,7 +68,7 @@ goto fail
 :execute
 @rem Setup the command line
 
-set CLASSPATH=%APP_HOME%\lib\project.jar;%APP_HOME%\lib\commons-io-2.4.jar;%APP_HOME%\lib\commons-csv-1.10.0.jar
+set CLASSPATH=%APP_HOME%\lib\project.jar;%APP_HOME%\lib\poi-ooxml-5.1.0.jar;%APP_HOME%\lib\poi-5.1.0.jar;%APP_HOME%\lib\commons-io-2.11.0.jar;%APP_HOME%\lib\commons-csv-1.10.0.jar;%APP_HOME%\lib\commons-codec-1.15.jar;%APP_HOME%\lib\commons-collections4-4.4.jar;%APP_HOME%\lib\commons-math3-3.6.1.jar;%APP_HOME%\lib\SparseBitSet-1.2.jar;%APP_HOME%\lib\poi-ooxml-lite-5.1.0.jar;%APP_HOME%\lib\xmlbeans-5.0.2.jar;%APP_HOME%\lib\log4j-api-2.14.1.jar;%APP_HOME%\lib\commons-compress-1.21.jar;%APP_HOME%\lib\curvesapi-1.06.jar
 
 
 @rem Execute project

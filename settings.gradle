@@ -1,2 +1,12 @@
 rootProject.name = 'Main'
 include 'project'
+
+pluginManagement {
+    repositories {
+        ivy { // Use my own CS dept repo
+            url 'https://github.com/kylepait/CS350-Group-Project'
+        }
+        gradlePluginPortal()
+        mavenCentral()
+    }
+}
