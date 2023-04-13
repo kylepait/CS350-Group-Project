@@ -1,5 +1,4 @@
-rootProject.name = 'Main'
-include 'project'
+
 
 pluginManagement {
     repositories {
@@ -10,3 +9,6 @@ pluginManagement {
         mavenCentral()
     }
 }
+
+rootProject.name = 'Main'
+include 'project'
