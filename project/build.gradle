@@ -31,6 +31,20 @@ dependencies {
 
 }
 
+gradlePlugin {
+    plugins {
+        reportAccumulatorPlugin {
+            id = 'edu.odu.cs.report_accumulator'
+            implementationClass = 'edu.odu.cs.zeil.report_accumulator.ReportAccumulatorPlugin'
+        }
+    }
+}
+
+pmd {
+    ignoreFailures = true
+    consoleOutput = false
+}
+
 test {
     ignoreFailures = true
     useJUnitPlatform()
