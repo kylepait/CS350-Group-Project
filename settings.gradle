@@ -1,7 +1,7 @@
 pluginManagement {
     repositories {
         ivy {
-            url 'https://github.com/kylepait/CS350-Group-Project'
+            url 'https://www.cs.odu.edu/~zeil/ivyrepo'
         }
         gradlePluginPortal()
         mavenCentral()
