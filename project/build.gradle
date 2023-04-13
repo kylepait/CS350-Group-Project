@@ -1,7 +1,7 @@
 plugins {
     id 'java'
     id 'application'
-    id 'JUnit' // and/or checkstyle, jacoco, spotbugs
+    id 'pmd' // and/or checkstyle, jacoco, spotbugs
     id 'edu.odu.cs.report_accumulator' version '1.4'
 }
 
