@@ -10,3 +10,5 @@ pluginManagement {
 
 rootProject.name = 'Main'
 include 'project'
+include 'report_accumulator'
+
