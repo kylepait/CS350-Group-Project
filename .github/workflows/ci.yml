@@ -22,6 +22,8 @@ jobs:
       run: ./gradlew build
     - name: reports
       run: ./gradlew reports
+    - name: reportStats
+      run: ./gradlew reportStats
     - name: show folders
       run: ls
 
