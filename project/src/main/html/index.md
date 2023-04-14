@@ -6,5 +6,6 @@ Group A2 cs350
 * [JavaDoc](./javadoc/)
 * [PMD Report (MAIN)](./pmd/main.html)
 * [PMD Report (TESTS)](./pmd/test.html)
-* [Tests History](./tests.csv)
-* [PMD History](./pmd.csv)
+* [Charts](./charts.html)
+* [Tests History .csv Download](./tests.csv)
+* [PMD History .csv download](./pmd.csv)
