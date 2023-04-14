@@ -148,7 +148,7 @@ reportStats {
     
 }
 
-task deployReports (type: Delete, dependsOn: 'pushWebsite') {
+task deployReports (type: Delete, dependsOn: 'pushWebsite', 'reportStats') {
     group = "Reporting"
     description  'Commit and push website changes to GitHub'
     delete pagesDir
