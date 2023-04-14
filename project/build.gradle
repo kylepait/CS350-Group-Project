@@ -3,6 +3,8 @@ plugins {
     id 'application'
     id 'pmd' // and/or checkstyle, jacoco, spotbugs
     id 'edu.odu.cs.report_accumulator' version '1.4'
+    id 'java-gradle-plugin'
+    id 'ivy-publish'
 }
 
 java {
@@ -31,7 +33,14 @@ dependencies {
 
 }
 
-
+gradlePlugin {
+    plugins {
+        reportAccumulatorPlugin {
+            id = 'edu.odu.cs.report_accumulator'
+            implementationClass = 'edu.odu.cs.zeil.report_accumulator.ReportAccumulatorPlugin'
+        }
+    }
+}
 
 pmd {
     ignoreFailures = true
