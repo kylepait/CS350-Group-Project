@@ -42,6 +42,20 @@ gradlePlugin {
     }
 }
 
+group = 'edu.odu.cs.zeil'
+version = '1.4'
+// Credentials are loaded from ~/.gradle/gradle.properties
+if(project.hasProperty("ivyRepoUser")){
+	ext.ivyRepoUser = "$ivyRepoUser";
+} else {
+	ext.ivyRepoUser = "user";
+}
+if(project.hasProperty("ivyRepoPass")){
+	ext.ivyRepoPass = "$ivyRepoPass";
+} else {
+	ext.ivyRepoPass = "password";
+}
+
 pmd {
     ignoreFailures = true
     consoleOutput = false
