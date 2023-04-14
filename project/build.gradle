@@ -5,6 +5,7 @@ plugins {
     id 'edu.odu.cs.report_accumulator' version '1.4'
     id 'java-gradle-plugin'
     id 'ivy-publish'
+    id 'jacoco'
 }
 
 java {
@@ -47,6 +48,10 @@ gradlePlugin {
         }
     }
 }
+
+pmdTest.enabled = false
+check.dependsOn jacocoTestReport
+check.dependsOn htmlDependencyReport
 
 group = 'edu.odu.cs.zeil'
 version = '1.4'
