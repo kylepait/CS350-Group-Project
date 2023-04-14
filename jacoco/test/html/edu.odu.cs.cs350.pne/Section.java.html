@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="en"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Section.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">project</a> &gt; <a href="index.source.html" class="el_package">edu.odu.cs.cs350.pne</a> &gt; <span class="el_source">Section.java</span></div><h1>Section.java</h1><pre class="source lang-java linenums">package edu.odu.cs.cs350.pne;
+
+public class Section {
+
+    private int crn;
+    private int seatsRemaining;
+    private int crossListCap;
+    private int enrollments;
+    private String crossListGroup;
+    private String instructor;
+    private String link;
+
+<span class="fc" id="L13">    public Section(){</span>
+<span class="fc" id="L14">        crn = 0;</span>
+<span class="fc" id="L15">        seatsRemaining = 0;</span>
+<span class="fc" id="L16">        crossListCap = 0;</span>
+<span class="fc" id="L17">        enrollments = 0;</span>
+<span class="fc" id="L18">        crossListGroup = &quot;&quot;;</span>
+<span class="fc" id="L19">        instructor = &quot;&quot;;</span>
+<span class="fc" id="L20">        link = &quot;&quot;;</span>
+<span class="fc" id="L21">    }</span>
+
+<span class="fc" id="L23">    public Section(int crnAdd, int seatsRemainingAdd, int crossListCapAdd, int enrollmentAdd, String crossListGroupAdd, String instructorAdd, String linkAdd){</span>
+<span class="fc" id="L24">        this.crn = crnAdd;</span>
+<span class="fc" id="L25">        this.seatsRemaining = seatsRemainingAdd;</span>
+<span class="fc" id="L26">        this.crossListCap = crossListCapAdd;</span>
+<span class="fc" id="L27">        this.crossListGroup = crossListGroupAdd;</span>
+<span class="fc" id="L28">        this.enrollments = enrollmentAdd;</span>
+<span class="fc" id="L29">        this.instructor = instructorAdd;</span>
+<span class="fc" id="L30">        this.link = linkAdd;</span>
+
+<span class="fc" id="L32">    }</span>
+    
+    public int getCRN(){
+<span class="fc" id="L35">        return this.crn;</span>
+    }
+
+    public void setCRN(int crnSet){
+<span class="fc" id="L39">        this.crn = crnSet;</span>
+<span class="fc" id="L40">    }</span>
+
+    public int getSeatsRemaining(){
+<span class="fc" id="L43">        return this.seatsRemaining;</span>
+    }
+
+    public void setSeatsRemaining(int seatsRemainingSet){
+<span class="fc" id="L47">        this.seatsRemaining = seatsRemainingSet;</span>
+<span class="fc" id="L48">    }</span>
+
+    public int getCrossListCap(){
+<span class="fc" id="L51">        return this.crossListCap;</span>
+    }
+
+    public void setCrossListCap(int crossListCapSet){
+<span class="fc" id="L55">        this.crossListCap = crossListCapSet;</span>
+<span class="fc" id="L56">    }</span>
+
+    public String getCrossListGroup(){
+<span class="fc" id="L59">        return this.crossListGroup;</span>
+    }
+
+    public void setCrossListGroup(String crossListGroupSet){
+<span class="fc" id="L63">        this.crossListGroup = crossListGroupSet;</span>
+<span class="fc" id="L64">    }</span>
+
+    public int getEnrollments(){
+<span class="fc" id="L67">        return this.enrollments;</span>
+    }
+
+    public void setEnrollments(int enrollmentsSet){
+<span class="fc" id="L71">        this.enrollments = enrollmentsSet;</span>
+<span class="fc" id="L72">    }</span>
+
+    public String getInstructor(){
+<span class="fc" id="L75">        return this.instructor;</span>
+    }
+
+    public void setInstructor(String instructorSet){
+<span class="fc" id="L79">        this.instructor = instructorSet;</span>
+<span class="fc" id="L80">    }</span>
+
+    public String getLink(){
+<span class="fc" id="L83">        return this.link;</span>
+    }
+
+    public void setLink(String linkSet){
+<span class="fc" id="L87">        this.link = linkSet;</span>
+<span class="fc" id="L88">    }</span>
+
+    //this is a test again
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
