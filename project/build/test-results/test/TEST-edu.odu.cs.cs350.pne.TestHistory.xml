@@ -1,19 +1,19 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestHistory" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-04-12T20:27:47" hostname="ganymede" time="0.093">
+<testsuite name="edu.odu.cs.cs350.pne.TestHistory" tests="14" skipped="0" failures="0" errors="0" timestamp="2023-04-14T13:56:48" hostname="europa" time="0.108">
   <properties/>
-  <testcase name="testSetSemester()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.02"/>
+  <testcase name="testSetSemester()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.011"/>
   <testcase name="testGetSemester()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
-  <testcase name="testGetEndDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
-  <testcase name="testGetStartDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
-  <testcase name="testAddSemester()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.059"/>
+  <testcase name="testGetEndDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
+  <testcase name="testGetStartDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
+  <testcase name="testAddSemester()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.083"/>
   <testcase name="testGetSnapShotDateByIndex()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
-  <testcase name="testSetStartDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
-  <testcase name="testGetSnapShotDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
+  <testcase name="testSetStartDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
+  <testcase name="testGetSnapShotDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
   <testcase name="testSetEndDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
   <testcase name="testNewHistory()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
   <testcase name="testSetSnapShotDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
-  <testcase name="testGetSemesterByIndex()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
-  <testcase name="testHistoryParamed()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.0"/>
+  <testcase name="testGetSemesterByIndex()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
+  <testcase name="testHistoryParamed()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
   <testcase name="testaddSnapShotDate()" classname="edu.odu.cs.cs350.pne.TestHistory" time="0.001"/>
   <system-out><![CDATA[]]></system-out>
   <system-err><![CDATA[]]></system-err>

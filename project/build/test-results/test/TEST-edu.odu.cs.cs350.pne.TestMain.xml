@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestMain" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-04-12T20:27:47" hostname="ganymede" time="4.295">
+<testsuite name="edu.odu.cs.cs350.pne.TestMain" tests="8" skipped="0" failures="0" errors="0" timestamp="2023-04-14T13:56:48" hostname="europa" time="6.03">
   <properties/>
-  <testcase name="TestGetFileSnapshotDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.497"/>
-  <testcase name="TestGetFileContentsNoDataTxt()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.006"/>
-  <testcase name="WillPass()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.001"/>
-  <testcase name="TestDateSeparation()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.001"/>
+  <testcase name="TestGetFileSnapshotDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="2.266"/>
+  <testcase name="TestGetFileContentsNoDataTxt()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.009"/>
+  <testcase name="WillPass()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.01"/>
+  <testcase name="TestDateSeparation()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.0"/>
   <testcase name="TestGetPercentagePassed()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.0"/>
   <testcase name="TestGetFileContentsNotEnoughSnapshots()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.004"/>
-  <testcase name="TestGetFileNumSections()" classname="edu.odu.cs.cs350.pne.TestMain" time="2.001"/>
-  <testcase name="TestSetSemesterDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="0.778"/>
+  <testcase name="TestGetFileNumSections()" classname="edu.odu.cs.cs350.pne.TestMain" time="2.322"/>
+  <testcase name="TestSetSemesterDates()" classname="edu.odu.cs.cs350.pne.TestMain" time="1.413"/>
   <system-out><![CDATA[List of files and directories in the specified directory:
 2020-03-30
 2020-08-25
@@ -1031,5 +1031,6 @@ Date : 2020-08-26
 File path: /home/cs_kpait002/cs350/CS350-Group-Project/project/src/test/data/History/202010/2020-08-26.csv
  
 ]]></system-out>
-  <system-err><![CDATA[]]></system-err>
+  <system-err><![CDATA[Cleaning up unclosed ZipFile for archive /home/cs_kpait002/cs350/CS350-Group-Project/project/TestOutputFile.xlsx
+]]></system-err>
 </testsuite>

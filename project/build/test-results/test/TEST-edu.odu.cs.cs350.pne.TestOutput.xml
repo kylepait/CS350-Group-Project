@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite name="edu.odu.cs.cs350.pne.TestOutput" tests="2" skipped="0" failures="1" errors="0" timestamp="2023-04-12T20:27:51" hostname="ganymede" time="1.779">
+<testsuite name="edu.odu.cs.cs350.pne.TestOutput" tests="2" skipped="0" failures="1" errors="0" timestamp="2023-04-14T13:56:45" hostname="europa" time="2.298">
   <properties/>
-  <testcase name="testTxtOutput()" classname="edu.odu.cs.cs350.pne.TestOutput" time="0.011"/>
-  <testcase name="testExcelOutput()" classname="edu.odu.cs.cs350.pne.TestOutput" time="1.768">
+  <testcase name="testTxtOutput()" classname="edu.odu.cs.cs350.pne.TestOutput" time="0.095"/>
+  <testcase name="testExcelOutput()" classname="edu.odu.cs.cs350.pne.TestOutput" time="2.202">
     <failure message="java.io.IOException: Permission denied" type="java.io.IOException">java.io.IOException: Permission denied
 	at java.base/java.io.UnixFileSystem.createFileExclusively(Native Method)
 	at java.base/java.io.File.createTempFile(File.java:2129)
