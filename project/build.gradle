@@ -33,6 +33,12 @@ dependencies {
 
 }
 
+tasks.jar {
+	manifest {
+		attributes('Automatic-Module-Name': 'edu.odu.zeil.report_accumulator')
+	}
+}
+
 gradlePlugin {
     plugins {
         reportAccumulatorPlugin {
