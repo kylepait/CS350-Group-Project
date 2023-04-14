@@ -130,3 +130,31 @@ task deployReports (type: Delete, dependsOn: 'pushWebsite') {
     description  'Commit and push website changes to GitHub'
     delete pagesDir
 }
+
+publishing {
+    publications {
+        ivyJava(IvyPublication) {
+            organisation 'edu.odu.cs.zeil'
+            module project.name
+            revision '1.4'
+            descriptor.status = 'milestone'
+            descriptor.branch = 'master'
+
+            from components.java
+        }
+    }
+    repositories {
+        
+		ivy {
+            name 'ivyRepo'
+            url 'sftp://linux.cs.odu.edu:22/home/zeil/secure_html/ivyrepo'
+            // Readable via https://www.cs.odu.edu/~zeil/ivyrepo    
+            credentials {
+                // Credentials are loaded from ~/.gradle/gradle.properties
+                username project.ivyRepoUser
+                password project.ivyRepoPass
+            }
+        }
+    }           
+}
+
