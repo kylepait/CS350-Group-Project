@@ -6,6 +6,7 @@ plugins {
     id 'java-gradle-plugin'
     id 'ivy-publish'
     id 'jacoco'
+    id 'project-report'
 }
 
 java {
