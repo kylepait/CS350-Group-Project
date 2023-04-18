@@ -31,15 +31,15 @@ public class Output {
         }
     }
 
-    public static void outputToExcel(String[] Header, List<List<String>> data, String Filename) throws IOException {
+    public static void outputToExcel(List<String> Header, List<List<String>> data, String Filename) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         Sheet sheet = workbook.createSheet(SHEETNAME);
 
         // write headers
         Row headerRow = sheet.createRow(0);
-        for (int i = 0; i < Header.length; i++) {
+        for (int i = 0; i < Header.size(); i++) {
             Cell cell = headerRow.createCell(i);
-            cell.setCellValue(Header[i]);
+            cell.setCellValue(Header.get(i));
         }
 
         // write data

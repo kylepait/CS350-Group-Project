@@ -53,9 +53,13 @@ public class TestOutput {
         // prep data
         List<List<String>> expectedOutput = new ArrayList<>();
         List<List<String>> Data = new ArrayList<>();
-        String[] Header = { "Column 1", "Column 2", "Column 3", "Column 4" };
+        List<String> Header = new ArrayList<>();
+        Header.add("Column 1");
+        Header.add("Column 2");
+        Header.add("Column 3");
+        Header.add("Column 4");
         Data.add(Arrays.asList("Output", "to", "Excel", "test"));
-        expectedOutput.add(Arrays.asList(Header));
+        expectedOutput.add(Header);
         expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
 
         // output to excel
