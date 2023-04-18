@@ -31,15 +31,15 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
         }
 <span class="fc" id="L32">    }</span>
 
-    public static void outputToExcel(String[] Header, List&lt;List&lt;String&gt;&gt; data, String Filename) throws IOException {
+    public static void outputToExcel(List&lt;String&gt; Header, List&lt;List&lt;String&gt;&gt; data, String Filename) throws IOException {
 <span class="fc" id="L35">        XSSFWorkbook workbook = new XSSFWorkbook();</span>
 <span class="fc" id="L36">        Sheet sheet = workbook.createSheet(SHEETNAME);</span>
 
         // write headers
 <span class="fc" id="L39">        Row headerRow = sheet.createRow(0);</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int i = 0; i &lt; Header.length; i++) {</span>
+<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int i = 0; i &lt; Header.size(); i++) {</span>
 <span class="fc" id="L41">            Cell cell = headerRow.createCell(i);</span>
-<span class="fc" id="L42">            cell.setCellValue(Header[i]);</span>
+<span class="fc" id="L42">            cell.setCellValue(Header.get(i));</span>
         }
 
         // write data
