@@ -340,7 +340,7 @@ import java.io.FileNotFoundException;
 <span class="nc" id="L340">                    + Character.toString(semester.getSemesterCode().charAt(2))</span>
 <span class="nc" id="L341">                    + Character.toString(semester.getSemesterCode().charAt(3));</span>
 <span class="nc" id="L342">            ExcelHeader.add(&quot;d historical&quot;);</span>
-<span class="nc" id="L343">            ExcelHeader.add(Semester + &quot; &quot; + Year);</span>
+<span class="nc" id="L343">            ExcelHeader.add(SemesterNameSSF.get(Semester) + &quot; &quot; + Year);</span>
         }
 <span class="nc" id="L345">        ExcelHeader.add(&quot;d current&quot;);</span>
 <span class="nc" id="L346">        history = PreviousSemestersData.get(PreviousSemestersData.size() - 1);</span>
@@ -351,7 +351,7 @@ import java.io.FileNotFoundException;
 <span class="nc" id="L351">                + Character.toString(semester.getSemesterCode().charAt(1))</span>
 <span class="nc" id="L352">                + Character.toString(semester.getSemesterCode().charAt(2))</span>
 <span class="nc" id="L353">                + Character.toString(semester.getSemesterCode().charAt(3));</span>
-<span class="nc" id="L354">        ExcelHeader.add(Semester + &quot; &quot; + Year);</span>
+<span class="nc" id="L354">        ExcelHeader.add(SemesterNameSSF.get(Semester) + &quot; &quot; + Year);</span>
 <span class="nc" id="L355">        ExcelHeader.add(&quot;d projected&quot;);</span>
 <span class="nc" id="L356">        ExcelHeader.add(&quot;Projected&quot;);</span>
 <span class="nc" id="L357">        return ExcelHeader;</span>
