@@ -359,7 +359,10 @@ public class Main {
     /*
     public static int calculateProjectedEnrollment(Offering offering)
     {
+        int totalEnrollment = offering.getEnrollment();
+        int totalMaxEnrollment = offering.getMaxEnrollment();
 
+        
     }
     */
 }
