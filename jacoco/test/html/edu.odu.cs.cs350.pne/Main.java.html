@@ -356,36 +356,36 @@ import java.io.FileNotFoundException;
 <span class="nc" id="L356">        ExcelHeader.add(&quot;Projected&quot;);</span>
 <span class="nc" id="L357">        return ExcelHeader;</span>
     }
-    /* 
+    
     public static int calculateProjectedEnrollment(Offering offering)
     {
-        int totalEnrollment = offering.getEnrollment();
-        int totalMaxEnrollment = offering.getMaxEnrollment();
+<span class="nc" id="L362">        int totalEnrollment = offering.getEnrollment();</span>
+<span class="nc" id="L363">        int totalMaxEnrollment = offering.getMaxEnrollment();</span>
 
-        for (Section section : offering.getSection())
+<span class="nc bnc" id="L365" title="All 2 branches missed.">        for (Section section : offering.getSection())</span>
         {
-            int sectionEnrollment = section.getEnrollments();
-            int sectionSeatsRemaining = section.getSeatsRemaining();
-            int sectionMaxEnrollment = section.getCrossListCap();
+<span class="nc" id="L367">            int sectionEnrollment = section.getEnrollments();</span>
+<span class="nc" id="L368">            int sectionSeatsRemaining = section.getSeatsRemaining();</span>
+<span class="nc" id="L369">            int sectionMaxEnrollment = section.getCrossListCap();</span>
 
-            if (sectionMaxEnrollment == 0)
+<span class="nc bnc" id="L371" title="All 2 branches missed.">            if (sectionMaxEnrollment == 0)</span>
             {
-                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;
+<span class="nc" id="L373">                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;</span>
             }
 
-            int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
+<span class="nc" id="L376">            int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));</span>
 
-            if (projectedEnrollment &gt; sectionMaxEnrollment)
+<span class="nc bnc" id="L378" title="All 2 branches missed.">            if (projectedEnrollment &gt; sectionMaxEnrollment)</span>
             {
-                projectedEnrollment = sectionMaxEnrollment;
+<span class="nc" id="L380">                projectedEnrollment = sectionMaxEnrollment;</span>
             }
 
-            totalEnrollment += projectedEnrollment - sectionEnrollment;
-            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;
-        }
+<span class="nc" id="L383">            totalEnrollment += projectedEnrollment - sectionEnrollment;</span>
+<span class="nc" id="L384">            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;</span>
+<span class="nc" id="L385">        }</span>
 
-        return totalEnrollment;
+<span class="nc" id="L387">        return totalEnrollment;</span>
     }
-    */
+    
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>

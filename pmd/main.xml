@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2023-04-19T22:06:08.384">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2023-04-19T22:09:13.888">
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Main.java">
 <violation beginline="33" endline="51" begincolumn="9" endcolumn="73" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="ExcelHeader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
 Found 'DD'-anomaly for variable 'ExcelHeader' (lines '33'-'51').
@@ -174,6 +174,15 @@ Found 'DU'-anomaly for variable 'LastSUBJ' (lines '286'-'307').
 </violation>
 <violation beginline="319" endline="319" begincolumn="29" endcolumn="29" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetPercentagePassed" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
+</violation>
+<violation beginline="363" endline="388" begincolumn="13" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="totalMaxEnrollment" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'totalMaxEnrollment' (lines '363'-'388').
+</violation>
+<violation beginline="368" endline="368" begincolumn="17" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="sectionSeatsRemaining" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'sectionSeatsRemaining' (lines '368'-'368').
+</violation>
+<violation beginline="368" endline="388" begincolumn="17" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="sectionSeatsRemaining" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sectionSeatsRemaining' (lines '368'-'388').
 </violation>
 </file>
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Output.java">
