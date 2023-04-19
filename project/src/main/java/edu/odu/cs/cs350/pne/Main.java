@@ -356,7 +356,7 @@ public class Main {
         ExcelHeader.add("Projected");
         return ExcelHeader;
     }
-    /*
+    /* 
     public static int calculateProjectedEnrollment(Offering offering)
     {
         int totalEnrollment = offering.getEnrollment();
@@ -379,7 +379,12 @@ public class Main {
             {
                 projectedEnrollment = sectionMaxEnrollment;
             }
+
+            totalEnrollment += projectedEnrollment - sectionEnrollment;
+            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;
         }
+
+        return totalEnrollment;
     }
     */
 }
