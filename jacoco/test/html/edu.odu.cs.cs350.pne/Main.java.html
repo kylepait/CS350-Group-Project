@@ -374,6 +374,11 @@ import java.io.FileNotFoundException;
             }
 
             int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
+
+            if (projectedEnrollment &gt; sectionMaxEnrollment)
+            {
+                projectedEnrollment = sectionMaxEnrollment;
+            }
         }
     }
     */
