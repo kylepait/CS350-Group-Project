@@ -364,7 +364,16 @@ import java.io.FileNotFoundException;
 
         for (Section section : offering.getSection())
         {
+            int sectionEnrollment = section.getEnrollments();
+            int sectionSeatsRemaining = section.getSeatsRemaining();
+            int sectionMaxEnrollment = section.getCrossListCap();
 
+            if (sectionMaxEnrollment == 0)
+            {
+                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;
+            }
+
+            int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
         }
     }
     */
