@@ -356,4 +356,10 @@ public class Main {
         ExcelHeader.add("Projected");
         return ExcelHeader;
     }
+    /*
+    public static int calculateProjectedEnrollment(Offering offering)
+    {
+
+    }
+    */
 }
