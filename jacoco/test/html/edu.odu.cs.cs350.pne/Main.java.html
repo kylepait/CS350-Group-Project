@@ -356,7 +356,7 @@ import java.io.FileNotFoundException;
 <span class="nc" id="L356">        ExcelHeader.add(&quot;Projected&quot;);</span>
 <span class="nc" id="L357">        return ExcelHeader;</span>
     }
-    /*
+    /* 
     public static int calculateProjectedEnrollment(Offering offering)
     {
         int totalEnrollment = offering.getEnrollment();
@@ -379,7 +379,12 @@ import java.io.FileNotFoundException;
             {
                 projectedEnrollment = sectionMaxEnrollment;
             }
+
+            totalEnrollment += projectedEnrollment - sectionEnrollment;
+            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;
         }
+
+        return totalEnrollment;
     }
     */
 }
