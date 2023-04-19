@@ -12,50 +12,77 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFChart;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xddf.usermodel.chart.*;
+import org.apache.poi.ss.util.CellRangeAddress;
 
-<span class="nc" id="L17">public class Output {</span>
+<span class="nc" id="L23">public class Output {</span>
     private static final String FILENAME = &quot;output.txt&quot;;
     private static final String SHEETNAME = &quot;output&quot;;
-<span class="fc" id="L20">    private static final String[] HEADERS = { &quot;Column 1&quot;, &quot;Column 2&quot;, &quot;Column 3&quot; };</span>
+<span class="fc" id="L26">    private static final String[] HEADERS = { &quot;Column 1&quot;, &quot;Column 2&quot;, &quot;Column 3&quot; };</span>
 
     public static void outputToTxt(String Header1, String Header2, List&lt;List&lt;String&gt;&gt; data, String Filename)
             throws IOException {
-<span class="fc" id="L24">        File file = new File(Filename + &quot;.txt&quot;);</span>
-<span class="fc" id="L25">        try (PrintWriter writer = new PrintWriter(file)) {</span>
-<span class="fc" id="L26">            writer.println(Header1);</span>
-<span class="fc" id="L27">            writer.println(Header2);</span>
-<span class="fc bfc" id="L28" title="All 2 branches covered.">            for (List&lt;String&gt; line : data) {</span>
-<span class="fc" id="L29">                writer.printf(&quot;%-7s%-11s%-10s%-3s\n&quot;, line.get(0), line.get(1), line.get(2), line.get(3));</span>
-<span class="fc" id="L30">            }</span>
+<span class="fc" id="L30">        File file = new File(Filename + &quot;.txt&quot;);</span>
+<span class="fc" id="L31">        try (PrintWriter writer = new PrintWriter(file)) {</span>
+<span class="fc" id="L32">            writer.println(Header1);</span>
+<span class="fc" id="L33">            writer.println(Header2);</span>
+<span class="fc bfc" id="L34" title="All 2 branches covered.">            for (List&lt;String&gt; line : data) {</span>
+<span class="fc" id="L35">                writer.printf(&quot;%-7s%-11s%-10s%-3s\n&quot;, line.get(0), line.get(1), line.get(2), line.get(3));</span>
+<span class="fc" id="L36">            }</span>
         }
-<span class="fc" id="L32">    }</span>
+<span class="fc" id="L38">    }</span>
 
     public static void outputToExcel(List&lt;String&gt; Header, List&lt;List&lt;String&gt;&gt; data, String Filename) throws IOException {
-<span class="fc" id="L35">        XSSFWorkbook workbook = new XSSFWorkbook();</span>
-<span class="fc" id="L36">        Sheet sheet = workbook.createSheet(SHEETNAME);</span>
+<span class="fc" id="L41">        XSSFWorkbook workbook = new XSSFWorkbook();</span>
+<span class="fc" id="L42">        XSSFSheet sheet = workbook.createSheet(SHEETNAME);</span>
 
         // write headers
-<span class="fc" id="L39">        Row headerRow = sheet.createRow(0);</span>
-<span class="fc bfc" id="L40" title="All 2 branches covered.">        for (int i = 0; i &lt; Header.size(); i++) {</span>
-<span class="fc" id="L41">            Cell cell = headerRow.createCell(i);</span>
-<span class="fc" id="L42">            cell.setCellValue(Header.get(i));</span>
+<span class="fc" id="L45">        Row headerRow = sheet.createRow(0);</span>
+<span class="fc bfc" id="L46" title="All 2 branches covered.">        for (int i = 0; i &lt; Header.size(); i++) {</span>
+<span class="fc" id="L47">            Cell cell = headerRow.createCell(i);</span>
+<span class="fc" id="L48">            cell.setCellValue(Header.get(i));</span>
         }
 
         // write data
-<span class="fc" id="L46">        int rowNum = 1;</span>
-<span class="fc bfc" id="L47" title="All 2 branches covered.">        for (List&lt;String&gt; row : data) {</span>
-<span class="fc" id="L48">            Row dataRow = sheet.createRow(rowNum++);</span>
-<span class="fc bfc" id="L49" title="All 2 branches covered.">            for (int i = 0; i &lt; row.size(); i++) {</span>
-<span class="fc" id="L50">                Cell cell = dataRow.createCell(i);</span>
-<span class="fc" id="L51">                cell.setCellValue(row.get(i));</span>
+<span class="fc" id="L52">        int rowNum = 1;</span>
+<span class="fc bfc" id="L53" title="All 2 branches covered.">        for (List&lt;String&gt; row : data) {</span>
+<span class="fc" id="L54">            Row dataRow = sheet.createRow(rowNum++);</span>
+<span class="fc bfc" id="L55" title="All 2 branches covered.">            for (int i = 0; i &lt; row.size(); i++) {</span>
+<span class="fc" id="L56">                Cell cell = dataRow.createCell(i);</span>
+<span class="fc" id="L57">                cell.setCellValue(row.get(i));</span>
             }
-<span class="fc" id="L53">        }</span>
+<span class="fc" id="L59">        }</span>
+<span class="fc" id="L60">        XSSFDrawing drawing = sheet.createDrawingPatriarch();</span>
+<span class="fc" id="L61">        XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 4, 7, 26);</span>
+<span class="fc" id="L62">        XSSFChart chart = drawing.createChart(anchor);</span>
+<span class="fc" id="L63">        chart.setTitleText(&quot;Chart Title&quot;);</span>
+<span class="fc" id="L64">        chart.setTitleOverlay(false);</span>
+<span class="fc" id="L65">        XDDFChartLegend legend = chart.getOrAddLegend();</span>
+<span class="fc" id="L66">        legend.setPosition(LegendPosition.TOP_RIGHT);</span>
+<span class="fc" id="L67">        XDDFCategoryAxis bottomAxis = chart.createCategoryAxis(AxisPosition.BOTTOM);</span>
+<span class="fc" id="L68">        bottomAxis.setTitle(&quot;Country&quot;);</span>
+<span class="fc" id="L69">        XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);</span>
+<span class="fc" id="L70">        leftAxis.setTitle(&quot;Area &amp; Population&quot;);</span>
+<span class="fc" id="L71">        XDDFDataSource&lt;String&gt; countries = XDDFDataSourcesFactory.fromStringCellRange(sheet,</span>
+                new CellRangeAddress(0, 0, 0, 6));
+<span class="fc" id="L73">        XDDFNumericalDataSource&lt;Double&gt; area = XDDFDataSourcesFactory.fromNumericCellRange(sheet,</span>
+                new CellRangeAddress(1, 1, 0, 6));
+<span class="fc" id="L75">        XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);</span>
+<span class="fc" id="L76">        XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(countries, area);</span>
+<span class="fc" id="L77">        series1.setTitle(&quot;Area&quot;, null);</span>
+<span class="fc" id="L78">        series1.setSmooth(false);</span>
+<span class="fc" id="L79">        series1.setMarkerStyle(MarkerStyle.STAR);</span>
 
+<span class="fc" id="L81">        chart.plot(Chartdata);</span>
         // write workbook to file
-<span class="fc" id="L56">        try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + &quot;.xlsx&quot;))) {</span>
-<span class="fc" id="L57">            workbook.write(outputStream);</span>
+<span class="fc" id="L83">        try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + &quot;.xlsx&quot;))) {</span>
+<span class="fc" id="L84">            workbook.write(outputStream);</span>
         }
-<span class="fc" id="L59">    }</span>
+<span class="fc" id="L86">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
