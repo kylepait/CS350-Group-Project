@@ -374,6 +374,11 @@ public class Main {
             }
 
             int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
+
+            if (projectedEnrollment > sectionMaxEnrollment)
+            {
+                projectedEnrollment = sectionMaxEnrollment;
+            }
         }
     }
     */
