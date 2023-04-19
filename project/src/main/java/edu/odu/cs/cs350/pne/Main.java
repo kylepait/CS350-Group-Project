@@ -340,7 +340,7 @@ public class Main {
                     + Character.toString(semester.getSemesterCode().charAt(2))
                     + Character.toString(semester.getSemesterCode().charAt(3));
             ExcelHeader.add("d historical");
-            ExcelHeader.add(Semester + " " + Year);
+            ExcelHeader.add(SemesterNameSSF.get(Semester) + " " + Year);
         }
         ExcelHeader.add("d current");
         history = PreviousSemestersData.get(PreviousSemestersData.size() - 1);
@@ -351,7 +351,7 @@ public class Main {
                 + Character.toString(semester.getSemesterCode().charAt(1))
                 + Character.toString(semester.getSemesterCode().charAt(2))
                 + Character.toString(semester.getSemesterCode().charAt(3));
-        ExcelHeader.add(Semester + " " + Year);
+        ExcelHeader.add(SemesterNameSSF.get(Semester) + " " + Year);
         ExcelHeader.add("d projected");
         ExcelHeader.add("Projected");
         return ExcelHeader;

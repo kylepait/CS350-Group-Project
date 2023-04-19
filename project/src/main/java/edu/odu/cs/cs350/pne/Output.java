@@ -68,16 +68,18 @@ public class Output {
         bottomAxis.setTitle("Country");
         XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);
         leftAxis.setTitle("Area & Population");
-        XDDFDataSource<String> countries = XDDFDataSourcesFactory.fromStringCellRange(sheet,
-                new CellRangeAddress(0, 0, 0, 6));
-        XDDFNumericalDataSource<Double> area = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-                new CellRangeAddress(1, 1, 0, 6));
         XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
-        XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(countries, area);
-        series1.setTitle("Area", null);
-        series1.setSmooth(false);
-        series1.setMarkerStyle(MarkerStyle.STAR);
+        for (int i = 0; i < Header.size() / 2; i++) {
+            XDDFDataSource<String> passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,
+                    new CellRangeAddress(1, data.size(), i * 2, i * 2));
+            XDDFNumericalDataSource<Double> students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
+                    new CellRangeAddress(1, data.size(), i * 2 + 1, i * 2 + 1));
+            XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed, students);
+            series1.setTitle(Header.get(i * 2 + 1), null);
+            series1.setSmooth(false);
+            series1.setMarkerStyle(MarkerStyle.STAR);
 
+        }
         chart.plot(Chartdata);
         // write workbook to file
         try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + ".xlsx"))) {
