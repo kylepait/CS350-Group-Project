@@ -362,7 +362,10 @@ public class Main {
         int totalEnrollment = offering.getEnrollment();
         int totalMaxEnrollment = offering.getMaxEnrollment();
 
-        
+        for (Section section : offering.getSection())
+        {
+
+        }
     }
     */
 }
