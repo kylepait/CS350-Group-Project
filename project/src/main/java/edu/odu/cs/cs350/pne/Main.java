@@ -99,6 +99,9 @@ public class Main {
         }
         List<List<String>> TestDataList = new ArrayList<>();
         List<String> TestData = new ArrayList<>();
+        for (int i = 0; i < PreviousSemestersData.size(); i++) {
+            History history = PreviousSemestersData.get(i);
+        }
         for (int i = 0; i < ExcelHeader.size(); i++) {
             TestData.add("0");
         }

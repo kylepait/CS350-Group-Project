@@ -12,7 +12,13 @@ import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
 import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.WorkbookFactory;
+import org.apache.poi.xssf.usermodel.XSSFChart;
+import org.apache.poi.xssf.usermodel.XSSFClientAnchor;
+import org.apache.poi.xssf.usermodel.XSSFDrawing;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xddf.usermodel.chart.*;
+import org.apache.poi.ss.util.CellRangeAddress;
 
 public class Output {
     private static final String FILENAME = "output.txt";
@@ -33,7 +39,7 @@ public class Output {
 
     public static void outputToExcel(List<String> Header, List<List<String>> data, String Filename) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook();
-        Sheet sheet = workbook.createSheet(SHEETNAME);
+        XSSFSheet sheet = workbook.createSheet(SHEETNAME);
 
         // write headers
         Row headerRow = sheet.createRow(0);
@@ -51,7 +57,28 @@ public class Output {
                 cell.setCellValue(row.get(i));
             }
         }
+        XSSFDrawing drawing = sheet.createDrawingPatriarch();
+        XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 4, 7, 26);
+        XSSFChart chart = drawing.createChart(anchor);
+        chart.setTitleText("Chart Title");
+        chart.setTitleOverlay(false);
+        XDDFChartLegend legend = chart.getOrAddLegend();
+        legend.setPosition(LegendPosition.TOP_RIGHT);
+        XDDFCategoryAxis bottomAxis = chart.createCategoryAxis(AxisPosition.BOTTOM);
+        bottomAxis.setTitle("Country");
+        XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);
+        leftAxis.setTitle("Area & Population");
+        XDDFDataSource<String> countries = XDDFDataSourcesFactory.fromStringCellRange(sheet,
+                new CellRangeAddress(0, 0, 0, 6));
+        XDDFNumericalDataSource<Double> area = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
+                new CellRangeAddress(1, 1, 0, 6));
+        XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
+        XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(countries, area);
+        series1.setTitle("Area", null);
+        series1.setSmooth(false);
+        series1.setMarkerStyle(MarkerStyle.STAR);
 
+        chart.plot(Chartdata);
         // write workbook to file
         try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + ".xlsx"))) {
             workbook.write(outputStream);
