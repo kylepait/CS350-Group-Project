@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2023-04-19T22:09:13.888">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2023-04-20T16:04:02.402">
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Main.java">
 <violation beginline="33" endline="51" begincolumn="9" endcolumn="73" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="ExcelHeader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
 Found 'DD'-anomaly for variable 'ExcelHeader' (lines '33'-'51').
@@ -192,17 +192,26 @@ Found 'DU'-anomaly for variable 'file' (lines '30'-'38').
 <violation beginline="41" endline="41" begincolumn="22" endcolumn="29" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="workbook" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this XSSFWorkbook object are closed after use
 </violation>
-<violation beginline="45" endline="88" begincolumn="13" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="headerRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'headerRow' (lines '45'-'88').
+<violation beginline="45" endline="103" begincolumn="13" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="headerRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'headerRow' (lines '45'-'103').
 </violation>
-<violation beginline="52" endline="88" begincolumn="13" endcolumn="22" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="rowNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'rowNum' (lines '52'-'88').
+<violation beginline="52" endline="63" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'CellNum' (lines '52'-'63').
 </violation>
-<violation beginline="54" endline="54" begincolumn="17" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="dataRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'dataRow' (lines '54'-'54').
+<violation beginline="52" endline="103" begincolumn="25" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'CellNum' (lines '52'-'103').
 </violation>
-<violation beginline="54" endline="88" begincolumn="17" endcolumn="51" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="dataRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'dataRow' (lines '54'-'88').
+<violation beginline="52" endline="103" begincolumn="13" endcolumn="22" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="rowNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'rowNum' (lines '52'-'103').
+</violation>
+<violation beginline="57" endline="59" begincolumn="17" endcolumn="45" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="dataRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'dataRow' (lines '57'-'59').
+</violation>
+<violation beginline="63" endline="63" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'CellNum' (lines '63'-'63').
+</violation>
+<violation beginline="63" endline="103" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'CellNum' (lines '63'-'103').
 </violation>
 </file>
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Section.java">
