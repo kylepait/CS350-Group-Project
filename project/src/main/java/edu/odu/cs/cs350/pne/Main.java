@@ -356,4 +356,35 @@ public class Main {
         ExcelHeader.add("Projected");
         return ExcelHeader;
     }
+    
+    public static int calculateProjectedEnrollment(Offering offering)
+    {
+        int totalEnrollment = offering.getEnrollment();
+        int totalMaxEnrollment = offering.getMaxEnrollment();
+
+        for (Section section : offering.getSection())
+        {
+            int sectionEnrollment = section.getEnrollments();
+            int sectionSeatsRemaining = section.getSeatsRemaining();
+            int sectionMaxEnrollment = section.getCrossListCap();
+
+            if (sectionMaxEnrollment == 0)
+            {
+                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;
+            }
+
+            int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
+
+            if (projectedEnrollment > sectionMaxEnrollment)
+            {
+                projectedEnrollment = sectionMaxEnrollment;
+            }
+
+            totalEnrollment += projectedEnrollment - sectionEnrollment;
+            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;
+        }
+
+        return totalEnrollment;
+    }
+    
 }
