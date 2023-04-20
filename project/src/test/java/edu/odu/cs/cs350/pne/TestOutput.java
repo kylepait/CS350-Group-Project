@@ -52,16 +52,16 @@ public class TestOutput {
     public void testExcelOutput() throws IOException {
         // prep data
         List<List<String>> expectedOutput = new ArrayList<>();
-        List<List<String>> Data = new ArrayList<>();
+        List<List<Double>> Data = new ArrayList<>();
         List<String> Header = new ArrayList<>();
         Header.add("Column 1");
         Header.add("Column 2");
         Header.add("Column 3");
         Header.add("Column 4");
-        Data.add(Arrays.asList("Output"));
-        Data.add(Arrays.asList("to"));
-        Data.add(Arrays.asList("Excel"));
-        Data.add(Arrays.asList("test"));
+        Data.add(Arrays.asList(0.0));
+        Data.add(Arrays.asList(1.0));
+        Data.add(Arrays.asList(2.0));
+        Data.add(Arrays.asList(3.0));
         expectedOutput.add(Header);
         expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
 

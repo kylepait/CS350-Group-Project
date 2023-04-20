@@ -21,6 +21,7 @@ import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
@@ -33,7 +34,7 @@ public class Main {
         List<String> ExcelHeader = new ArrayList<>();
         List<List<String>> TextOutput = new ArrayList<>();
         String Header1, Header2;
-        Float ProjectionSemesterPassed;
+        Double ProjectionSemesterPassed;
         PreviousSemestersData = new ArrayList<History>();
         Date = new ArrayList<LocalDate>();
         // DataImport instance = new DataImport();
@@ -97,28 +98,53 @@ public class Main {
              * }
              */
         }
-        List<List<String>> TestDataList = new ArrayList<>();
+        List<List<Double>> TestDataList = new ArrayList<>();
         List<String> TestData = new ArrayList<>();
-        List<List<String>> PercentPassed = new ArrayList<>();
+        List<List<Double>> PercentPassed = new ArrayList<>();
+        List<Hashtable<String, List<Double>>> SemesterEnrl = new ArrayList<>();
         for (int i = 0; i < PreviousSemestersData.size(); i++) {
             History history = PreviousSemestersData.get(i);
             int RegPeriodLength = new Main().DaysBetween(history.getStartDate(), history.getEndDate());
-            List<String> Dates = new ArrayList<>();
+            List<Double> Dates = new ArrayList<>();
+            Hashtable<String, List<Double>> CRSEEnrl = new Hashtable<String, List<Double>>();
             for (int j = 0; j < history.getSemester().size(); j++) {
                 int Passed = new Main().DaysBetween(history.getStartDate(), history.getSnapShotByIndex(j));
-                float PercentSemesPassed = new Main().GetPercentagePassed(RegPeriodLength, Passed);
-                Dates.add(String.valueOf(PercentSemesPassed));
+                Double PercentSemesPassed = new Main().GetPercentagePassed(RegPeriodLength, Passed);
+                Dates.add(PercentSemesPassed);
                 semes = history.getSemesterByIndex(j);
+                Off = semes.getOfferingList();
+                for (int k = 0; k < Off.size(); k++) {
+                    String CRSE = Off.get(k).getSUBJ() + Off.get(k).getCRSE();
+                    if (CRSEEnrl.containsKey(CRSE)) {
+                        List<Double> TempCRSEEnrl = new ArrayList<>();
+                        TempCRSEEnrl = CRSEEnrl.get(CRSE);
+                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
+                        CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                    } else {
+                        List<Double> TempCRSEEnrl = new ArrayList<>();
+                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
+                        CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                    }
+                }
             }
+            SemesterEnrl.add(CRSEEnrl);
             PercentPassed.add(Dates);
         }
         for (int i = 0; i < ExcelHeader.size(); i++) {
             TestData.add("0");
         }
-        TestDataList.add(TestData);
+
+        Enumeration enu = SemesterEnrl.get(0).keys();
+        String key = (String) enu.nextElement();
+        System.out.println(SemesterEnrl.get(1).get(key));
+        for (int i = 0; i < PercentPassed.size(); i++) {
+            TestDataList.add(PercentPassed.get(i));
+            List<String> TempCRSEEnrl = new ArrayList<>();
+            TestDataList.add(SemesterEnrl.get(i).get(key));
+        }
         try {
             Output.outputToTxt(Header1, Header2, TextOutput, "OutputTest");
-            Output.outputToExcel(ExcelHeader, PercentPassed, "ExcelOutput");
+            Output.outputToExcel(ExcelHeader, TestDataList, "ExcelOutput");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -322,13 +348,13 @@ public class Main {
         return DaysBetween;
     }
 
-    public float GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
-        float Passed;
-        Passed = (float) DaysRegistrationOpen / (float) RegistrationPeriodLength;
+    public Double GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
+        Double Passed;
+        Passed = Double.valueOf(DaysRegistrationOpen) / Double.valueOf(RegistrationPeriodLength);
         if (Passed < 0) {
-            Passed = 0;
+            Passed = 0.0;
         } else if (Passed > 1) {
-            Passed = 1;
+            Passed = 1.0;
         }
         return Passed;
     }

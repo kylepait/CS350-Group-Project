@@ -37,7 +37,7 @@ public class Output {
         }
     }
 
-    public static void outputToExcel(List<String> Header, List<List<String>> data, String Filename) throws IOException {
+    public static void outputToExcel(List<String> Header, List<List<Double>> data, String Filename) throws IOException {
         XSSFWorkbook workbook = new XSSFWorkbook();
         XSSFSheet sheet = workbook.createSheet(SHEETNAME);
 
@@ -51,14 +51,16 @@ public class Output {
         // write data
         int rowNum = 1, CellNum = 0;
         Row dataRow;
-        for (List<String> row : data) {
-            for (int i = 0; i < row.size(); i++) {
-                if (i + 1 >= rowNum) {
-                    dataRow = sheet.createRow(rowNum++);
+        for (List<Double> row : data) {
+            if (row != null) {
+                for (int i = 0; i < row.size(); i++) {
+                    if (i + 1 >= rowNum) {
+                        dataRow = sheet.createRow(rowNum++);
+                    }
+                    dataRow = sheet.getRow(i + 1);
+                    Cell cell = dataRow.createCell(CellNum);
+                    cell.setCellValue(row.get(i));
                 }
-                dataRow = sheet.getRow(i + 1);
-                Cell cell = dataRow.createCell(CellNum);
-                cell.setCellValue(row.get(i));
             }
             CellNum++;
         }
@@ -85,15 +87,16 @@ public class Output {
         leftAxis.setTitle("Area & Population");
         XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
         for (int i = 0; i < data.size() / 2; i++) {
-            XDDFDataSource<String> passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,
-                    new CellRangeAddress(1, data.get(i).size(), i * 2, i * 2));
-            XDDFNumericalDataSource<Double> students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-                    new CellRangeAddress(1, data.get(i + 1).size(), i * 2 + 1, i * 2 + 1));
-            XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed, students);
-            series1.setTitle(Header.get(i * 2 + 1), null);
-            series1.setSmooth(false);
-            series1.setMarkerStyle(MarkerStyle.STAR);
-
+            if ((data.get(i) != null) || (data.get(i + 1) != null)) {
+                XDDFDataSource<String> passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,
+                        new CellRangeAddress(1, data.get(i).size(), i * 2, i * 2));
+                XDDFNumericalDataSource<Double> students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
+                        new CellRangeAddress(1, data.get(i + 1).size(), i * 2 + 1, i * 2 + 1));
+                XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed, students);
+                series1.setTitle(Header.get(i * 2 + 1), null);
+                series1.setSmooth(false);
+                series1.setMarkerStyle(MarkerStyle.STAR);
+            }
         }
         chart.plot(Chartdata);
         // write workbook to file
