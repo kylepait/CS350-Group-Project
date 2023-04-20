@@ -1,194 +1,197 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2023-04-20T18:14:29.045">
+<pmd xmlns="http://pmd.sourceforge.net/report/2.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://pmd.sourceforge.net/report/2.0.0 http://pmd.sourceforge.net/report_2_0_0.xsd" version="6.48.0" timestamp="2023-04-20T19:54:39.745">
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Main.java">
-<violation beginline="33" endline="51" begincolumn="9" endcolumn="73" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="ExcelHeader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'ExcelHeader' (lines '33'-'51').
+<violation beginline="34" endline="52" begincolumn="9" endcolumn="73" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="ExcelHeader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'ExcelHeader' (lines '34'-'52').
 </violation>
-<violation beginline="33" endline="126" begincolumn="22" endcolumn="52" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="ExcelHeader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'ExcelHeader' (lines '33'-'126').
+<violation beginline="34" endline="152" begincolumn="22" endcolumn="52" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="ExcelHeader" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'ExcelHeader' (lines '34'-'152').
 </violation>
-<violation beginline="34" endline="126" begincolumn="28" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="TextOutput" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'TextOutput' (lines '34'-'126').
+<violation beginline="35" endline="152" begincolumn="28" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="TextOutput" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'TextOutput' (lines '35'-'152').
 </violation>
-<violation beginline="37" endline="126" begincolumn="9" endcolumn="56" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="PreviousSemestersData" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'PreviousSemestersData' (lines '37'-'126').
+<violation beginline="38" endline="152" begincolumn="9" endcolumn="56" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="PreviousSemestersData" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'PreviousSemestersData' (lines '38'-'152').
 </violation>
-<violation beginline="38" endline="126" begincolumn="9" endcolumn="41" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="Date" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'Date' (lines '38'-'126').
+<violation beginline="39" endline="152" begincolumn="9" endcolumn="41" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="Date" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'Date' (lines '39'-'152').
 </violation>
-<violation beginline="105" endline="105" begincolumn="17" endcolumn="102" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="RegPeriodLength" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'RegPeriodLength' (lines '105'-'105').
+<violation beginline="102" endline="152" begincolumn="22" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="TestData" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'TestData' (lines '102'-'152').
 </violation>
-<violation beginline="105" endline="126" begincolumn="17" endcolumn="102" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="RegPeriodLength" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'RegPeriodLength' (lines '105'-'126').
+<violation beginline="107" endline="152" begincolumn="17" endcolumn="102" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="RegPeriodLength" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'RegPeriodLength' (lines '107'-'152').
 </violation>
-<violation beginline="111" endline="111" begincolumn="17" endcolumn="53" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="semes" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'semes' (lines '111'-'111').
+<violation beginline="119" endline="120" begincolumn="25" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="TempCRSEEnrl" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'TempCRSEEnrl' (lines '119'-'120').
 </violation>
-<violation beginline="111" endline="126" begincolumn="17" endcolumn="53" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="semes" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'semes' (lines '111'-'126').
+<violation beginline="142" endline="142" begincolumn="26" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="TempCRSEEnrl" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'TempCRSEEnrl' (lines '142'-'142').
 </violation>
-<violation beginline="133" endline="174" begincolumn="21" endcolumn="63" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Date" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'Date' (lines '133'-'174').
+<violation beginline="142" endline="152" begincolumn="26" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="main" variable="TempCRSEEnrl" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'TempCRSEEnrl' (lines '142'-'152').
 </violation>
-<violation beginline="140" endline="140" begincolumn="17" endcolumn="31" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ScannerContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="159" endline="200" begincolumn="21" endcolumn="63" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Date" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'Date' (lines '159'-'200').
+</violation>
+<violation beginline="166" endline="166" begincolumn="17" endcolumn="31" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ScannerContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this Scanner object are closed after use
 </violation>
-<violation beginline="140" endline="318" begincolumn="17" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ScannerContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'ScannerContents' (lines '140'-'318').
+<violation beginline="166" endline="344" begincolumn="17" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ScannerContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'ScannerContents' (lines '166'-'344').
 </violation>
-<violation beginline="141" endline="318" begincolumn="17" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ParsedOne" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'ParsedOne' (lines '141'-'318').
+<violation beginline="167" endline="344" begincolumn="17" endcolumn="33" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ParsedOne" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'ParsedOne' (lines '167'-'344').
 </violation>
-<violation beginline="142" endline="148" begincolumn="17" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="DatesTxtExists" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'DatesTxtExists' (lines '142'-'148').
+<violation beginline="168" endline="174" begincolumn="17" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="DatesTxtExists" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'DatesTxtExists' (lines '168'-'174').
 </violation>
-<violation beginline="148" endline="148" begincolumn="17" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="DatesTxtExists" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'DatesTxtExists' (lines '148'-'148').
+<violation beginline="174" endline="174" begincolumn="17" endcolumn="37" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="DatesTxtExists" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'DatesTxtExists' (lines '174'-'174').
 </violation>
-<violation beginline="150" endline="150" begincolumn="29" endcolumn="30" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sc" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="176" endline="176" begincolumn="29" endcolumn="30" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sc" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this Scanner object are closed after use
 </violation>
-<violation beginline="150" endline="151" begincolumn="21" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sc" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'sc' (lines '150'-'151').
+<violation beginline="176" endline="177" begincolumn="21" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sc" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'sc' (lines '176'-'177').
 </violation>
-<violation beginline="152" endline="152" begincolumn="34" endcolumn="56" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sb" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'sb' (lines '152'-'152').
+<violation beginline="178" endline="178" begincolumn="34" endcolumn="56" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sb" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'sb' (lines '178'-'178').
 </violation>
-<violation beginline="152" endline="318" begincolumn="34" endcolumn="56" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sb" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'sb' (lines '152'-'318').
+<violation beginline="178" endline="344" begincolumn="34" endcolumn="56" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="sb" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sb' (lines '178'-'344').
 </violation>
-<violation beginline="170" endline="177" begincolumn="25" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="NumSnapshots" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'NumSnapshots' (lines '170'-'177').
+<violation beginline="196" endline="203" begincolumn="25" endcolumn="38" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="NumSnapshots" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'NumSnapshots' (lines '196'-'203').
 </violation>
-<violation beginline="173" endline="173" begincolumn="45" endcolumn="45" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="199" endline="199" begincolumn="45" endcolumn="45" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="187" endline="187" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="213" endline="213" begincolumn="32" endcolumn="32" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="190" endline="200" begincolumn="21" endcolumn="50" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="HitLastRegistrationDate" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'HitLastRegistrationDate' (lines '190'-'200').
+<violation beginline="216" endline="226" begincolumn="21" endcolumn="50" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="HitLastRegistrationDate" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'HitLastRegistrationDate' (lines '216'-'226').
 </violation>
-<violation beginline="202" endline="202" begincolumn="45" endcolumn="45" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="228" endline="228" begincolumn="45" endcolumn="45" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="214" endline="214" begincolumn="32" endcolumn="38" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="CSVFile" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="240" endline="240" begincolumn="32" endcolumn="38" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="CSVFile" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this Reader object are closed after use
 </violation>
-<violation beginline="216" endline="216" begincolumn="35" endcolumn="40" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="parser" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
+<violation beginline="242" endline="242" begincolumn="35" endcolumn="40" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="parser" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this CSVParser object are closed after use
 </violation>
-<violation beginline="223" endline="297" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'LastSUBJ' (lines '223'-'297').
+<violation beginline="249" endline="323" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'LastSUBJ' (lines '249'-'323').
 </violation>
-<violation beginline="227" endline="285" begincolumn="37" endcolumn="114" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'section' (lines '227'-'285').
+<violation beginline="253" endline="311" begincolumn="37" endcolumn="114" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'section' (lines '253'-'311').
 </violation>
-<violation beginline="227" endline="289" begincolumn="33" endcolumn="110" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'section' (lines '227'-'289').
+<violation beginline="253" endline="315" begincolumn="33" endcolumn="110" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'section' (lines '253'-'315').
 </violation>
-<violation beginline="227" endline="318" begincolumn="33" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'section' (lines '227'-'318').
+<violation beginline="253" endline="344" begincolumn="33" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="section" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'section' (lines '253'-'344').
 </violation>
-<violation beginline="231" endline="318" begincolumn="37" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'OfferingMatch' (lines '231'-'318').
+<violation beginline="257" endline="344" begincolumn="37" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'OfferingMatch' (lines '257'-'344').
 </violation>
-<violation beginline="233" endline="233" begincolumn="33" endcolumn="74" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Seats" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'Seats' (lines '233'-'233').
+<violation beginline="259" endline="259" begincolumn="33" endcolumn="74" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Seats" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'Seats' (lines '259'-'259').
 </violation>
-<violation beginline="233" endline="318" begincolumn="33" endcolumn="74" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Seats" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'Seats' (lines '233'-'318').
+<violation beginline="259" endline="344" begincolumn="33" endcolumn="74" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Seats" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'Seats' (lines '259'-'344').
 </violation>
-<violation beginline="234" endline="234" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="CRN" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'CRN' (lines '234'-'234').
+<violation beginline="260" endline="260" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="CRN" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'CRN' (lines '260'-'260').
 </violation>
-<violation beginline="234" endline="318" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="CRN" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'CRN' (lines '234'-'318').
+<violation beginline="260" endline="344" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="CRN" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'CRN' (lines '260'-'344').
 </violation>
-<violation beginline="237" endline="237" begincolumn="33" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="XListCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'XListCap' (lines '237'-'237').
+<violation beginline="263" endline="263" begincolumn="33" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="XListCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'XListCap' (lines '263'-'263').
 </violation>
-<violation beginline="237" endline="318" begincolumn="33" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="XListCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'XListCap' (lines '237'-'318').
+<violation beginline="263" endline="344" begincolumn="33" endcolumn="77" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="XListCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'XListCap' (lines '263'-'344').
 </violation>
-<violation beginline="238" endline="238" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ENR" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'ENR' (lines '238'-'238').
+<violation beginline="264" endline="264" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ENR" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'ENR' (lines '264'-'264').
 </violation>
-<violation beginline="238" endline="318" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ENR" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'ENR' (lines '238'-'318').
+<violation beginline="264" endline="344" begincolumn="33" endcolumn="72" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="ENR" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'ENR' (lines '264'-'344').
 </violation>
-<violation beginline="241" endline="241" begincolumn="36" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Instructor" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'Instructor' (lines '241'-'241').
+<violation beginline="267" endline="267" begincolumn="36" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Instructor" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'Instructor' (lines '267'-'267').
 </violation>
-<violation beginline="241" endline="318" begincolumn="36" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Instructor" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'Instructor' (lines '241'-'318').
+<violation beginline="267" endline="344" begincolumn="36" endcolumn="65" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="Instructor" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'Instructor' (lines '267'-'344').
 </violation>
-<violation beginline="245" endline="318" begincolumn="33" endcolumn="76" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OverallCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'OverallCap' (lines '245'-'318').
+<violation beginline="271" endline="344" begincolumn="33" endcolumn="76" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OverallCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'OverallCap' (lines '271'-'344').
 </violation>
-<violation beginline="247" endline="318" begincolumn="33" endcolumn="53" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OverallCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'OverallCap' (lines '247'-'318').
+<violation beginline="273" endline="344" begincolumn="33" endcolumn="53" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OverallCap" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'OverallCap' (lines '273'-'344').
 </violation>
-<violation beginline="249" endline="318" begincolumn="33" endcolumn="80" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OverallEnr" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'OverallEnr' (lines '249'-'318').
+<violation beginline="275" endline="344" begincolumn="33" endcolumn="80" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OverallEnr" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'OverallEnr' (lines '275'-'344').
 </violation>
-<violation beginline="266" endline="276" begincolumn="45" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingInSemester" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'OfferingInSemester' (lines '266'-'276').
+<violation beginline="292" endline="302" begincolumn="45" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingInSemester" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'OfferingInSemester' (lines '292'-'302').
 </violation>
-<violation beginline="275" endline="231" begincolumn="37" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'OfferingMatch' (lines '275'-'231').
+<violation beginline="301" endline="257" begincolumn="37" endcolumn="57" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'OfferingMatch' (lines '301'-'257').
 </violation>
-<violation beginline="275" endline="275" begincolumn="45" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'OfferingMatch' (lines '275'-'275').
+<violation beginline="301" endline="301" begincolumn="45" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'OfferingMatch' (lines '301'-'301').
 </violation>
-<violation beginline="275" endline="318" begincolumn="45" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'OfferingMatch' (lines '275'-'318').
+<violation beginline="301" endline="344" begincolumn="45" endcolumn="64" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingMatch" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'OfferingMatch' (lines '301'-'344').
 </violation>
-<violation beginline="276" endline="276" begincolumn="45" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingInSemester" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'OfferingInSemester' (lines '276'-'276').
+<violation beginline="302" endline="302" begincolumn="45" endcolumn="69" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="OfferingInSemester" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'OfferingInSemester' (lines '302'-'302').
 </violation>
-<violation beginline="277" endline="277" begincolumn="45" endcolumn="58" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="offering" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'offering' (lines '277'-'277').
+<violation beginline="303" endline="303" begincolumn="45" endcolumn="58" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="offering" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'offering' (lines '303'-'303').
 </violation>
-<violation beginline="283" endline="283" begincolumn="50" endcolumn="50" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="309" endline="309" begincolumn="50" endcolumn="50" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="284" endline="284" begincolumn="55" endcolumn="57" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="310" endline="310" begincolumn="55" endcolumn="57" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="293" endline="221" begincolumn="32" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastCRSE" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'LastCRSE' (lines '293'-'221').
+<violation beginline="319" endline="247" begincolumn="32" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastCRSE" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'LastCRSE' (lines '319'-'247').
 </violation>
-<violation beginline="293" endline="318" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastCRSE" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'LastCRSE' (lines '293'-'318').
+<violation beginline="319" endline="344" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastCRSE" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'LastCRSE' (lines '319'-'344').
 </violation>
-<violation beginline="296" endline="222" begincolumn="32" endcolumn="50" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastXListGroup" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'LastXListGroup' (lines '296'-'222').
+<violation beginline="322" endline="248" begincolumn="32" endcolumn="50" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastXListGroup" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'LastXListGroup' (lines '322'-'248').
 </violation>
-<violation beginline="296" endline="318" begincolumn="29" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastXListGroup" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'LastXListGroup' (lines '296'-'318').
+<violation beginline="322" endline="344" begincolumn="29" endcolumn="55" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastXListGroup" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'LastXListGroup' (lines '322'-'344').
 </violation>
-<violation beginline="297" endline="223" begincolumn="32" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'LastSUBJ' (lines '297'-'223').
+<violation beginline="323" endline="249" begincolumn="32" endcolumn="44" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'LastSUBJ' (lines '323'-'249').
 </violation>
-<violation beginline="297" endline="297" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'LastSUBJ' (lines '297'-'297').
+<violation beginline="323" endline="323" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'LastSUBJ' (lines '323'-'323').
 </violation>
-<violation beginline="297" endline="318" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'LastSUBJ' (lines '297'-'318').
+<violation beginline="323" endline="344" begincolumn="29" endcolumn="43" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetFileContents" variable="LastSUBJ" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'LastSUBJ' (lines '323'-'344').
 </violation>
-<violation beginline="330" endline="330" begincolumn="29" endcolumn="29" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetPercentagePassed" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
+<violation beginline="356" endline="356" begincolumn="29" endcolumn="29" rule="AvoidLiteralsInIfCondition" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="GetPercentagePassed" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#avoidliteralsinifcondition" priority="3">
 Avoid using Literals in Conditional Statements
 </violation>
-<violation beginline="373" endline="396" begincolumn="13" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="totalMaxEnrollment" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'totalMaxEnrollment' (lines '373'-'396').
+<violation beginline="399" endline="422" begincolumn="13" endcolumn="60" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="totalMaxEnrollment" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'totalMaxEnrollment' (lines '399'-'422').
 </violation>
-<violation beginline="377" endline="377" begincolumn="17" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="sectionSeatsRemaining" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'sectionSeatsRemaining' (lines '377'-'377').
+<violation beginline="403" endline="403" begincolumn="17" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="sectionSeatsRemaining" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'sectionSeatsRemaining' (lines '403'-'403').
 </violation>
-<violation beginline="377" endline="396" begincolumn="17" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="sectionSeatsRemaining" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'sectionSeatsRemaining' (lines '377'-'396').
+<violation beginline="403" endline="422" begincolumn="17" endcolumn="67" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Main" method="calculateProjectedEnrollment" variable="sectionSeatsRemaining" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'sectionSeatsRemaining' (lines '403'-'422').
 </violation>
 </file>
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Output.java">
@@ -198,26 +201,26 @@ Found 'DU'-anomaly for variable 'file' (lines '30'-'38').
 <violation beginline="41" endline="41" begincolumn="22" endcolumn="29" rule="CloseResource" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="workbook" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#closeresource" priority="3">
 Ensure that resources like this XSSFWorkbook object are closed after use
 </violation>
-<violation beginline="45" endline="103" begincolumn="13" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="headerRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'headerRow' (lines '45'-'103').
+<violation beginline="45" endline="106" begincolumn="13" endcolumn="42" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="headerRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'headerRow' (lines '45'-'106').
 </violation>
-<violation beginline="52" endline="63" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'CellNum' (lines '52'-'63').
+<violation beginline="52" endline="65" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'CellNum' (lines '52'-'65').
 </violation>
-<violation beginline="52" endline="103" begincolumn="25" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'CellNum' (lines '52'-'103').
+<violation beginline="52" endline="106" begincolumn="25" endcolumn="35" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'CellNum' (lines '52'-'106').
 </violation>
-<violation beginline="52" endline="103" begincolumn="13" endcolumn="22" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="rowNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'rowNum' (lines '52'-'103').
+<violation beginline="52" endline="106" begincolumn="13" endcolumn="22" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="rowNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'rowNum' (lines '52'-'106').
 </violation>
-<violation beginline="57" endline="59" begincolumn="17" endcolumn="45" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="dataRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'dataRow' (lines '57'-'59').
+<violation beginline="58" endline="60" begincolumn="21" endcolumn="49" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="dataRow" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'dataRow' (lines '58'-'60').
 </violation>
-<violation beginline="63" endline="63" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DD'-anomaly for variable 'CellNum' (lines '63'-'63').
+<violation beginline="65" endline="65" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DD'-anomaly for variable 'CellNum' (lines '65'-'65').
 </violation>
-<violation beginline="63" endline="103" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
-Found 'DU'-anomaly for variable 'CellNum' (lines '63'-'103').
+<violation beginline="65" endline="106" begincolumn="13" endcolumn="21" rule="DataflowAnomalyAnalysis" ruleset="Error Prone" package="edu.odu.cs.cs350.pne" class="Output" method="outputToExcel" variable="CellNum" externalInfoUrl="https://pmd.github.io/pmd-6.48.0/pmd_rules_java_errorprone.html#dataflowanomalyanalysis" priority="5">
+Found 'DU'-anomaly for variable 'CellNum' (lines '65'-'106').
 </violation>
 </file>
 <file name="/home/runner/work/CS350-Group-Project/CS350-Group-Project/project/src/main/java/edu/odu/cs/cs350/pne/Section.java">

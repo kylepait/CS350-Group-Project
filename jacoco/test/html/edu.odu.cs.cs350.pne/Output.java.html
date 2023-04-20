@@ -37,7 +37,7 @@ import org.apache.poi.ss.util.CellRangeAddress;
         }
 <span class="fc" id="L38">    }</span>
 
-    public static void outputToExcel(List&lt;String&gt; Header, List&lt;List&lt;String&gt;&gt; data, String Filename) throws IOException {
+    public static void outputToExcel(List&lt;String&gt; Header, List&lt;List&lt;Double&gt;&gt; data, String Filename) throws IOException {
 <span class="fc" id="L41">        XSSFWorkbook workbook = new XSSFWorkbook();</span>
 <span class="fc" id="L42">        XSSFSheet sheet = workbook.createSheet(SHEETNAME);</span>
 
@@ -51,17 +51,19 @@ import org.apache.poi.ss.util.CellRangeAddress;
         // write data
 <span class="fc" id="L52">        int rowNum = 1, CellNum = 0;</span>
         Row dataRow;
-<span class="fc bfc" id="L54" title="All 2 branches covered.">        for (List&lt;String&gt; row : data) {</span>
-<span class="fc bfc" id="L55" title="All 2 branches covered.">            for (int i = 0; i &lt; row.size(); i++) {</span>
-<span class="fc bfc" id="L56" title="All 2 branches covered.">                if (i + 1 &gt;= rowNum) {</span>
-<span class="fc" id="L57">                    dataRow = sheet.createRow(rowNum++);</span>
+<span class="fc bfc" id="L54" title="All 2 branches covered.">        for (List&lt;Double&gt; row : data) {</span>
+<span class="pc bpc" id="L55" title="1 of 2 branches missed.">            if (row != null) {</span>
+<span class="fc bfc" id="L56" title="All 2 branches covered.">                for (int i = 0; i &lt; row.size(); i++) {</span>
+<span class="fc bfc" id="L57" title="All 2 branches covered.">                    if (i + 1 &gt;= rowNum) {</span>
+<span class="fc" id="L58">                        dataRow = sheet.createRow(rowNum++);</span>
+                    }
+<span class="fc" id="L60">                    dataRow = sheet.getRow(i + 1);</span>
+<span class="fc" id="L61">                    Cell cell = dataRow.createCell(CellNum);</span>
+<span class="fc" id="L62">                    cell.setCellValue(row.get(i));</span>
                 }
-<span class="fc" id="L59">                dataRow = sheet.getRow(i + 1);</span>
-<span class="fc" id="L60">                Cell cell = dataRow.createCell(CellNum);</span>
-<span class="fc" id="L61">                cell.setCellValue(row.get(i));</span>
             }
-<span class="fc" id="L63">            CellNum++;</span>
-<span class="fc" id="L64">        }</span>
+<span class="fc" id="L65">            CellNum++;</span>
+<span class="fc" id="L66">        }</span>
         /*
          * int rowNum = 1;
          * for (List&lt;String&gt; row : data) {
@@ -72,34 +74,35 @@ import org.apache.poi.ss.util.CellRangeAddress;
          * }
          * }
          */
-<span class="fc" id="L75">        XSSFDrawing drawing = sheet.createDrawingPatriarch();</span>
-<span class="fc" id="L76">        XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, Header.size() + 1, 0, Header.size() + 8, 22);</span>
-<span class="fc" id="L77">        XSSFChart chart = drawing.createChart(anchor);</span>
-<span class="fc" id="L78">        chart.setTitleText(&quot;Chart Title&quot;);</span>
-<span class="fc" id="L79">        chart.setTitleOverlay(false);</span>
-<span class="fc" id="L80">        XDDFChartLegend legend = chart.getOrAddLegend();</span>
-<span class="fc" id="L81">        legend.setPosition(LegendPosition.TOP_RIGHT);</span>
-<span class="fc" id="L82">        XDDFCategoryAxis bottomAxis = chart.createCategoryAxis(AxisPosition.BOTTOM);</span>
-<span class="fc" id="L83">        bottomAxis.setTitle(&quot;Country&quot;);</span>
-<span class="fc" id="L84">        XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);</span>
-<span class="fc" id="L85">        leftAxis.setTitle(&quot;Area &amp; Population&quot;);</span>
-<span class="fc" id="L86">        XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);</span>
-<span class="fc bfc" id="L87" title="All 2 branches covered.">        for (int i = 0; i &lt; data.size() / 2; i++) {</span>
-<span class="fc" id="L88">            XDDFDataSource&lt;String&gt; passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,</span>
-<span class="fc" id="L89">                    new CellRangeAddress(1, data.get(i).size(), i * 2, i * 2));</span>
-<span class="fc" id="L90">            XDDFNumericalDataSource&lt;Double&gt; students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,</span>
-<span class="fc" id="L91">                    new CellRangeAddress(1, data.get(i + 1).size(), i * 2 + 1, i * 2 + 1));</span>
-<span class="fc" id="L92">            XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed, students);</span>
-<span class="fc" id="L93">            series1.setTitle(Header.get(i * 2 + 1), null);</span>
-<span class="fc" id="L94">            series1.setSmooth(false);</span>
-<span class="fc" id="L95">            series1.setMarkerStyle(MarkerStyle.STAR);</span>
-
+<span class="fc" id="L77">        XSSFDrawing drawing = sheet.createDrawingPatriarch();</span>
+<span class="fc" id="L78">        XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, Header.size() + 1, 0, Header.size() + 8, 22);</span>
+<span class="fc" id="L79">        XSSFChart chart = drawing.createChart(anchor);</span>
+<span class="fc" id="L80">        chart.setTitleText(&quot;Chart Title&quot;);</span>
+<span class="fc" id="L81">        chart.setTitleOverlay(false);</span>
+<span class="fc" id="L82">        XDDFChartLegend legend = chart.getOrAddLegend();</span>
+<span class="fc" id="L83">        legend.setPosition(LegendPosition.TOP_RIGHT);</span>
+<span class="fc" id="L84">        XDDFCategoryAxis bottomAxis = chart.createCategoryAxis(AxisPosition.BOTTOM);</span>
+<span class="fc" id="L85">        bottomAxis.setTitle(&quot;Country&quot;);</span>
+<span class="fc" id="L86">        XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);</span>
+<span class="fc" id="L87">        leftAxis.setTitle(&quot;Area &amp; Population&quot;);</span>
+<span class="fc" id="L88">        XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);</span>
+<span class="fc bfc" id="L89" title="All 2 branches covered.">        for (int i = 0; i &lt; data.size() / 2; i++) {</span>
+<span class="pc bpc" id="L90" title="3 of 4 branches missed.">            if ((data.get(i) != null) || (data.get(i + 1) != null)) {</span>
+<span class="fc" id="L91">                XDDFDataSource&lt;String&gt; passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,</span>
+<span class="fc" id="L92">                        new CellRangeAddress(1, data.get(i).size(), i * 2, i * 2));</span>
+<span class="fc" id="L93">                XDDFNumericalDataSource&lt;Double&gt; students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,</span>
+<span class="fc" id="L94">                        new CellRangeAddress(1, data.get(i + 1).size(), i * 2 + 1, i * 2 + 1));</span>
+<span class="fc" id="L95">                XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed, students);</span>
+<span class="fc" id="L96">                series1.setTitle(Header.get(i * 2 + 1), null);</span>
+<span class="fc" id="L97">                series1.setSmooth(false);</span>
+<span class="fc" id="L98">                series1.setMarkerStyle(MarkerStyle.STAR);</span>
+            }
         }
-<span class="fc" id="L98">        chart.plot(Chartdata);</span>
+<span class="fc" id="L101">        chart.plot(Chartdata);</span>
         // write workbook to file
-<span class="fc" id="L100">        try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + &quot;.xlsx&quot;))) {</span>
-<span class="fc" id="L101">            workbook.write(outputStream);</span>
+<span class="fc" id="L103">        try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + &quot;.xlsx&quot;))) {</span>
+<span class="fc" id="L104">            workbook.write(outputStream);</span>
         }
-<span class="fc" id="L103">    }</span>
+<span class="fc" id="L106">    }</span>
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
