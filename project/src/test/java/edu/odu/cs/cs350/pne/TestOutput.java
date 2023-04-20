@@ -11,6 +11,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Scanner;
 import static org.junit.Assert.*;
+import java.util.Hashtable;
 
 import org.apache.poi.ss.usermodel.Cell;
 import org.apache.poi.ss.usermodel.Row;
@@ -54,6 +55,7 @@ public class TestOutput {
         List<List<String>> expectedOutput = new ArrayList<>();
         List<List<Double>> Data = new ArrayList<>();
         List<String> Header = new ArrayList<>();
+        Hashtable<String, List<List<Double>>> HashData = new Hashtable<>();
         Header.add("Column 1");
         Header.add("Column 2");
         Header.add("Column 3");
@@ -62,11 +64,12 @@ public class TestOutput {
         Data.add(Arrays.asList(1.0));
         Data.add(Arrays.asList(2.0));
         Data.add(Arrays.asList(3.0));
+        HashData.put("Page1", Data);
         expectedOutput.add(Header);
-        expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
+        expectedOutput.add(Arrays.asList("0.0", "1.0", "2.0", "3.0"));
 
         // output to excel
-        Output.outputToExcel(Header, Data, "TestOutputFile");
+        Output.outputToExcel(Header, HashData, "TestOutputFile");
 
         // read from excel
         List<List<String>> actualOutput = new ArrayList<>();

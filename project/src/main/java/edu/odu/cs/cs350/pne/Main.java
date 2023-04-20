@@ -98,8 +98,6 @@ public class Main {
              * }
              */
         }
-        List<List<Double>> TestDataList = new ArrayList<>();
-        List<String> TestData = new ArrayList<>();
         List<List<Double>> PercentPassed = new ArrayList<>();
         List<Hashtable<String, List<Double>>> SemesterEnrl = new ArrayList<>();
         for (int i = 0; i < PreviousSemestersData.size(); i++) {
@@ -130,21 +128,21 @@ public class Main {
             SemesterEnrl.add(CRSEEnrl);
             PercentPassed.add(Dates);
         }
-        for (int i = 0; i < ExcelHeader.size(); i++) {
-            TestData.add("0");
-        }
-
-        Enumeration enu = SemesterEnrl.get(0).keys();
-        String key = (String) enu.nextElement();
-        System.out.println(SemesterEnrl.get(1).get(key));
-        for (int i = 0; i < PercentPassed.size(); i++) {
-            TestDataList.add(PercentPassed.get(i));
-            List<String> TempCRSEEnrl = new ArrayList<>();
-            TestDataList.add(SemesterEnrl.get(i).get(key));
+        Enumeration enu = SemesterEnrl.get(SemesterEnrl.size() - 1).keys();
+        String key;
+        Hashtable<String, List<List<Double>>> ExcelData = new Hashtable<>();
+        while (enu.hasMoreElements()) {
+            key = (String) enu.nextElement();
+            List<List<Double>> TestDataList = new ArrayList<>();
+            for (int i = 0; i < PercentPassed.size(); i++) {
+                TestDataList.add(PercentPassed.get(i));
+                TestDataList.add(SemesterEnrl.get(i).get(key));
+            }
+            ExcelData.put(key, TestDataList);
         }
         try {
             Output.outputToTxt(Header1, Header2, TextOutput, "OutputTest");
-            Output.outputToExcel(ExcelHeader, TestDataList, "ExcelOutput");
+            Output.outputToExcel(ExcelHeader, ExcelData, "ExcelOutput");
         } catch (IOException e) {
             e.printStackTrace();
         }
