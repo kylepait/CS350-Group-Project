@@ -70,7 +70,7 @@ public class Main {
             // System.out.println(CRSELst.get(j));
             String CRSE = Off.get(j).getSUBJ() + Off.get(j).getCRSE();
             String Enrollment = String.valueOf(Off.get(j).getEnrollment());
-            String Projection = "0";
+            String Projection = String.valueOf(calculateProjectedEnrollment(Off.get(j)));
             String MaxEnrollment = String.valueOf(Off.get(j).getMaxEnrollment());
             TextOutput.add(Arrays.asList(CRSE, Enrollment, Projection, MaxEnrollment));
             /*
@@ -99,18 +99,8 @@ public class Main {
         }
         List<List<String>> TestDataList = new ArrayList<>();
         List<String> TestData = new ArrayList<>();
-        List<List<String>> PercentPassed = new ArrayList<>();
         for (int i = 0; i < PreviousSemestersData.size(); i++) {
             History history = PreviousSemestersData.get(i);
-            int RegPeriodLength = new Main().DaysBetween(history.getStartDate(), history.getEndDate());
-            List<String> Dates = new ArrayList<>();
-            for (int j = 0; j < history.getSemester().size(); j++) {
-                int Passed = new Main().DaysBetween(history.getStartDate(), history.getSnapShotByIndex(j));
-                float PercentSemesPassed = new Main().GetPercentagePassed(RegPeriodLength, Passed);
-                Dates.add(String.valueOf(PercentSemesPassed));
-                semes = history.getSemesterByIndex(j);
-            }
-            PercentPassed.add(Dates);
         }
         for (int i = 0; i < ExcelHeader.size(); i++) {
             TestData.add("0");
@@ -118,7 +108,7 @@ public class Main {
         TestDataList.add(TestData);
         try {
             Output.outputToTxt(Header1, Header2, TextOutput, "OutputTest");
-            Output.outputToExcel(ExcelHeader, PercentPassed, "ExcelOutput");
+            Output.outputToExcel(ExcelHeader, TestDataList, "ExcelOutput");
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -366,24 +356,27 @@ public class Main {
         ExcelHeader.add("Projected");
         return ExcelHeader;
     }
-
-    public static int calculateProjectedEnrollment(Offering offering) {
+    
+    public static int calculateProjectedEnrollment(Offering offering)
+    {
         int totalEnrollment = offering.getEnrollment();
         int totalMaxEnrollment = offering.getMaxEnrollment();
 
-        for (Section section : offering.getSection()) {
+        for (Section section : offering.getSection())
+        {
             int sectionEnrollment = section.getEnrollments();
             int sectionSeatsRemaining = section.getSeatsRemaining();
             int sectionMaxEnrollment = section.getCrossListCap();
 
-            if (sectionMaxEnrollment == 0) {
+            if (sectionMaxEnrollment == 0)
+            {
                 sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;
             }
 
-            int projectedEnrollment = (int) Math
-                    .round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
+            int projectedEnrollment = (int) Math.round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
 
-            if (projectedEnrollment > sectionMaxEnrollment) {
+            if (projectedEnrollment > sectionMaxEnrollment)
+            {
                 projectedEnrollment = sectionMaxEnrollment;
             }
 
@@ -393,5 +386,5 @@ public class Main {
 
         return totalEnrollment;
     }
-
+    
 }
