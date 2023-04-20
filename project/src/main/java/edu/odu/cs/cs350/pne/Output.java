@@ -49,16 +49,31 @@ public class Output {
         }
 
         // write data
-        int rowNum = 1;
+        int rowNum = 1, CellNum = 0;
+        Row dataRow;
         for (List<String> row : data) {
-            Row dataRow = sheet.createRow(rowNum++);
             for (int i = 0; i < row.size(); i++) {
-                Cell cell = dataRow.createCell(i);
+                if (i + 1 >= rowNum) {
+                    dataRow = sheet.createRow(rowNum++);
+                }
+                dataRow = sheet.getRow(i + 1);
+                Cell cell = dataRow.createCell(CellNum);
                 cell.setCellValue(row.get(i));
             }
+            CellNum++;
         }
+        /*
+         * int rowNum = 1;
+         * for (List<String> row : data) {
+         * Row dataRow = sheet.createRow(rowNum++);
+         * for (int i = 0; i < row.size(); i++) {
+         * Cell cell = dataRow.createCell(i);
+         * cell.setCellValue(row.get(i));
+         * }
+         * }
+         */
         XSSFDrawing drawing = sheet.createDrawingPatriarch();
-        XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, 0, 4, 7, 26);
+        XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, Header.size() + 1, 0, Header.size() + 8, 22);
         XSSFChart chart = drawing.createChart(anchor);
         chart.setTitleText("Chart Title");
         chart.setTitleOverlay(false);
@@ -69,11 +84,11 @@ public class Output {
         XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);
         leftAxis.setTitle("Area & Population");
         XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
-        for (int i = 0; i < Header.size() / 2; i++) {
+        for (int i = 0; i < data.size() / 2; i++) {
             XDDFDataSource<String> passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,
-                    new CellRangeAddress(1, data.size(), i * 2, i * 2));
+                    new CellRangeAddress(1, data.get(i).size(), i * 2, i * 2));
             XDDFNumericalDataSource<Double> students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
-                    new CellRangeAddress(1, data.size(), i * 2 + 1, i * 2 + 1));
+                    new CellRangeAddress(1, data.get(i + 1).size(), i * 2 + 1, i * 2 + 1));
             XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed, students);
             series1.setTitle(Header.get(i * 2 + 1), null);
             series1.setSmooth(false);

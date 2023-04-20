@@ -58,7 +58,10 @@ public class TestOutput {
         Header.add("Column 2");
         Header.add("Column 3");
         Header.add("Column 4");
-        Data.add(Arrays.asList("Output", "to", "Excel", "test"));
+        Data.add(Arrays.asList("Output"));
+        Data.add(Arrays.asList("to"));
+        Data.add(Arrays.asList("Excel"));
+        Data.add(Arrays.asList("test"));
         expectedOutput.add(Header);
         expectedOutput.add(Arrays.asList("Output", "to", "Excel", "test"));
 
