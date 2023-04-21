@@ -16,10 +16,12 @@ import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVRecord;
 import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.Hashtable;
 import java.time.LocalDate;
 import java.util.List;
 import java.util.Objects;
 import java.time.temporal.ChronoUnit;
+import java.util.*;
 
 import java.io.PrintWriter;
 import java.io.FileNotFoundException;
@@ -29,9 +31,10 @@ public class Main {
     public static void main(String[] args) {
         ArrayList<History> PreviousSemestersData;
         ArrayList<LocalDate> Date;
+        List<String> ExcelHeader = new ArrayList<>();
         List<List<String>> TextOutput = new ArrayList<>();
         String Header1, Header2;
-        Float ProjectionSemesterPassed;
+        Double ProjectionSemesterPassed;
         PreviousSemestersData = new ArrayList<History>();
         Date = new ArrayList<LocalDate>();
         // DataImport instance = new DataImport();
@@ -46,6 +49,7 @@ public class Main {
                     e.printStackTrace();
                 }
         }
+        ExcelHeader = new Main().CreateExcelHeader(PreviousSemestersData);
         /// output contents to .txt file
         History ProjectionSemester = PreviousSemestersData.get(PreviousSemestersData.size() - 1);
         int SemesterLength = new Main().DaysBetween(ProjectionSemester.getStartDate(),
@@ -67,7 +71,7 @@ public class Main {
             // System.out.println(CRSELst.get(j));
             String CRSE = Off.get(j).getSUBJ() + Off.get(j).getCRSE();
             String Enrollment = String.valueOf(Off.get(j).getEnrollment());
-            String Projection = "0";
+            String Projection = String.valueOf(calculateProjectedEnrollment(Off.get(j)));
             String MaxEnrollment = String.valueOf(Off.get(j).getMaxEnrollment());
             TextOutput.add(Arrays.asList(CRSE, Enrollment, Projection, MaxEnrollment));
             /*
@@ -94,11 +98,69 @@ public class Main {
              * }
              */
         }
+        List<List<Double>> PercentPassed = new ArrayList<>();
+        List<Hashtable<String, List<Double>>> SemesterEnrl = new ArrayList<>();
+        for (int i = 0; i < PreviousSemestersData.size(); i++) {
+            History history = PreviousSemestersData.get(i);
+            int RegPeriodLength = new Main().DaysBetween(history.getStartDate(), history.getEndDate());
+            List<Double> Dates = new ArrayList<>();
+            Hashtable<String, List<Double>> CRSEEnrl = new Hashtable<String, List<Double>>();
+            for (int j = 0; j < history.getSemester().size(); j++) {
+                int Passed = new Main().DaysBetween(history.getStartDate(), history.getSnapShotByIndex(j));
+                Double PercentSemesPassed = new Main().GetPercentagePassed(RegPeriodLength, Passed);
+                Dates.add(PercentSemesPassed * 100.0);
+                semes = history.getSemesterByIndex(j);
+                Off = semes.getOfferingList();
+                Hashtable<String, Integer> DuplicateInSnapshot = new Hashtable<>();
+                for (int k = 0; k < Off.size(); k++) {
+                    String CRSE = Off.get(k).getSUBJ() + Off.get(k).getCRSE();
+                    if (CRSEEnrl.containsKey(CRSE)) {
+                        if (DuplicateInSnapshot.get(CRSE) != null) {
+                            List<Double> TempCRSEEnrl = new ArrayList<>();
+                            TempCRSEEnrl = CRSEEnrl.get(CRSE);
+                            Double CumulativeEnr = TempCRSEEnrl.get(TempCRSEEnrl.size() - 1);
+                            CumulativeEnr = CumulativeEnr + Double.valueOf(Off.get(k).getCurrentEnrollment());
+                            TempCRSEEnrl.remove(TempCRSEEnrl.size() - 1);
+                            TempCRSEEnrl.add(CumulativeEnr);
+                            CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                        } else {
+                            List<Double> TempCRSEEnrl = new ArrayList<>();
+                            TempCRSEEnrl = CRSEEnrl.get(CRSE);
+                            TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
+                            CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                            DuplicateInSnapshot.put(CRSE, 1);
+                        }
+
+                    } else {
+                        List<Double> TempCRSEEnrl = new ArrayList<>();
+                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
+                        CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                        DuplicateInSnapshot.put(CRSE, 1);
+                    }
+                }
+            }
+            SemesterEnrl.add(CRSEEnrl);
+            PercentPassed.add(Dates);
+        }
+        Enumeration enu = SemesterEnrl.get(SemesterEnrl.size() - 1).keys();
+        String key;
+        Hashtable<String, List<List<Double>>> ExcelData = new Hashtable<>();
+        while (enu.hasMoreElements()) {
+            key = (String) enu.nextElement();
+            List<List<Double>> TestDataList = new ArrayList<>();
+            for (int i = 0; i < PercentPassed.size(); i++) {
+                TestDataList.add(PercentPassed.get(i));
+                TestDataList.add(SemesterEnrl.get(i).get(key));
+            }
+            ExcelData.put(key, TestDataList);
+        }
         try {
             Output.outputToTxt(Header1, Header2, TextOutput, "OutputTest");
+            Output.outputToExcel(ExcelHeader, ExcelData, "ExcelOutput");
         } catch (IOException e) {
             e.printStackTrace();
         }
+
     }
 
     public History GetFileContents(String FilePath) throws IOException {
@@ -111,7 +173,8 @@ public class Main {
         RegistrationDates = new ArrayList<LocalDate>();
         // List of all files and directories.
         filesList = directoryPath.listFiles();
-        System.out.println("List of files and directories in the specified directory:");
+        // System.out.println("List of files and directories in the specified
+        // directory:");
         Scanner ScannerContents = null;
         boolean ParsedOne = false;
         boolean DatesTxtExists = false;
@@ -128,7 +191,7 @@ public class Main {
                     String line;
                     while (sc.hasNextLine()) {
                         line = sc.nextLine();
-                        System.out.println(line);
+                        // System.out.println(line);
                         String[] DateParts = line.split("-");
                         RegistrationDates
                                 .add(LocalDate.of(Integer.parseInt(DateParts[0]), Integer.parseInt(DateParts[1]),
@@ -182,7 +245,7 @@ public class Main {
                     semester.SetSemesterCode(file.getParentFile().getName());
                     Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),
                             Integer.parseInt(FilenameParts[2]));
-                    System.out.println("Date : " + Date);
+                    // System.out.println("Date : " + Date);
                     if (Date.isAfter(RegistrationDates.get(0))) {
                         // SnapshotDates.add(Date);
                         // Reads the CSV file.
@@ -278,8 +341,8 @@ public class Main {
                         history.addSemester(semester);
                         history.addSnapShotDate(Date);
                     }
-                    System.out.println("File path: " + file.getAbsolutePath());
-                    System.out.println(" ");
+                    // System.out.println("File path: " + file.getAbsolutePath());
+                    // System.out.println(" ");
                     // history.setSnapShotDate(SnapshotDates);
                     if (HitLastRegistrationDate == true) {
                         break;
@@ -297,14 +360,77 @@ public class Main {
         return DaysBetween;
     }
 
-    public float GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
-        float Passed;
-        Passed = (float) DaysRegistrationOpen / (float) RegistrationPeriodLength;
+    public Double GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
+        Double Passed;
+        Passed = Double.valueOf(DaysRegistrationOpen) / Double.valueOf(RegistrationPeriodLength);
         if (Passed < 0) {
-            Passed = 0;
+            Passed = 0.0;
         } else if (Passed > 1) {
-            Passed = 1;
+            Passed = 1.0;
         }
         return Passed;
     }
+
+    public List<String> CreateExcelHeader(ArrayList<History> PreviousSemestersData) {
+        Hashtable<String, String> SemesterNameSSF = new Hashtable<String, String>();
+        History history;
+        Semester semester;
+        SemesterNameSSF.put("10", "Fall");
+        SemesterNameSSF.put("20", "Spring");
+        SemesterNameSSF.put("30", "Summer");
+        List<String> ExcelHeader = new ArrayList<>();
+        for (int i = 0; i < PreviousSemestersData.size() - 1; i++) {
+            history = PreviousSemestersData.get(i);
+            semester = history.getSemesterByIndex(0);
+            String Semester = Character.toString(semester.getSemesterCode().charAt(4))
+                    + Character.toString(semester.getSemesterCode().charAt(5));
+            String Year = Character.toString(semester.getSemesterCode().charAt(0))
+                    + Character.toString(semester.getSemesterCode().charAt(1))
+                    + Character.toString(semester.getSemesterCode().charAt(2))
+                    + Character.toString(semester.getSemesterCode().charAt(3));
+            ExcelHeader.add("d historical");
+            ExcelHeader.add(SemesterNameSSF.get(Semester) + " " + Year);
+        }
+        ExcelHeader.add("d current");
+        history = PreviousSemestersData.get(PreviousSemestersData.size() - 1);
+        semester = history.getSemesterByIndex(0);
+        String Semester = Character.toString(semester.getSemesterCode().charAt(4))
+                + Character.toString(semester.getSemesterCode().charAt(5));
+        String Year = Character.toString(semester.getSemesterCode().charAt(0))
+                + Character.toString(semester.getSemesterCode().charAt(1))
+                + Character.toString(semester.getSemesterCode().charAt(2))
+                + Character.toString(semester.getSemesterCode().charAt(3));
+        ExcelHeader.add(SemesterNameSSF.get(Semester) + " " + Year);
+        ExcelHeader.add("d projected");
+        ExcelHeader.add("Projected");
+        return ExcelHeader;
+    }
+
+    public static int calculateProjectedEnrollment(Offering offering) {
+        int totalEnrollment = offering.getEnrollment();
+        int totalMaxEnrollment = offering.getMaxEnrollment();
+
+        for (Section section : offering.getSection()) {
+            int sectionEnrollment = section.getEnrollments();
+            int sectionSeatsRemaining = section.getSeatsRemaining();
+            int sectionMaxEnrollment = section.getCrossListCap();
+
+            if (sectionMaxEnrollment == 0) {
+                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;
+            }
+
+            int projectedEnrollment = (int) Math
+                    .round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));
+
+            if (projectedEnrollment > sectionMaxEnrollment) {
+                projectedEnrollment = sectionMaxEnrollment;
+            }
+
+            totalEnrollment += projectedEnrollment - sectionEnrollment;
+            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;
+        }
+
+        return totalEnrollment;
+    }
+
 }
