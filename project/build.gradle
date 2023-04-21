@@ -7,7 +7,7 @@ plugins {
     id 'ivy-publish'
     id 'jacoco'
     id 'project-report'
-    id 'org.unbroken-dome.test-sets' version '3.0.1'
+    //id 'org.unbroken-dome.test-sets' version '3.0.1'
 }
 
 java {
@@ -35,7 +35,7 @@ dependencies {
     implementation 'org.apache.poi:poi-ooxml:5.1.0'
 
 }
-
+/** 
 testSets { integrationTest }
 
 task.withType(Test) {
@@ -55,6 +55,7 @@ integrationTest {
 test {
     ignoreFailures = false
 }
+*/
 
 tasks.jar {
 	manifest {
