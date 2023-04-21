@@ -108,20 +108,34 @@ public class Main {
             for (int j = 0; j < history.getSemester().size(); j++) {
                 int Passed = new Main().DaysBetween(history.getStartDate(), history.getSnapShotByIndex(j));
                 Double PercentSemesPassed = new Main().GetPercentagePassed(RegPeriodLength, Passed);
-                Dates.add(PercentSemesPassed);
+                Dates.add(PercentSemesPassed * 100.0);
                 semes = history.getSemesterByIndex(j);
                 Off = semes.getOfferingList();
+                Hashtable<String, Integer> DuplicateInSnapshot = new Hashtable<>();
                 for (int k = 0; k < Off.size(); k++) {
                     String CRSE = Off.get(k).getSUBJ() + Off.get(k).getCRSE();
                     if (CRSEEnrl.containsKey(CRSE)) {
-                        List<Double> TempCRSEEnrl = new ArrayList<>();
-                        TempCRSEEnrl = CRSEEnrl.get(CRSE);
-                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
-                        CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                        if (DuplicateInSnapshot.get(CRSE) != null) {
+                            List<Double> TempCRSEEnrl = new ArrayList<>();
+                            TempCRSEEnrl = CRSEEnrl.get(CRSE);
+                            Double CumulativeEnr = TempCRSEEnrl.get(TempCRSEEnrl.size() - 1);
+                            CumulativeEnr = CumulativeEnr + Double.valueOf(Off.get(k).getCurrentEnrollment());
+                            TempCRSEEnrl.remove(TempCRSEEnrl.size() - 1);
+                            TempCRSEEnrl.add(CumulativeEnr);
+                            CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                        } else {
+                            List<Double> TempCRSEEnrl = new ArrayList<>();
+                            TempCRSEEnrl = CRSEEnrl.get(CRSE);
+                            TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
+                            CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                            DuplicateInSnapshot.put(CRSE, 1);
+                        }
+
                     } else {
                         List<Double> TempCRSEEnrl = new ArrayList<>();
                         TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));
                         CRSEEnrl.put(CRSE, TempCRSEEnrl);
+                        DuplicateInSnapshot.put(CRSE, 1);
                     }
                 }
             }

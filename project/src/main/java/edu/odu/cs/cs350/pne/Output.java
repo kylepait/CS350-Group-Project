@@ -46,7 +46,7 @@ public class Output {
         XSSFWorkbook workbook = new XSSFWorkbook();
         while (enu.hasMoreElements()) {
             key = (String) enu.nextElement();
-            System.out.println(key);
+            // System.out.println(key);
             XSSFSheet sheet = workbook.createSheet(key);
 
             // write headers
@@ -57,7 +57,7 @@ public class Output {
             }
 
             // write data
-            System.out.println("HI1");
+            // System.out.println("HI1");
             int rowNum = 1, CellNum = 0;
             Row dataRow;
             for (List<Double> row : data.get(key)) {
@@ -73,9 +73,9 @@ public class Output {
                 }
                 CellNum++;
             }
-            System.out.println("HI2");
+            // System.out.println("HI2");
             XSSFDrawing drawing = sheet.createDrawingPatriarch();
-            XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, Header.size() + 1, 0, Header.size() + 8, 22);
+            XSSFClientAnchor anchor = drawing.createAnchor(0, 0, 0, 0, Header.size() + 1, 0, Header.size() + 30, 22);
             XSSFChart chart = drawing.createChart(anchor);
             chart.setTitleText("Chart Title");
             chart.setTitleOverlay(false);
@@ -83,31 +83,34 @@ public class Output {
             legend.setPosition(LegendPosition.TOP_RIGHT);
             XDDFCategoryAxis bottomAxis = chart.createCategoryAxis(AxisPosition.BOTTOM);
             bottomAxis.setTitle("Enrollment Period Passed");
+            bottomAxis.setNumberFormat("Fraction");
             XDDFValueAxis leftAxis = chart.createValueAxis(AxisPosition.LEFT);
             leftAxis.setTitle("Enrollment");
-            XDDFLineChartData Chartdata = (XDDFLineChartData) chart.createData(ChartTypes.LINE, bottomAxis, leftAxis);
+            XDDFScatterChartData Chartdata = (XDDFScatterChartData) chart.createData(ChartTypes.SCATTER, bottomAxis,
+                    leftAxis);
             List<List<Double>> SheetData = new ArrayList<>();
             SheetData = data.get(key);
             // System.out.println(key);
             if (SheetData != null) {
-                System.out.println("HI3");
+                // System.out.println("HI3");
                 for (int i = 0; i < SheetData.size() / 2; i++) {
                     // System.out.println(SheetData.get(i * 2 + 1));
-                    System.out.println(i);
+                    // System.out.println(i);
                     if ((SheetData.get(i * 2) != null) && (SheetData.get(i * 2 + 1) != null)) {
                         XDDFDataSource<String> passed = XDDFDataSourcesFactory.fromStringCellRange(sheet,
                                 new CellRangeAddress(1, SheetData.get(i * 2).size(), i * 2, i * 2));
                         XDDFNumericalDataSource<Double> students = XDDFDataSourcesFactory.fromNumericCellRange(sheet,
                                 new CellRangeAddress(1, SheetData.get(i * 2 + 1).size(), i * 2 + 1, i * 2 + 1));
-                        XDDFLineChartData.Series series1 = (XDDFLineChartData.Series) Chartdata.addSeries(passed,
+                        XDDFScatterChartData.Series series1 = (XDDFScatterChartData.Series) Chartdata.addSeries(passed,
                                 students);
                         series1.setTitle(Header.get(i * 2 + 1), null);
                         series1.setSmooth(false);
-                        series1.setMarkerStyle(MarkerStyle.STAR);
+                        series1.setMarkerStyle(MarkerStyle.DIAMOND);
+
                     }
                 }
             }
-            System.out.println("HI5");
+            // System.out.println("HI5");
             chart.plot(Chartdata);
             // write workbook to file
             try (FileOutputStream outputStream = new FileOutputStream(new File(Filename + ".xlsx"))) {
