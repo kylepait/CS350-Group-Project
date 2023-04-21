@@ -108,315 +108,329 @@ import java.io.FileNotFoundException;
 <span class="nc bnc" id="L108" title="All 2 branches missed.">            for (int j = 0; j &lt; history.getSemester().size(); j++) {</span>
 <span class="nc" id="L109">                int Passed = new Main().DaysBetween(history.getStartDate(), history.getSnapShotByIndex(j));</span>
 <span class="nc" id="L110">                Double PercentSemesPassed = new Main().GetPercentagePassed(RegPeriodLength, Passed);</span>
-<span class="nc" id="L111">                Dates.add(PercentSemesPassed);</span>
+<span class="nc" id="L111">                Dates.add(PercentSemesPassed * 100.0);</span>
 <span class="nc" id="L112">                semes = history.getSemesterByIndex(j);</span>
 <span class="nc" id="L113">                Off = semes.getOfferingList();</span>
-<span class="nc bnc" id="L114" title="All 2 branches missed.">                for (int k = 0; k &lt; Off.size(); k++) {</span>
-<span class="nc" id="L115">                    String CRSE = Off.get(k).getSUBJ() + Off.get(k).getCRSE();</span>
-<span class="nc bnc" id="L116" title="All 2 branches missed.">                    if (CRSEEnrl.containsKey(CRSE)) {</span>
-<span class="nc" id="L117">                        List&lt;Double&gt; TempCRSEEnrl = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L118">                        TempCRSEEnrl = CRSEEnrl.get(CRSE);</span>
-<span class="nc" id="L119">                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));</span>
-<span class="nc" id="L120">                        CRSEEnrl.put(CRSE, TempCRSEEnrl);</span>
-<span class="nc" id="L121">                    } else {</span>
-<span class="nc" id="L122">                        List&lt;Double&gt; TempCRSEEnrl = new ArrayList&lt;&gt;();</span>
-<span class="nc" id="L123">                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));</span>
-<span class="nc" id="L124">                        CRSEEnrl.put(CRSE, TempCRSEEnrl);</span>
+<span class="nc" id="L114">                Hashtable&lt;String, Integer&gt; DuplicateInSnapshot = new Hashtable&lt;&gt;();</span>
+<span class="nc bnc" id="L115" title="All 2 branches missed.">                for (int k = 0; k &lt; Off.size(); k++) {</span>
+<span class="nc" id="L116">                    String CRSE = Off.get(k).getSUBJ() + Off.get(k).getCRSE();</span>
+<span class="nc bnc" id="L117" title="All 2 branches missed.">                    if (CRSEEnrl.containsKey(CRSE)) {</span>
+<span class="nc bnc" id="L118" title="All 2 branches missed.">                        if (DuplicateInSnapshot.get(CRSE) != null) {</span>
+<span class="nc" id="L119">                            List&lt;Double&gt; TempCRSEEnrl = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L120">                            TempCRSEEnrl = CRSEEnrl.get(CRSE);</span>
+<span class="nc" id="L121">                            Double CumulativeEnr = TempCRSEEnrl.get(TempCRSEEnrl.size() - 1);</span>
+<span class="nc" id="L122">                            CumulativeEnr = CumulativeEnr + Double.valueOf(Off.get(k).getCurrentEnrollment());</span>
+<span class="nc" id="L123">                            TempCRSEEnrl.remove(TempCRSEEnrl.size() - 1);</span>
+<span class="nc" id="L124">                            TempCRSEEnrl.add(CumulativeEnr);</span>
+<span class="nc" id="L125">                            CRSEEnrl.put(CRSE, TempCRSEEnrl);</span>
+<span class="nc" id="L126">                        } else {</span>
+<span class="nc" id="L127">                            List&lt;Double&gt; TempCRSEEnrl = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L128">                            TempCRSEEnrl = CRSEEnrl.get(CRSE);</span>
+<span class="nc" id="L129">                            TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));</span>
+<span class="nc" id="L130">                            CRSEEnrl.put(CRSE, TempCRSEEnrl);</span>
+<span class="nc" id="L131">                            DuplicateInSnapshot.put(CRSE, 1);</span>
+<span class="nc" id="L132">                        }</span>
+
+                    } else {
+<span class="nc" id="L135">                        List&lt;Double&gt; TempCRSEEnrl = new ArrayList&lt;&gt;();</span>
+<span class="nc" id="L136">                        TempCRSEEnrl.add(Double.valueOf(Off.get(k).getCurrentEnrollment()));</span>
+<span class="nc" id="L137">                        CRSEEnrl.put(CRSE, TempCRSEEnrl);</span>
+<span class="nc" id="L138">                        DuplicateInSnapshot.put(CRSE, 1);</span>
                     }
                 }
             }
-<span class="nc" id="L128">            SemesterEnrl.add(CRSEEnrl);</span>
-<span class="nc" id="L129">            PercentPassed.add(Dates);</span>
+<span class="nc" id="L142">            SemesterEnrl.add(CRSEEnrl);</span>
+<span class="nc" id="L143">            PercentPassed.add(Dates);</span>
         }
-<span class="nc" id="L131">        Enumeration enu = SemesterEnrl.get(SemesterEnrl.size() - 1).keys();</span>
+<span class="nc" id="L145">        Enumeration enu = SemesterEnrl.get(SemesterEnrl.size() - 1).keys();</span>
         String key;
-<span class="nc" id="L133">        Hashtable&lt;String, List&lt;List&lt;Double&gt;&gt;&gt; ExcelData = new Hashtable&lt;&gt;();</span>
-<span class="nc bnc" id="L134" title="All 2 branches missed.">        while (enu.hasMoreElements()) {</span>
-<span class="nc" id="L135">            key = (String) enu.nextElement();</span>
-<span class="nc" id="L136">            List&lt;List&lt;Double&gt;&gt; TestDataList = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L137" title="All 2 branches missed.">            for (int i = 0; i &lt; PercentPassed.size(); i++) {</span>
-<span class="nc" id="L138">                TestDataList.add(PercentPassed.get(i));</span>
-<span class="nc" id="L139">                TestDataList.add(SemesterEnrl.get(i).get(key));</span>
+<span class="nc" id="L147">        Hashtable&lt;String, List&lt;List&lt;Double&gt;&gt;&gt; ExcelData = new Hashtable&lt;&gt;();</span>
+<span class="nc bnc" id="L148" title="All 2 branches missed.">        while (enu.hasMoreElements()) {</span>
+<span class="nc" id="L149">            key = (String) enu.nextElement();</span>
+<span class="nc" id="L150">            List&lt;List&lt;Double&gt;&gt; TestDataList = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L151" title="All 2 branches missed.">            for (int i = 0; i &lt; PercentPassed.size(); i++) {</span>
+<span class="nc" id="L152">                TestDataList.add(PercentPassed.get(i));</span>
+<span class="nc" id="L153">                TestDataList.add(SemesterEnrl.get(i).get(key));</span>
             }
-<span class="nc" id="L141">            ExcelData.put(key, TestDataList);</span>
-<span class="nc" id="L142">        }</span>
+<span class="nc" id="L155">            ExcelData.put(key, TestDataList);</span>
+<span class="nc" id="L156">        }</span>
         try {
-<span class="nc" id="L144">            Output.outputToTxt(Header1, Header2, TextOutput, &quot;OutputTest&quot;);</span>
-<span class="nc" id="L145">            Output.outputToExcel(ExcelHeader, ExcelData, &quot;ExcelOutput&quot;);</span>
-<span class="nc" id="L146">        } catch (IOException e) {</span>
-<span class="nc" id="L147">            e.printStackTrace();</span>
-<span class="nc" id="L148">        }</span>
+<span class="nc" id="L158">            Output.outputToTxt(Header1, Header2, TextOutput, &quot;OutputTest&quot;);</span>
+<span class="nc" id="L159">            Output.outputToExcel(ExcelHeader, ExcelData, &quot;ExcelOutput&quot;);</span>
+<span class="nc" id="L160">        } catch (IOException e) {</span>
+<span class="nc" id="L161">            e.printStackTrace();</span>
+<span class="nc" id="L162">        }</span>
 
-<span class="nc" id="L150">    }</span>
+<span class="nc" id="L164">    }</span>
 
     public History GetFileContents(String FilePath) throws IOException {
         File filesList[];
         ArrayList&lt;LocalDate&gt; SnapshotDates, RegistrationDates;
         // Creating a File object for directory.
-<span class="fc" id="L156">        File directoryPath = new File(FilePath);</span>
-<span class="fc" id="L157">        LocalDate Date = LocalDate.now();</span>
-<span class="fc" id="L158">        History history = new History();</span>
-<span class="fc" id="L159">        RegistrationDates = new ArrayList&lt;LocalDate&gt;();</span>
+<span class="fc" id="L170">        File directoryPath = new File(FilePath);</span>
+<span class="fc" id="L171">        LocalDate Date = LocalDate.now();</span>
+<span class="fc" id="L172">        History history = new History();</span>
+<span class="fc" id="L173">        RegistrationDates = new ArrayList&lt;LocalDate&gt;();</span>
         // List of all files and directories.
-<span class="fc" id="L161">        filesList = directoryPath.listFiles();</span>
+<span class="fc" id="L175">        filesList = directoryPath.listFiles();</span>
         // System.out.println(&quot;List of files and directories in the specified
         // directory:&quot;);
-<span class="fc" id="L164">        Scanner ScannerContents = null;</span>
-<span class="fc" id="L165">        boolean ParsedOne = false;</span>
-<span class="fc" id="L166">        boolean DatesTxtExists = false;</span>
-<span class="fc" id="L167">        boolean HitLastRegistrationDate = false;</span>
-<span class="fc bfc" id="L168" title="All 2 branches covered.">        for (File file : filesList) {</span>
-<span class="fc" id="L169">            String Filename = file.getName();</span>
-<span class="fc" id="L170">            String DatesTxt = &quot;dates.txt&quot;;</span>
-<span class="fc bfc" id="L171" title="All 2 branches covered.">            if (Filename.contains(DatesTxt)) {</span>
-<span class="fc" id="L172">                DatesTxtExists = true;</span>
+<span class="fc" id="L178">        Scanner ScannerContents = null;</span>
+<span class="fc" id="L179">        boolean ParsedOne = false;</span>
+<span class="fc" id="L180">        boolean DatesTxtExists = false;</span>
+<span class="fc" id="L181">        boolean HitLastRegistrationDate = false;</span>
+<span class="fc bfc" id="L182" title="All 2 branches covered.">        for (File file : filesList) {</span>
+<span class="fc" id="L183">            String Filename = file.getName();</span>
+<span class="fc" id="L184">            String DatesTxt = &quot;dates.txt&quot;;</span>
+<span class="fc bfc" id="L185" title="All 2 branches covered.">            if (Filename.contains(DatesTxt)) {</span>
+<span class="fc" id="L186">                DatesTxtExists = true;</span>
                 try {
-<span class="fc" id="L174">                    Scanner sc = null;</span>
-<span class="fc" id="L175">                    sc = new Scanner(file);</span>
-<span class="fc" id="L176">                    StringBuffer sb = new StringBuffer();</span>
+<span class="fc" id="L188">                    Scanner sc = null;</span>
+<span class="fc" id="L189">                    sc = new Scanner(file);</span>
+<span class="fc" id="L190">                    StringBuffer sb = new StringBuffer();</span>
                     String line;
-<span class="fc bfc" id="L178" title="All 2 branches covered.">                    while (sc.hasNextLine()) {</span>
-<span class="fc" id="L179">                        line = sc.nextLine();</span>
+<span class="fc bfc" id="L192" title="All 2 branches covered.">                    while (sc.hasNextLine()) {</span>
+<span class="fc" id="L193">                        line = sc.nextLine();</span>
                         // System.out.println(line);
-<span class="fc" id="L181">                        String[] DateParts = line.split(&quot;-&quot;);</span>
-<span class="fc" id="L182">                        RegistrationDates</span>
-<span class="fc" id="L183">                                .add(LocalDate.of(Integer.parseInt(DateParts[0]), Integer.parseInt(DateParts[1]),</span>
-<span class="fc" id="L184">                                        Integer.parseInt(DateParts[2])));</span>
-<span class="fc" id="L185">                    }</span>
-<span class="nc" id="L186">                } catch (IOException e) {</span>
-<span class="nc" id="L187">                    e.printStackTrace();</span>
-<span class="fc" id="L188">                }</span>
-<span class="fc" id="L189">                history.setStartDate(RegistrationDates.get(0));</span>
-<span class="fc" id="L190">                history.setEndDate(RegistrationDates.get(1));</span>
+<span class="fc" id="L195">                        String[] DateParts = line.split(&quot;-&quot;);</span>
+<span class="fc" id="L196">                        RegistrationDates</span>
+<span class="fc" id="L197">                                .add(LocalDate.of(Integer.parseInt(DateParts[0]), Integer.parseInt(DateParts[1]),</span>
+<span class="fc" id="L198">                                        Integer.parseInt(DateParts[2])));</span>
+<span class="fc" id="L199">                    }</span>
+<span class="nc" id="L200">                } catch (IOException e) {</span>
+<span class="nc" id="L201">                    e.printStackTrace();</span>
+<span class="fc" id="L202">                }</span>
+<span class="fc" id="L203">                history.setStartDate(RegistrationDates.get(0));</span>
+<span class="fc" id="L204">                history.setEndDate(RegistrationDates.get(1));</span>
             }
         }
-<span class="fc bfc" id="L193" title="All 2 branches covered.">        if (DatesTxtExists == true) {</span>
-<span class="fc" id="L194">            int NumSnapshots = 0;</span>
-<span class="fc bfc" id="L195" title="All 2 branches covered.">            for (File file : filesList) {</span>
-<span class="fc" id="L196">                String[] FilenameParts = FilenameUtils.removeExtension(file.getName()).split(&quot;-&quot;);</span>
-<span class="fc bfc" id="L197" title="All 2 branches covered.">                if (FilenameParts.length == 3) {</span>
-<span class="fc" id="L198">                    Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),</span>
-<span class="fc" id="L199">                            Integer.parseInt(FilenameParts[2]));</span>
-<span class="pc bpc" id="L200" title="1 of 2 branches missed.">                    if (Date.isAfter(RegistrationDates.get(0))) {</span>
-<span class="fc" id="L201">                        NumSnapshots++;</span>
+<span class="fc bfc" id="L207" title="All 2 branches covered.">        if (DatesTxtExists == true) {</span>
+<span class="fc" id="L208">            int NumSnapshots = 0;</span>
+<span class="fc bfc" id="L209" title="All 2 branches covered.">            for (File file : filesList) {</span>
+<span class="fc" id="L210">                String[] FilenameParts = FilenameUtils.removeExtension(file.getName()).split(&quot;-&quot;);</span>
+<span class="fc bfc" id="L211" title="All 2 branches covered.">                if (FilenameParts.length == 3) {</span>
+<span class="fc" id="L212">                    Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),</span>
+<span class="fc" id="L213">                            Integer.parseInt(FilenameParts[2]));</span>
+<span class="pc bpc" id="L214" title="1 of 2 branches missed.">                    if (Date.isAfter(RegistrationDates.get(0))) {</span>
+<span class="fc" id="L215">                        NumSnapshots++;</span>
                     }
-<span class="fc bfc" id="L203" title="All 2 branches covered.">                    if (HitLastRegistrationDate == true) {</span>
-<span class="fc" id="L204">                        break;</span>
+<span class="fc bfc" id="L217" title="All 2 branches covered.">                    if (HitLastRegistrationDate == true) {</span>
+<span class="fc" id="L218">                        break;</span>
                     }
-<span class="fc bfc" id="L206" title="All 2 branches covered.">                    if (Date.isEqual(RegistrationDates.get(1))) {</span>
-<span class="fc" id="L207">                        HitLastRegistrationDate = true;</span>
+<span class="fc bfc" id="L220" title="All 2 branches covered.">                    if (Date.isEqual(RegistrationDates.get(1))) {</span>
+<span class="fc" id="L221">                        HitLastRegistrationDate = true;</span>
                     }
                 }
             }
-<span class="fc bfc" id="L211" title="All 2 branches covered.">            if (NumSnapshots &lt; 2) {</span>
-<span class="fc" id="L212">                throw new IOException(&quot;Insufficient snapshots in &quot; + directoryPath.getName());</span>
+<span class="fc bfc" id="L225" title="All 2 branches covered.">            if (NumSnapshots &lt; 2) {</span>
+<span class="fc" id="L226">                throw new IOException(&quot;Insufficient snapshots in &quot; + directoryPath.getName());</span>
             }
-<span class="fc" id="L214">            HitLastRegistrationDate = false;</span>
-<span class="pc bpc" id="L215" title="1 of 2 branches missed.">            for (File file : filesList) {</span>
+<span class="fc" id="L228">            HitLastRegistrationDate = false;</span>
+<span class="pc bpc" id="L229" title="1 of 2 branches missed.">            for (File file : filesList) {</span>
                 // System.out.println(&quot;File name: &quot; + file.getName());
                 // Get date of snapshot from filename.
-<span class="fc" id="L218">                String Filename = FilenameUtils.removeExtension(file.getName());</span>
-<span class="fc" id="L219">                String[] FilenameParts = Filename.split(&quot;-&quot;);</span>
+<span class="fc" id="L232">                String Filename = FilenameUtils.removeExtension(file.getName());</span>
+<span class="fc" id="L233">                String[] FilenameParts = Filename.split(&quot;-&quot;);</span>
                 // Only perform the filtering action if the file is a snapshot file.
                 // Kinda fragile way to do it as it will break if the file naming convention is
                 // changed, but it works.
-<span class="fc bfc" id="L223" title="All 2 branches covered.">                if (Date.isEqual(RegistrationDates.get(1))) {</span>
-<span class="fc" id="L224">                    HitLastRegistrationDate = true;</span>
+<span class="fc bfc" id="L237" title="All 2 branches covered.">                if (Date.isEqual(RegistrationDates.get(1))) {</span>
+<span class="fc" id="L238">                    HitLastRegistrationDate = true;</span>
                 }
-<span class="pc bpc" id="L226" title="1 of 2 branches missed.">                if (FilenameParts.length == 3) {</span>
+<span class="pc bpc" id="L240" title="1 of 2 branches missed.">                if (FilenameParts.length == 3) {</span>
                     // Create semester for the snapshot file.
-<span class="fc" id="L228">                    Semester semester = new Semester();</span>
+<span class="fc" id="L242">                    Semester semester = new Semester();</span>
                     // System.out.println(&quot;Parent : &quot; + file.getParentFile().getName());
                     // Set the semester code by using the name of the parent directory of the file
-<span class="fc" id="L231">                    semester.SetSemesterCode(file.getParentFile().getName());</span>
-<span class="fc" id="L232">                    Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),</span>
-<span class="fc" id="L233">                            Integer.parseInt(FilenameParts[2]));</span>
+<span class="fc" id="L245">                    semester.SetSemesterCode(file.getParentFile().getName());</span>
+<span class="fc" id="L246">                    Date = LocalDate.of(Integer.parseInt(FilenameParts[0]), Integer.parseInt(FilenameParts[1]),</span>
+<span class="fc" id="L247">                            Integer.parseInt(FilenameParts[2]));</span>
                     // System.out.println(&quot;Date : &quot; + Date);
-<span class="pc bpc" id="L235" title="1 of 2 branches missed.">                    if (Date.isAfter(RegistrationDates.get(0))) {</span>
+<span class="pc bpc" id="L249" title="1 of 2 branches missed.">                    if (Date.isAfter(RegistrationDates.get(0))) {</span>
                         // SnapshotDates.add(Date);
                         // Reads the CSV file.
-<span class="fc" id="L238">                        Reader CSVFile = Files.newBufferedReader(Paths.get(file.getPath()));</span>
+<span class="fc" id="L252">                        Reader CSVFile = Files.newBufferedReader(Paths.get(file.getPath()));</span>
                         // Parses the CSV file into something that can be worked with.
-<span class="fc" id="L240">                        CSVParser parser = CSVParser.parse(CSVFile, CSVFormat.RFC4180);</span>
-<span class="fc" id="L241">                        List&lt;CSVRecord&gt; csvRecords = parser.getRecords();</span>
+<span class="fc" id="L254">                        CSVParser parser = CSVParser.parse(CSVFile, CSVFormat.RFC4180);</span>
+<span class="fc" id="L255">                        List&lt;CSVRecord&gt; csvRecords = parser.getRecords();</span>
                         // Offering class needs columns C, D, W, X: 2, 3, 22, 23
                         // Section class needs columns A, B, G, H, I, J, U: 0, 1, 6, 7, 8, 9, 20
                         // Needs to sort all of the items into sections, offerings and semesters.
-<span class="fc" id="L245">                        String LastCRSE = &quot;&quot;;</span>
-<span class="fc" id="L246">                        String LastXListGroup = &quot;&quot;;</span>
-<span class="fc" id="L247">                        String LastSUBJ = &quot;&quot;;</span>
+<span class="fc" id="L259">                        String LastCRSE = &quot;&quot;;</span>
+<span class="fc" id="L260">                        String LastXListGroup = &quot;&quot;;</span>
+<span class="fc" id="L261">                        String LastSUBJ = &quot;&quot;;</span>
                         // Create blank offering.
-<span class="fc" id="L249">                        Offering offering = new Offering();</span>
+<span class="fc" id="L263">                        Offering offering = new Offering();</span>
                         // Create blank section.
-<span class="fc" id="L251">                        Section section = new Section();</span>
-<span class="fc" id="L252">                        boolean OfferingInSemester = false;</span>
-<span class="fc bfc" id="L253" title="All 2 branches covered.">                        for (int i = 1; i &lt; csvRecords.size(); i++) {</span>
-<span class="fc" id="L254">                            CSVRecord csvRecord = csvRecords.get(i);</span>
-<span class="fc" id="L255">                            boolean OfferingMatch = false;</span>
+<span class="fc" id="L265">                        Section section = new Section();</span>
+<span class="fc" id="L266">                        boolean OfferingInSemester = false;</span>
+<span class="fc bfc" id="L267" title="All 2 branches covered.">                        for (int i = 1; i &lt; csvRecords.size(); i++) {</span>
+<span class="fc" id="L268">                            CSVRecord csvRecord = csvRecords.get(i);</span>
+<span class="fc" id="L269">                            boolean OfferingMatch = false;</span>
                             // Grab relavent items from the CSV.
-<span class="fc" id="L257">                            int Seats = Integer.parseInt(csvRecord.get(0));</span>
-<span class="fc" id="L258">                            int CRN = Integer.parseInt(csvRecord.get(1));</span>
-<span class="fc" id="L259">                            String SUBJ = csvRecord.get(2);</span>
-<span class="fc" id="L260">                            String CRSE = csvRecord.get(3);</span>
-<span class="fc" id="L261">                            int XListCap = Integer.parseInt(csvRecord.get(6));</span>
-<span class="fc" id="L262">                            int ENR = Integer.parseInt(csvRecord.get(7));</span>
-<span class="fc" id="L263">                            String Link = csvRecord.get(8);</span>
-<span class="fc" id="L264">                            String XListGroup = csvRecord.get(9);</span>
-<span class="fc" id="L265">                            String Instructor = csvRecord.get(20);</span>
-<span class="fc" id="L266">                            String OverallCapStr = csvRecord.get(22);</span>
+<span class="fc" id="L271">                            int Seats = Integer.parseInt(csvRecord.get(0));</span>
+<span class="fc" id="L272">                            int CRN = Integer.parseInt(csvRecord.get(1));</span>
+<span class="fc" id="L273">                            String SUBJ = csvRecord.get(2);</span>
+<span class="fc" id="L274">                            String CRSE = csvRecord.get(3);</span>
+<span class="fc" id="L275">                            int XListCap = Integer.parseInt(csvRecord.get(6));</span>
+<span class="fc" id="L276">                            int ENR = Integer.parseInt(csvRecord.get(7));</span>
+<span class="fc" id="L277">                            String Link = csvRecord.get(8);</span>
+<span class="fc" id="L278">                            String XListGroup = csvRecord.get(9);</span>
+<span class="fc" id="L279">                            String Instructor = csvRecord.get(20);</span>
+<span class="fc" id="L280">                            String OverallCapStr = csvRecord.get(22);</span>
                             int OverallCap;
-<span class="fc bfc" id="L268" title="All 2 branches covered.">                            if (!OverallCapStr.equals(&quot;&quot;)) {</span>
-<span class="fc" id="L269">                                OverallCap = Integer.parseInt(OverallCapStr);</span>
+<span class="fc bfc" id="L282" title="All 2 branches covered.">                            if (!OverallCapStr.equals(&quot;&quot;)) {</span>
+<span class="fc" id="L283">                                OverallCap = Integer.parseInt(OverallCapStr);</span>
                             } else {
-<span class="fc" id="L271">                                OverallCap = XListCap;</span>
+<span class="fc" id="L285">                                OverallCap = XListCap;</span>
                             }
-<span class="fc" id="L273">                            int OverallEnr = Integer.parseInt(csvRecord.get(23));</span>
+<span class="fc" id="L287">                            int OverallEnr = Integer.parseInt(csvRecord.get(23));</span>
                             // Create new offering if the course is not equal to the previous course.
-<span class="fc bfc" id="L275" title="All 6 branches covered.">                            if (!CRSE.equals(LastCRSE) || !XListGroup.equals(LastXListGroup) || XListGroup.equals(&quot;&quot;)) {</span>
-<span class="pc bpc" id="L276" title="1 of 2 branches missed.">                                if (OfferingMatch == false) {</span>
+<span class="fc bfc" id="L289" title="All 6 branches covered.">                            if (!CRSE.equals(LastCRSE) || !XListGroup.equals(LastXListGroup) || XListGroup.equals(&quot;&quot;)) {</span>
+<span class="pc bpc" id="L290" title="1 of 2 branches missed.">                                if (OfferingMatch == false) {</span>
                                     // Add the offering to the semester when creating the new offering if the
                                     // section is not empty
-<span class="fc bfc" id="L279" title="All 4 branches covered.">                                    if (offering.getSection().size() &gt; 0 &amp;&amp; !OfferingInSemester) {</span>
-<span class="fc" id="L280">                                        semester.addOffering(offering);</span>
-<span class="fc" id="L281">                                        semester.addCRSE(CRSE);</span>
+<span class="fc bfc" id="L293" title="All 4 branches covered.">                                    if (offering.getSection().size() &gt; 0 &amp;&amp; !OfferingInSemester) {</span>
+<span class="fc" id="L294">                                        semester.addOffering(offering);</span>
+<span class="fc" id="L295">                                        semester.addCRSE(CRSE);</span>
                                     }
                                     // Create a new offering if the Last course is not the same as the current one.
-<span class="fc" id="L284">                                    offering = new Offering();</span>
-<span class="fc" id="L285">                                    offering.setCRSE(CRSE);</span>
-<span class="fc" id="L286">                                    offering.setSUBJ(SUBJ);</span>
-<span class="fc" id="L287">                                    offering.setEnrollment(OverallEnr);</span>
-<span class="fc" id="L288">                                    offering.setMaxEnrollment(OverallCap);</span>
-<span class="fc" id="L289">                                    offering.setCurrentEnrollment(OverallEnr);</span>
-<span class="fc" id="L290">                                    OfferingInSemester = false;</span>
+<span class="fc" id="L298">                                    offering = new Offering();</span>
+<span class="fc" id="L299">                                    offering.setCRSE(CRSE);</span>
+<span class="fc" id="L300">                                    offering.setSUBJ(SUBJ);</span>
+<span class="fc" id="L301">                                    offering.setEnrollment(OverallEnr);</span>
+<span class="fc" id="L302">                                    offering.setMaxEnrollment(OverallCap);</span>
+<span class="fc" id="L303">                                    offering.setCurrentEnrollment(OverallEnr);</span>
+<span class="fc" id="L304">                                    OfferingInSemester = false;</span>
                                 }
                                 // Check to see if the course and link are in the previously created offerings.
-<span class="fc bfc" id="L293" title="All 2 branches covered.">                                if (!XListGroup.equals(&quot;&quot;)) {</span>
-<span class="fc bfc" id="L294" title="All 2 branches covered.">                                    for (Offering Off : semester.getOfferingList()) {</span>
+<span class="fc bfc" id="L307" title="All 2 branches covered.">                                if (!XListGroup.equals(&quot;&quot;)) {</span>
+<span class="fc bfc" id="L308" title="All 2 branches covered.">                                    for (Offering Off : semester.getOfferingList()) {</span>
 
-<span class="fc bfc" id="L296" title="All 2 branches covered.">                                        if ((Off.getCRSE().equals(CRSE)</span>
-<span class="fc bfc" id="L297" title="All 2 branches covered.">                                                &amp;&amp; Off.accessSection(0).getCrossListGroup().equals(XListGroup))</span>
-<span class="pc bpc" id="L298" title="1 of 2 branches missed.">                                                &amp;&amp; Off.getSUBJ().equals(SUBJ)) {</span>
-<span class="fc" id="L299">                                            OfferingMatch = true;</span>
-<span class="fc" id="L300">                                            OfferingInSemester = true;</span>
-<span class="fc" id="L301">                                            offering = Off;</span>
+<span class="fc bfc" id="L310" title="All 2 branches covered.">                                        if ((Off.getCRSE().equals(CRSE)</span>
+<span class="fc bfc" id="L311" title="All 2 branches covered.">                                                &amp;&amp; Off.accessSection(0).getCrossListGroup().equals(XListGroup))</span>
+<span class="pc bpc" id="L312" title="1 of 2 branches missed.">                                                &amp;&amp; Off.getSUBJ().equals(SUBJ)) {</span>
+<span class="fc" id="L313">                                            OfferingMatch = true;</span>
+<span class="fc" id="L314">                                            OfferingInSemester = true;</span>
+<span class="fc" id="L315">                                            offering = Off;</span>
                                         }
-<span class="fc" id="L303">                                    }</span>
+<span class="fc" id="L317">                                    }</span>
                                 }
                             }
                             // Add relavent items to the section
-<span class="fc bfc" id="L307" title="All 2 branches covered.">                            if (Link.length() == 2) {</span>
-<span class="fc bfc" id="L308" title="All 2 branches covered.">                                if (Link.charAt(1) == '1') {</span>
-<span class="fc" id="L309">                                    section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);</span>
-<span class="fc" id="L310">                                    offering.addSection(section);</span>
+<span class="fc bfc" id="L321" title="All 2 branches covered.">                            if (Link.length() == 2) {</span>
+<span class="fc bfc" id="L322" title="All 2 branches covered.">                                if (Link.charAt(1) == '1') {</span>
+<span class="fc" id="L323">                                    section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);</span>
+<span class="fc" id="L324">                                    offering.addSection(section);</span>
                                 }
                             } else {
-<span class="fc" id="L313">                                section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);</span>
-<span class="fc" id="L314">                                offering.addSection(section);</span>
+<span class="fc" id="L327">                                section = new Section(CRN, Seats, XListCap, ENR, XListGroup, Instructor, Link);</span>
+<span class="fc" id="L328">                                offering.addSection(section);</span>
                             }
                             // Set the last course so that sections can be properly added to the offering
-<span class="fc" id="L317">                            LastCRSE = CRSE;</span>
+<span class="fc" id="L331">                            LastCRSE = CRSE;</span>
                             // Sets the last cross list group so that the linked courses are put in the same
                             // offering
-<span class="fc" id="L320">                            LastXListGroup = XListGroup;</span>
-<span class="fc" id="L321">                            LastSUBJ = SUBJ;</span>
+<span class="fc" id="L334">                            LastXListGroup = XListGroup;</span>
+<span class="fc" id="L335">                            LastSUBJ = SUBJ;</span>
                         }
-<span class="pc bpc" id="L323" title="2 of 4 branches missed.">                        if (offering.getSection().size() &gt; 0 &amp;&amp; !OfferingInSemester) {</span>
-<span class="fc" id="L324">                            semester.addOffering(offering);</span>
-<span class="fc" id="L325">                            semester.addCRSE(offering.getCRSE());</span>
+<span class="pc bpc" id="L337" title="2 of 4 branches missed.">                        if (offering.getSection().size() &gt; 0 &amp;&amp; !OfferingInSemester) {</span>
+<span class="fc" id="L338">                            semester.addOffering(offering);</span>
+<span class="fc" id="L339">                            semester.addCRSE(offering.getCRSE());</span>
                         }
-<span class="fc" id="L327">                        history.addSemester(semester);</span>
-<span class="fc" id="L328">                        history.addSnapShotDate(Date);</span>
+<span class="fc" id="L341">                        history.addSemester(semester);</span>
+<span class="fc" id="L342">                        history.addSnapShotDate(Date);</span>
                     }
                     // System.out.println(&quot;File path: &quot; + file.getAbsolutePath());
                     // System.out.println(&quot; &quot;);
                     // history.setSnapShotDate(SnapshotDates);
-<span class="fc bfc" id="L333" title="All 2 branches covered.">                    if (HitLastRegistrationDate == true) {</span>
-<span class="fc" id="L334">                        break;</span>
+<span class="fc bfc" id="L347" title="All 2 branches covered.">                    if (HitLastRegistrationDate == true) {</span>
+<span class="fc" id="L348">                        break;</span>
                     }
                 }
             }
-<span class="pc bpc" id="L338" title="1 of 2 branches missed.">        } else if (DatesTxtExists == false) {</span>
-<span class="fc" id="L339">            throw new IOException(&quot;Missing dates.txt in &quot; + directoryPath.getName());</span>
+<span class="pc bpc" id="L352" title="1 of 2 branches missed.">        } else if (DatesTxtExists == false) {</span>
+<span class="fc" id="L353">            throw new IOException(&quot;Missing dates.txt in &quot; + directoryPath.getName());</span>
         }
-<span class="fc" id="L341">        return history;</span>
+<span class="fc" id="L355">        return history;</span>
     }
 
     public int DaysBetween(LocalDate StartDate, LocalDate EndDate) {
-<span class="fc" id="L345">        int DaysBetween = (int) ChronoUnit.DAYS.between(StartDate, EndDate);</span>
-<span class="fc" id="L346">        return DaysBetween;</span>
+<span class="fc" id="L359">        int DaysBetween = (int) ChronoUnit.DAYS.between(StartDate, EndDate);</span>
+<span class="fc" id="L360">        return DaysBetween;</span>
     }
 
     public Double GetPercentagePassed(int RegistrationPeriodLength, int DaysRegistrationOpen) {
         Double Passed;
-<span class="fc" id="L351">        Passed = Double.valueOf(DaysRegistrationOpen) / Double.valueOf(RegistrationPeriodLength);</span>
-<span class="pc bpc" id="L352" title="1 of 2 branches missed.">        if (Passed &lt; 0) {</span>
-<span class="nc" id="L353">            Passed = 0.0;</span>
-<span class="pc bpc" id="L354" title="1 of 2 branches missed.">        } else if (Passed &gt; 1) {</span>
-<span class="nc" id="L355">            Passed = 1.0;</span>
+<span class="fc" id="L365">        Passed = Double.valueOf(DaysRegistrationOpen) / Double.valueOf(RegistrationPeriodLength);</span>
+<span class="pc bpc" id="L366" title="1 of 2 branches missed.">        if (Passed &lt; 0) {</span>
+<span class="nc" id="L367">            Passed = 0.0;</span>
+<span class="pc bpc" id="L368" title="1 of 2 branches missed.">        } else if (Passed &gt; 1) {</span>
+<span class="nc" id="L369">            Passed = 1.0;</span>
         }
-<span class="fc" id="L357">        return Passed;</span>
+<span class="fc" id="L371">        return Passed;</span>
     }
 
     public List&lt;String&gt; CreateExcelHeader(ArrayList&lt;History&gt; PreviousSemestersData) {
-<span class="nc" id="L361">        Hashtable&lt;String, String&gt; SemesterNameSSF = new Hashtable&lt;String, String&gt;();</span>
+<span class="nc" id="L375">        Hashtable&lt;String, String&gt; SemesterNameSSF = new Hashtable&lt;String, String&gt;();</span>
         History history;
         Semester semester;
-<span class="nc" id="L364">        SemesterNameSSF.put(&quot;10&quot;, &quot;Fall&quot;);</span>
-<span class="nc" id="L365">        SemesterNameSSF.put(&quot;20&quot;, &quot;Spring&quot;);</span>
-<span class="nc" id="L366">        SemesterNameSSF.put(&quot;30&quot;, &quot;Summer&quot;);</span>
-<span class="nc" id="L367">        List&lt;String&gt; ExcelHeader = new ArrayList&lt;&gt;();</span>
-<span class="nc bnc" id="L368" title="All 2 branches missed.">        for (int i = 0; i &lt; PreviousSemestersData.size() - 1; i++) {</span>
-<span class="nc" id="L369">            history = PreviousSemestersData.get(i);</span>
-<span class="nc" id="L370">            semester = history.getSemesterByIndex(0);</span>
-<span class="nc" id="L371">            String Semester = Character.toString(semester.getSemesterCode().charAt(4))</span>
-<span class="nc" id="L372">                    + Character.toString(semester.getSemesterCode().charAt(5));</span>
-<span class="nc" id="L373">            String Year = Character.toString(semester.getSemesterCode().charAt(0))</span>
-<span class="nc" id="L374">                    + Character.toString(semester.getSemesterCode().charAt(1))</span>
-<span class="nc" id="L375">                    + Character.toString(semester.getSemesterCode().charAt(2))</span>
-<span class="nc" id="L376">                    + Character.toString(semester.getSemesterCode().charAt(3));</span>
-<span class="nc" id="L377">            ExcelHeader.add(&quot;d historical&quot;);</span>
-<span class="nc" id="L378">            ExcelHeader.add(SemesterNameSSF.get(Semester) + &quot; &quot; + Year);</span>
+<span class="nc" id="L378">        SemesterNameSSF.put(&quot;10&quot;, &quot;Fall&quot;);</span>
+<span class="nc" id="L379">        SemesterNameSSF.put(&quot;20&quot;, &quot;Spring&quot;);</span>
+<span class="nc" id="L380">        SemesterNameSSF.put(&quot;30&quot;, &quot;Summer&quot;);</span>
+<span class="nc" id="L381">        List&lt;String&gt; ExcelHeader = new ArrayList&lt;&gt;();</span>
+<span class="nc bnc" id="L382" title="All 2 branches missed.">        for (int i = 0; i &lt; PreviousSemestersData.size() - 1; i++) {</span>
+<span class="nc" id="L383">            history = PreviousSemestersData.get(i);</span>
+<span class="nc" id="L384">            semester = history.getSemesterByIndex(0);</span>
+<span class="nc" id="L385">            String Semester = Character.toString(semester.getSemesterCode().charAt(4))</span>
+<span class="nc" id="L386">                    + Character.toString(semester.getSemesterCode().charAt(5));</span>
+<span class="nc" id="L387">            String Year = Character.toString(semester.getSemesterCode().charAt(0))</span>
+<span class="nc" id="L388">                    + Character.toString(semester.getSemesterCode().charAt(1))</span>
+<span class="nc" id="L389">                    + Character.toString(semester.getSemesterCode().charAt(2))</span>
+<span class="nc" id="L390">                    + Character.toString(semester.getSemesterCode().charAt(3));</span>
+<span class="nc" id="L391">            ExcelHeader.add(&quot;d historical&quot;);</span>
+<span class="nc" id="L392">            ExcelHeader.add(SemesterNameSSF.get(Semester) + &quot; &quot; + Year);</span>
         }
-<span class="nc" id="L380">        ExcelHeader.add(&quot;d current&quot;);</span>
-<span class="nc" id="L381">        history = PreviousSemestersData.get(PreviousSemestersData.size() - 1);</span>
-<span class="nc" id="L382">        semester = history.getSemesterByIndex(0);</span>
-<span class="nc" id="L383">        String Semester = Character.toString(semester.getSemesterCode().charAt(4))</span>
-<span class="nc" id="L384">                + Character.toString(semester.getSemesterCode().charAt(5));</span>
-<span class="nc" id="L385">        String Year = Character.toString(semester.getSemesterCode().charAt(0))</span>
-<span class="nc" id="L386">                + Character.toString(semester.getSemesterCode().charAt(1))</span>
-<span class="nc" id="L387">                + Character.toString(semester.getSemesterCode().charAt(2))</span>
-<span class="nc" id="L388">                + Character.toString(semester.getSemesterCode().charAt(3));</span>
-<span class="nc" id="L389">        ExcelHeader.add(SemesterNameSSF.get(Semester) + &quot; &quot; + Year);</span>
-<span class="nc" id="L390">        ExcelHeader.add(&quot;d projected&quot;);</span>
-<span class="nc" id="L391">        ExcelHeader.add(&quot;Projected&quot;);</span>
-<span class="nc" id="L392">        return ExcelHeader;</span>
+<span class="nc" id="L394">        ExcelHeader.add(&quot;d current&quot;);</span>
+<span class="nc" id="L395">        history = PreviousSemestersData.get(PreviousSemestersData.size() - 1);</span>
+<span class="nc" id="L396">        semester = history.getSemesterByIndex(0);</span>
+<span class="nc" id="L397">        String Semester = Character.toString(semester.getSemesterCode().charAt(4))</span>
+<span class="nc" id="L398">                + Character.toString(semester.getSemesterCode().charAt(5));</span>
+<span class="nc" id="L399">        String Year = Character.toString(semester.getSemesterCode().charAt(0))</span>
+<span class="nc" id="L400">                + Character.toString(semester.getSemesterCode().charAt(1))</span>
+<span class="nc" id="L401">                + Character.toString(semester.getSemesterCode().charAt(2))</span>
+<span class="nc" id="L402">                + Character.toString(semester.getSemesterCode().charAt(3));</span>
+<span class="nc" id="L403">        ExcelHeader.add(SemesterNameSSF.get(Semester) + &quot; &quot; + Year);</span>
+<span class="nc" id="L404">        ExcelHeader.add(&quot;d projected&quot;);</span>
+<span class="nc" id="L405">        ExcelHeader.add(&quot;Projected&quot;);</span>
+<span class="nc" id="L406">        return ExcelHeader;</span>
     }
 
     public static int calculateProjectedEnrollment(Offering offering) {
-<span class="nc" id="L396">        int totalEnrollment = offering.getEnrollment();</span>
-<span class="nc" id="L397">        int totalMaxEnrollment = offering.getMaxEnrollment();</span>
+<span class="nc" id="L410">        int totalEnrollment = offering.getEnrollment();</span>
+<span class="nc" id="L411">        int totalMaxEnrollment = offering.getMaxEnrollment();</span>
 
-<span class="nc bnc" id="L399" title="All 2 branches missed.">        for (Section section : offering.getSection()) {</span>
-<span class="nc" id="L400">            int sectionEnrollment = section.getEnrollments();</span>
-<span class="nc" id="L401">            int sectionSeatsRemaining = section.getSeatsRemaining();</span>
-<span class="nc" id="L402">            int sectionMaxEnrollment = section.getCrossListCap();</span>
+<span class="nc bnc" id="L413" title="All 2 branches missed.">        for (Section section : offering.getSection()) {</span>
+<span class="nc" id="L414">            int sectionEnrollment = section.getEnrollments();</span>
+<span class="nc" id="L415">            int sectionSeatsRemaining = section.getSeatsRemaining();</span>
+<span class="nc" id="L416">            int sectionMaxEnrollment = section.getCrossListCap();</span>
 
-<span class="nc bnc" id="L404" title="All 2 branches missed.">            if (sectionMaxEnrollment == 0) {</span>
-<span class="nc" id="L405">                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;</span>
+<span class="nc bnc" id="L418" title="All 2 branches missed.">            if (sectionMaxEnrollment == 0) {</span>
+<span class="nc" id="L419">                sectionMaxEnrollment = sectionSeatsRemaining + sectionEnrollment;</span>
             }
 
-<span class="nc" id="L408">            int projectedEnrollment = (int) Math</span>
-<span class="nc" id="L409">                    .round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));</span>
+<span class="nc" id="L422">            int projectedEnrollment = (int) Math</span>
+<span class="nc" id="L423">                    .round(sectionEnrollment * (totalMaxEnrollment * 1.0 / totalEnrollment));</span>
 
-<span class="nc bnc" id="L411" title="All 2 branches missed.">            if (projectedEnrollment &gt; sectionMaxEnrollment) {</span>
-<span class="nc" id="L412">                projectedEnrollment = sectionMaxEnrollment;</span>
+<span class="nc bnc" id="L425" title="All 2 branches missed.">            if (projectedEnrollment &gt; sectionMaxEnrollment) {</span>
+<span class="nc" id="L426">                projectedEnrollment = sectionMaxEnrollment;</span>
             }
 
-<span class="nc" id="L415">            totalEnrollment += projectedEnrollment - sectionEnrollment;</span>
-<span class="nc" id="L416">            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;</span>
-<span class="nc" id="L417">        }</span>
+<span class="nc" id="L429">            totalEnrollment += projectedEnrollment - sectionEnrollment;</span>
+<span class="nc" id="L430">            totalMaxEnrollment += sectionMaxEnrollment - sectionEnrollment;</span>
+<span class="nc" id="L431">        }</span>
 
-<span class="nc" id="L419">        return totalEnrollment;</span>
+<span class="nc" id="L433">        return totalEnrollment;</span>
     }
 
 }
