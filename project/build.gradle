@@ -47,6 +47,8 @@ task.withType(Test) {
 
 integrationTest.mustRunAfter test
 
+check.dependsOn integrationTest
+
 integrationTest {
     ignoreFailures = true
 }
