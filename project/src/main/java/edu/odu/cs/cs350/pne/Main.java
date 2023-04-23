@@ -433,4 +433,15 @@ public class Main {
         return totalEnrollment;
     }
 
+    public Integer Interpolate(double startPoint, Integer startEnrollment, double endPoint, 
+    Integer endEnrollment, double projectionPoint){
+
+        Integer projectedEnrollment;    //value to be returned
+        double ARC = (endEnrollment-startEnrollment)/(endPoint-startPoint);     //avg rate of change (slope)
+        double timeSinceStart = projectionPoint-startPoint;                     
+        double projec = startEnrollment + (ARC*timeSinceStart);       //interpolation equation
+        projectedEnrollment = (int) Math.round(projec);
+        
+        return projectedEnrollment;
+    }
 }
