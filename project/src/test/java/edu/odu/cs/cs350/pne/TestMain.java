@@ -173,8 +173,28 @@ public class TestMain {
     @Test
     public void testInterpolationEquation() {
 
+        // test y=2x+1
         int y_guess013 = new Main().Interpolate(0.0, 1, 3.0, 7, 1.0);
         assertThat(y_guess013, is((int) 3));
+
+        int y_guess029 = new Main().Interpolate(0, 1, 9, 19, 2);
+        assertThat(y_guess029, is((int) 5));
+
+        // test y=x
+        int y_guessYX = new Main().Interpolate(0, 0, 5, 5, 3);
+        assertThat(y_guessYX, is(3));
+
+        // test y=-x
+        int y_negX = new Main().Interpolate(-2, 2, 9, -9, 5);
+        assertThat(y_negX, is(-5));
+
+        // test that value is correct if dates are passed in wrong order
+        int wrong_order = new Main().Interpolate(5, 5, 0, 0, 1);
+        assertThat(wrong_order, is(1));
+
+        // test function if given interpolation time is out of range
+        int oob = new Main().Interpolate(2, 2, 4, 4, 1);
+        assertThat(oob, is(1));
     }
 
 }
