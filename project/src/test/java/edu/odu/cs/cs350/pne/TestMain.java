@@ -173,7 +173,7 @@ public class TestMain {
     @Test
     public void testInterpolationEquation() {
 
-        int y_guess013 = Interpolate(0.0, 1, 3.0, 7, 1.0);
+        int y_guess013 = new Main().Interpolate(0.0, 1, 3.0, 7, 1.0);
         assertThat(y_guess013, is((int) 3));
     }
 
