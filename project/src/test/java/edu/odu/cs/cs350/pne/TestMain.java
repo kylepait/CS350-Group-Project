@@ -171,11 +171,10 @@ public class TestMain {
     }
 
     @Test
-    public void testInterpolationEquation(){
-        int[][] testSet1 = {{0,1},{1,3},{2,5},{3,7},{4,9},{5,11}};  //y=2x+1
-        
-        Integer y_guess013 = Interpolate({{0,1},{3,7}},1); 
-        assertThat(y_guess013,is(3));
+    public void testInterpolationEquation() {
+
+        int y_guess013 = Interpolate(0.0, 1, 3.0, 7, 1.0);
+        assertThat(y_guess013, is((int) 3));
     }
 
 }
