@@ -11,6 +11,7 @@ import java.io.IOException;
 import java.beans.Transient;
 import java.io.File;
 import java.io.Reader;
+import java.lang.reflect.Array;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import org.apache.commons.io.FilenameUtils;
@@ -167,6 +168,14 @@ public class TestMain {
         History hist = PreviousSemestersData.get(0);
         assertThat(hist.getStartDate(), equalTo(StartDate));
         assertThat(hist.getEndDate(), equalTo(EndDate));
+    }
+
+    @Test
+    public void testInterpolationEquation(){
+        int[][] testSet1 = {{0,1},{1,3},{2,5},{3,7},{4,9},{5,11}};  //y=2x+1
+        
+        Integer y_guess013 = Interpolate({{0,1},{3,7}},1); 
+        assertThat(y_guess013,is(3));
     }
 
 }
