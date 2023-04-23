@@ -433,5 +433,16 @@ import java.io.FileNotFoundException;
 <span class="nc" id="L433">        return totalEnrollment;</span>
     }
 
+    public int Interpolate(double startPoint, int startEnrollment, double endPoint,
+            int endEnrollment, double projectionPoint) {
+
+        int projectedEnrollment; // value to be returned
+<span class="fc" id="L440">        double ARC = (endEnrollment - startEnrollment) / (endPoint - startPoint); // avg rate of change (slope)</span>
+<span class="fc" id="L441">        double timeSinceStart = projectionPoint - startPoint;</span>
+<span class="fc" id="L442">        double projec = startEnrollment + (ARC * timeSinceStart); // interpolation equation</span>
+<span class="fc" id="L443">        projectedEnrollment = (int) Math.round(projec);</span>
+
+<span class="fc" id="L445">        return projectedEnrollment;</span>
+    }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
