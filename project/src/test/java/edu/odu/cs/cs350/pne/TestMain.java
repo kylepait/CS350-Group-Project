@@ -208,9 +208,13 @@ public class TestMain {
 
         List<Section> sections = Arrays.asList(section1, section2, section3);
         Offering offering = new Offering(sections, "COMP101", "Introduction to Computer Science", 100, 35, 0);
-
+        
         //calculate projected enrollement
-        int projectedEnrollment = calculateProjectedEnrollment(offering);
+        int projectedEnrollment = 0;
+        for (Section section : sections)
+        {
+            projectedEnrollment += Math.min(section.getMaxEnrollment() - section.getCurrentEnrollment, section.getEnrollments());
+        }
 
         //check that the result is correct
         assertEquals(85, projectedEnrollment);
