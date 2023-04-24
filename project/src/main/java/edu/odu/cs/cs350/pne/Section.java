@@ -87,5 +87,13 @@ public class Section {
         this.link = linkSet;
     }
 
+    public int getMaxEnrollment(){
+        return this.seatsRemaining + this.enrollments;
+    }
+
+    public int getCurrentEnrollment(){
+        return this.getMaxEnrollment() - this.seatsRemaining;
+    }
+
     //this is a test again
 }
