@@ -204,6 +204,12 @@ public class TestMain {
         Section section1 = new Section(1, 50, 20, 0);
         Section section2 = new Section(2, 30, 10, 0);
         Section section3 = new Section(3, 20, 5, 23);
+
+        List<Section> sections = Array.asList(section1, section2, section3);
+        Offering offering = new Offering("COMP101", sections, 100, 35);
+
+        //calculate projected enrollement
+        int projectedEnrollment = calculateProjectedEnrollment(offering);
     }
 
 }
