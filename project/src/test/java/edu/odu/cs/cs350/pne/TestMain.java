@@ -213,7 +213,7 @@ public class TestMain {
         int projectedEnrollment = 0;
         for (Section section : sections)
         {
-            projectedEnrollment += Math.min(section.getMaxEnrollment() - section.getCurrentEnrollment, section.getEnrollments());
+            projectedEnrollment += Math.min(section.getMaxEnrollment() - section.getCurrentEnrollment(), section.getEnrollments());
         }
 
         //check that the result is correct
