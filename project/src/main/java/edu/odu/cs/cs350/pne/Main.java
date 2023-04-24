@@ -470,6 +470,8 @@ public class Main {
         }
 
         int projectedEnrollment; // value to be returned
+        startEnrollment = Integer.parseInt(snapshot.get(7));
+        projectionPoint = Integer.parseInt(snapshot1.get(7));
         double ARC = (endEnrollment - startEnrollment) / (endPoint - startPoint); // avg rate of change (slope)
         double timeSinceStart = projectionPoint - startPoint;
         double projec = startEnrollment + (ARC * timeSinceStart); // interpolation equation
