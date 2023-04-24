@@ -6,6 +6,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.*;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.io.IOException;
 import java.beans.Transient;
@@ -195,6 +196,24 @@ public class TestMain {
         // test function if given interpolation time is out of range
         int oob = new Main().Interpolate(2, 2, 4, 4, 1);
         assertThat(oob, is(1));
+    }
+
+    @Test
+    public void testCalculateProjectedEnrollment()
+    {
+        //create offering with 3 sections
+        Section section1 = new Section(1, 50, 20, 0, "Instructor1", "Room1", "Time1");
+        Section section2 = new Section(2, 30, 10, 0, "Instructor2", "Room2", "Time2");
+        Section section3 = new Section(3, 20, 5, 23, "Instructor3", "Room3", "Time3");
+
+        List<Section> sections = Arrays.asList(section1, section2, section3);
+        Offering offering = new Offering("COMP101", sections, "Introduction to Computer Science", 100, 35);
+
+        //calculate projected enrollement
+        int projectedEnrollment = calculateProjectedEnrollment(offering);
+
+        //check that the result is correct
+        assertEquals(85, projectedEnrollment);
     }
 
 }
