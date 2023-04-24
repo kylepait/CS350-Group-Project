@@ -210,6 +210,9 @@ public class TestMain {
 
         //calculate projected enrollement
         int projectedEnrollment = calculateProjectedEnrollment(offering);
+
+        //check that the result is correct
+        assertEquals(85, projectedEnrollment);
     }
 
 }
