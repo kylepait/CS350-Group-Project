@@ -18,6 +18,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Hashtable;
 import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Objects;
 import java.time.temporal.ChronoUnit;
@@ -434,13 +435,48 @@ public class Main {
     }
 
     public int Interpolate(double startPoint, int startEnrollment, double endPoint,
-            int endEnrollment, double projectionPoint) {
+            int endEnrollment, double projectionPoint) throws IOException {
+
+        // Parsing filename of snapshot that comes before the current semester
+        String csvFile = "";
+        String[] parts = csvFile.split("[/.]");
+        String snapShotDate = parts[5];
+        LocalDate snapShotLocalDate = LocalDate.parse(snapShotDate, DateTimeFormatter.ISO_LOCAL_DATE);
+        startPoint = snapShotLocalDate.toEpochDay();
+
+        // Pasring filename of snapshot that comes after the current semester
+        String csvFile1 = "";
+        String[] parts1 = csvFile1.split("[/.]");
+        String snapShotDate1 = parts1[5];
+        LocalDate snapShotLocalDate1 = LocalDate.parse(snapShotDate1, DateTimeFormatter.ISO_LOCAL_DATE);
+        endPoint = snapShotLocalDate1.toEpochDay();
+
+        // Getting the enrollment data from the csv file for startPoint
+        FileReader fileReader = new FileReader(csvFile);
+        CSVParser csvParser = new CSVParser(fileReader, CSVFormat.RFC4180);
+        Iterable<CSVRecord> records = csvParser.getRecords();
+        CSVRecord snapshot = null;
+        for(CSVRecord record : records) {
+            snapshot = record;
+        }
+
+        // Getting the enrollment data from the csv file for endPoint
+        FileReader fileReader1 = new FileReader(csvFile1);
+        CSVParser csvParser1 = new CSVParser(fileReader1, CSVFormat.RFC4180);
+        Iterable<CSVRecord> records1 = csvParser.getRecords();
+        CSVRecord snapshot1 = null;
+        for(CSVRecord record1 : records1) {
+            snapshot1 = record1;
+        }
 
         int projectedEnrollment; // value to be returned
         double ARC = (endEnrollment - startEnrollment) / (endPoint - startPoint); // avg rate of change (slope)
         double timeSinceStart = projectionPoint - startPoint;
         double projec = startEnrollment + (ARC * timeSinceStart); // interpolation equation
         projectedEnrollment = (int) Math.round(projec);
+
+        csvParser.close();
+        csvParser1.close();
 
         return projectedEnrollment;
     }

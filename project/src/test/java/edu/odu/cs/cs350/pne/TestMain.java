@@ -171,7 +171,7 @@ public class TestMain {
     }
 
     @Test
-    public void testInterpolationEquation() {
+    public void testInterpolationEquation() throws IOException {
 
         // test y=2x+1
         int y_guess013 = new Main().Interpolate(0.0, 1, 3.0, 7, 1.0);
