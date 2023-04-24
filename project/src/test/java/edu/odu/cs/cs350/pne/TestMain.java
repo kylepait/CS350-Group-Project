@@ -207,7 +207,7 @@ public class TestMain {
         Section section3 = new Section(3, 20, 5, 23, "Instructor3", "Room3", "Time3");
 
         List<Section> sections = Arrays.asList(section1, section2, section3);
-        Offering offering = new Offering("COMP101", sections, "Introduction to Computer Science", 100, 35);
+        Offering offering = new Offering(sections, "COMP101", "Introduction to Computer Science", 100, 35, 0);
 
         //calculate projected enrollement
         int projectedEnrollment = calculateProjectedEnrollment(offering);
