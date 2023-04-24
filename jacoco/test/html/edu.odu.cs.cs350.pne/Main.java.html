@@ -470,15 +470,17 @@ import java.io.FileNotFoundException;
 <span class="nc" id="L470">        }</span>
 
         int projectedEnrollment; // value to be returned
-<span class="nc" id="L473">        double ARC = (endEnrollment - startEnrollment) / (endPoint - startPoint); // avg rate of change (slope)</span>
-<span class="nc" id="L474">        double timeSinceStart = projectionPoint - startPoint;</span>
-<span class="nc" id="L475">        double projec = startEnrollment + (ARC * timeSinceStart); // interpolation equation</span>
-<span class="nc" id="L476">        projectedEnrollment = (int) Math.round(projec);</span>
+<span class="nc" id="L473">        startEnrollment = Integer.parseInt(snapshot.get(7));</span>
+<span class="nc" id="L474">        projectionPoint = Integer.parseInt(snapshot1.get(7));</span>
+<span class="nc" id="L475">        double ARC = (endEnrollment - startEnrollment) / (endPoint - startPoint); // avg rate of change (slope)</span>
+<span class="nc" id="L476">        double timeSinceStart = projectionPoint - startPoint;</span>
+<span class="nc" id="L477">        double projec = startEnrollment + (ARC * timeSinceStart); // interpolation equation</span>
+<span class="nc" id="L478">        projectedEnrollment = (int) Math.round(projec);</span>
 
-<span class="nc" id="L478">        csvParser.close();</span>
-<span class="nc" id="L479">        csvParser1.close();</span>
+<span class="nc" id="L480">        csvParser.close();</span>
+<span class="nc" id="L481">        csvParser1.close();</span>
 
-<span class="nc" id="L481">        return projectedEnrollment;</span>
+<span class="nc" id="L483">        return projectedEnrollment;</span>
     }
 }
 </pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.8.202204050719</span></div></body></html>
