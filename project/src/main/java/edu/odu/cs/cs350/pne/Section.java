@@ -83,7 +83,7 @@ public class Section {
         return this.link;
     }
 
-    public void setLink(String linkSet){
+    public void setLink(String linkSet){ 
         this.link = linkSet;
     }
 
